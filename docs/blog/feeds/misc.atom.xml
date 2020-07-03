@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - Misc</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/misc.atom.xml" rel="self"></link><id>./</id><updated>2020-07-01T00:00:00+08:00</updated><entry><title>Jul 1, 2020 日誌</title><link href=".%5CJul_01_%202020.html" rel="alternate"></link><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-01:.\Jul_01_ 2020.html</id><summary type="html">&lt;p&gt;日誌
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - Misc</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/misc.atom.xml" rel="self"></link><id>./</id><updated>2020-07-02T00:00:00+08:00</updated><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
+&lt;li&gt;clonezilla硬碟複製&lt;ul&gt;
+&lt;li&gt;單機&lt;/li&gt;
+&lt;li&gt;網路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;架設深度學習的主機
+學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
+</summary><content type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
+&lt;li&gt;clonezilla硬碟複製&lt;ul&gt;
+&lt;li&gt;單機&lt;/li&gt;
+&lt;li&gt;網路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;架設深度學習的主機
+學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Misc"></category><category term="日誌"></category></entry><entry><title>Jul 1, 2020 日誌</title><link href=".%5CJul_01_%202020.html" rel="alternate"></link><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-01:.\Jul_01_ 2020.html</id><summary type="html">&lt;p&gt;日誌
 維修3D列印：噴嘴加熱和原點Z軸校正
 </summary><content type="html">&lt;p&gt;日誌
 維修3D列印：噴嘴加熱和原點Z軸校正

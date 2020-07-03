@@ -20,6 +20,12 @@
 <v t="leo.20170908162904.1"><vh>有 disqus 論壇</vh>
 <v t="leo.20170709224430.1"><vh>@button github-blog</vh></v>
 </v>
+<v t="leo.20200703123657.1"><vh>blogger 設定</vh>
+<v t="leo.20200703123751.1"><vh>@button add_to_blogger</vh></v>
+<v t="leo.20200703123722.1"><vh>@edit add_to_blogger.py</vh></v>
+<v t="leo.20200703170916.1"><vh>@button edit_to_blogger</vh></v>
+<v t="leo.20200703170824.1"><vh>@edit edit_to_blogger</vh></v>
+</v>
 <v t="yen.20170108171733.5"><vh>Pelican 設定</vh>
 <v t="leo.20170709020600.1"><vh>共用</vh></v>
 <v t="yen.20170108171733.7"><vh>@edit pelicanconf.py</vh></v>
@@ -56,7 +62,8 @@
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20200329213145.1"><vh>2020</vh>
 <v t="leo.20200329213145.2"><vh>2020 CD 課程</vh>
-<v t="leo.20200329213145.5"><vh>@edit Jul_1_ 2020.md</vh></v>
+<v t="leo.20200329213145.5"><vh>@edit Jul_01_ 2020.md</vh></v>
+<v t="leo.20200703121642.1"><vh>@edit Jul_02_2020.md</vh></v>
 </v>
 </v>
 </v>
@@ -87,6 +94,20 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115093726.1"></t>
 <t tx="leo.20200329213145.1"></t>
 <t tx="leo.20200329213145.2"></t>
+<t tx="leo.20200703123657.1"></t>
+<t tx="leo.20200703123751.1">@language python
+import os
+
+os.system("")
+g.es("")
+
+</t>
+<t tx="leo.20200703170916.1">@language python
+import os
+
+os.system("")
+g.es("")
+</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
