@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-02T00:00:00+08:00</updated><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-05T00:00:00+08:00</updated><entry><title>Jul 5, 2020 日誌</title><link href=".%5CJul_05_%202020.html" rel="alternate"></link><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-05:.\Jul_05_ 2020.html</id><summary type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
+</summary><content type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
+
+Delta printer是運用 Stewart Platform 機構修改出來的機構，一樣有6個自由度。
+Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達到同的功能。&lt;/p&gt;
+&lt;p&gt;正向(順向)運動學(forward kinematics)&lt;/p&gt;
+&lt;p&gt;由各關節變數求效應器(機構末端)的位置與方向角&lt;/p&gt;
+&lt;p&gt;反向運動學(invers kinematics)&lt;/p&gt;
+&lt;p&gt;由末端效應器(機構)的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+</summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+
+新增/編輯文章到blogger
+到想新增/修改的文章對應到的markdown節點，按 add_to_mblogger 按鈕。想修改按 edit_to_mblogger按鈕。
+修改成功的話會顯示：
+post_id 為 一串文章的ID
+已經將更新資料送往 M Blogger!&lt;/p&gt;
+&lt;p&gt;文章內的圖片要放絕對位置(網址)&lt;/p&gt;
+&lt;p&gt;若出現
+&lt;pre class="brush: jscript"&gt;
+google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;重新轉一次.dat應該可以解決新增/編輯文章到blogger&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 3, 2020 日誌</title><link href=".%5CJul_03_%202020.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-03:.\Jul_03_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
+將json轉檔成 .pickle 和 .dat
+</summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
+將json轉檔成 .pickle 和 .dat
+&lt;/p&gt;
+&lt;p&gt;想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考&lt;a href="http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html"&gt;新增 按鈕執行程式&lt;/a&gt;裡面的程式碼，&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;新增Blogger API，去取得json的檔案。&lt;/p&gt;
+&lt;p&gt;獲取client_secrets.json：
+1. 登錄到您的@gm帳戶
+2. 到&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;
+3. 接受許可並創建Google API項目
+4. 啟用Google Blogger API v3
+5. 選擇內部用戶類型並添加新的應用程序名稱
+6. 在“ API和服務”下，進入“憑證”頁面
+7. 為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據
+8. 下載json檔&lt;/p&gt;
+&lt;p&gt;接下來&lt;a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html"&gt;測試json&lt;/a&gt;，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
+到&lt;a href="https://github.com/mdecourse/project2020-1/tree/master/tools"&gt;project2020-1倉儲的tools&lt;/a&gt;gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。&lt;/p&gt;
+&lt;p&gt;轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部&lt;/p&gt;
+&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
 &lt;li&gt;clonezilla硬碟複製&lt;ul&gt;
@@ -20,32 +59,33 @@
 &lt;li&gt;架設深度學習的主機
 學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
 &lt;/li&gt;
-&lt;/ol&gt;</content><category term="Misc"></category><category term="日誌"></category></entry><entry><title>Jul 1, 2020 日誌</title><link href=".%5CJul_01_%202020.html" rel="alternate"></link><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-01:.\Jul_01_ 2020.html</id><summary type="html">&lt;p&gt;日誌
-維修3D列印：噴嘴加熱和原點Z軸校正
+&lt;/ol&gt;</content><category term="Misc"></category><category term="日誌"></category></entry><entry><title>Jul 1, 2020 日誌</title><link href=".%5CJul_01_2020.html" rel="alternate"></link><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-01:.\Jul_01_2020.html</id><summary type="html">&lt;p&gt;日誌
+維修3D列印：噴嘴加熱和原點Z軸校正&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;日誌
-維修3D列印：噴嘴加熱和原點Z軸校正
-&lt;/p&gt;
+維修3D列印：噴嘴加熱和原點Z軸校正&lt;/p&gt;
+
+
 &lt;p&gt;維修張元學長那屆當時組的3D印表機，目前發現兩個問題&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;噴嘴加熱(~~無法加熱~~)  已解決
-線路當時情況
-&lt;img alt="./../images/原始接線.jpg" src="./../images/原始接線.jpg"&gt;
-&lt;strong&gt;原始接線&lt;/strong&gt;
-&lt;img alt="./../images/各插槽功能.jpg" src="./../images/各插槽功能.jpg"&gt;
-&lt;strong&gt;各插槽功能&lt;/strong&gt;
-&lt;img alt="./../images/修正後_接線.jpg" src="./../images/修正後_接線.jpg"&gt;
-&lt;strong&gt;修正後(噴頭接A13，底板加熱A14)&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Z軸歸零後與底板還有一段距離
-我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，&lt;a href="https://www.repetier.com/firmware/v091/"&gt;repetier firmware&lt;/a&gt;可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。&lt;/li&gt;
+線路當時情況&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;img alt="./../images/原始接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg"&gt;
+&lt;strong&gt;原始接線&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/各插槽功能.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg"&gt;
+&lt;strong&gt;各插槽功能&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/修正後_接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg"&gt;
+&lt;strong&gt;修正後(噴頭接A13，底板加熱A14)&lt;/strong&gt;
+2. Z軸歸零後與底板還有一段距離
+我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，&lt;a href="https://www.repetier.com/firmware/v091/"&gt;repetier firmware&lt;/a&gt;可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。&lt;/p&gt;
 &lt;p&gt;連接3D印表機控制板的USB線到電腦後就出現COM3&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/連接.png" src="./../images/連接.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;將操控板連到電腦當時讀到的位置是COM3&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" src="./../images/Pronterface 介面.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" src="https://s40723150.github.io/UniversityProject/images/Pronterface"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pronterface 介面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Pronterface 可以透過介面上按鈕或是G-cord控制3D印表機噴頭位置，選到正確的Port按connect就可以連上。&lt;/p&gt;
 &lt;p&gt;File link&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/連接.png" src="./../images/Files_list.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/Files_list.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;當時下載的檔案&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.repetier.com/firmware/v100/config.php?a=downloadAll"&gt;https://www.repetier.com/firmware/v100/config.php?a=downloadAll&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://download.repetier.com/files/host/win/setupRepetierHost_2_1_6.exe"&gt;http://download.repetier.com/files/host/win/setupRepetierHost_2_1_6.exe&lt;/a&gt;&lt;/p&gt;

@@ -21,10 +21,8 @@
 <v t="leo.20170709224430.1"><vh>@button github-blog</vh></v>
 </v>
 <v t="leo.20200703123657.1"><vh>blogger 設定</vh>
-<v t="leo.20200703123751.1"><vh>@button add_to_blogger</vh></v>
-<v t="leo.20200703123722.1"><vh>@edit add_to_blogger.py</vh></v>
-<v t="leo.20200703170916.1"><vh>@button edit_to_blogger</vh></v>
-<v t="leo.20200703170824.1"><vh>@edit edit_to_blogger</vh></v>
+<v t="leo.20200704110838.1"><vh>@button add_to_mblogger</vh></v>
+<v t="leo.20200704110854.1"><vh>@button edit_to_mblogger</vh></v>
 </v>
 <v t="yen.20170108171733.5"><vh>Pelican 設定</vh>
 <v t="leo.20170709020600.1"><vh>共用</vh></v>
@@ -62,8 +60,13 @@
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20200329213145.1"><vh>2020</vh>
 <v t="leo.20200329213145.2"><vh>2020 CD 課程</vh>
-<v t="leo.20200329213145.5"><vh>@edit Jul_01_ 2020.md</vh></v>
+<v t="leo.20200329213145.5"><vh>@edit Jul_01_2020.md</vh></v>
 <v t="leo.20200703121642.1"><vh>@edit Jul_02_2020.md</vh></v>
+<v t="leo.20200705054727.1"><vh>@edit Jul_03_2020.md</vh></v>
+<v t="leo.20200705083902.1"><vh>@edit Jul_04_2020.md</vh>
+<v t="leo.20200705085423.2"><vh>1475075686319271096</vh></v>
+</v>
+<v t="leo.20200705085423.1"><vh>@edit Jul_05_2020.md</vh></v>
 </v>
 </v>
 </v>
@@ -95,19 +98,220 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20200329213145.1"></t>
 <t tx="leo.20200329213145.2"></t>
 <t tx="leo.20200703123657.1"></t>
-<t tx="leo.20200703123751.1">@language python
+<t tx="leo.20200704110838.1">@language python
+from markdown import markdown
+from oauth2client import client
+#from googleapiclient import sample_tools
 import os
+# 配合使用 credential token
+import pickle
+from googleapiclient.discovery import build
+#from google_auth_oauthlib.flow import InstalledAppFlow
+#from google.auth.transport.requests import Request
 
-os.system("")
-g.es("")
+os.environ['TZ'] = 'Asia/Taipei'
+with open('./../../../40723150_gm_blogger.dat', 'rb') as credentials_dat:
+    credentials = pickle.load(credentials_dat)
+service = build('blogger', 'v3', credentials=credentials)
+
+def get_cat_tag_content(data):
+    # 請注意, 因為 data 來自 .md 的檔案 內容, 第1行為 ---
+    # 用跳行符號分割
+    data_list = data.split("\n")
+    #第 2 行為 title
+    title= data_list[1]
+    #第 4 行為 category
+    category = data_list[3]
+    #第 5 行為 tags
+    tags = data_list[4]
+    # 有多項資料的 content 型別為數列
+    # 再將第 9 行之後的資料數列串回成以跳行隔開的資料
+    content = "\n".join(data_list[8:])
+    # 先將截斷摘要與內文的 pelican md 檔按符號, 換成 Blogger 的 &lt;!--more--&gt;
+    content = content.replace('&lt;!-- PELICAN_END_SUMMARY --&gt;', '&lt;!--more--&gt;')
+    # 接著若內容有 ~~~python 與 ~~~ 則換成 Wordpress 格式
+    #content = content.replace('~~~python', '[code lang="python"]')
+    #content = content.replace('~~~', '[/code]')
+    return title, category, tags, content
+
+# 從目前所在節點的 body pan 中取出類別, tags 以及文章內容
+# p.h 為 @clean filename.md
+# 因為要使用 @clean 節點掛上為後的 blogger post_id, 因此改為讀 .md 檔案
+md_filename = p.h.split(" ")[1]
+with open(md_filename, 'r', encoding="utf-8") as content_file:
+    md_content = content_file.read()
+# title_str, category_str, tags_str, content = get_cat_tag_content(p.b)
+title_str, category_str, tags_str, content = get_cat_tag_content(md_content)
+category = category_str.split(":")[1]
+tags = tags_str.split(":")[1].split(",")
+tags.append(category)
+# title 是一個單獨的字串
+title = title_str.split(":")[1]
+# 將 markdown 格式 content 轉為 html
+content = markdown(content)
+# 以下處理 content 的 &lt;h2&gt; 標題
+content = content.replace("&lt;h2&gt;", "&lt;h2&gt;&lt;font size='4'&gt;")
+content = content.replace("&lt;/h2&gt;", "&lt;/font&gt;&lt;/h2&gt;")
+# g.es(content)
+
+try:
+    '''
+    users = service.users()
+    # 取得使用者 profile 資料
+    user = users.get(userId='self').execute()
+    print('網誌名稱: %s' % user['displayName'])
+    '''
+    blogs = service.blogs()
+    # 取得使用者所建立網誌名稱
+    blogs = blogs.listByUser(userId='self').execute()
+    # post_id is now blogs["items"][0]["id"]
+    #blog_id = blogs["items"][0]["id"]
+    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
+    #blog_id = "9163369466257328113"#UniversityProject 日誌
+    #for blog in blogs['items']:
+        #print(blog['name'], blog['url'])
+    posts = service.posts()
+    # 新增網誌 post 時, 需要 post_id
+    body = {
+    "kind": "blogger#post",
+    "id": blog_id,
+    "title": title,
+    # 利用 markdown 函式, 將 .md 的內文轉為 html, 作為 Blogger 的文章內容
+    "content": content,
+    "labels": tags
+    }
+    insert = posts.insert(blogId=blog_id, body=body)
+    posts_doc = insert.execute()
+    post_id = posts_doc["id"]
+    #print(posts_doc)
+    # 改用 credential token 後不會產生 blogger.dat
+    #os.remove("blogger.dat")
+    # 利用最後的 child 節點來儲存 post_id
+    to_save_post_id = p.insertAsLastChild()   
+    # 改為內文為空的節點, id 直接標在 head 標題 
+    to_save_post_id.b = ""
+    to_save_post_id.h = post_id
+    # 因為新增節點, commander 必須 redraw
+    c.redraw()
+    g.es("post_id 為", post_id)
+    g.es("已經將資料送往 MBlogger!")
+except(client.AccessTokenRefreshError):
+    g.es("error")
 
 </t>
-<t tx="leo.20200703170916.1">@language python
+<t tx="leo.20200704110854.1">@language python
+from markdown import markdown
+from oauth2client import client
+#from googleapiclient import sample_tools
 import os
+# 配合使用 credential token
+import pickle
+from googleapiclient.discovery import build
+#from google_auth_oauthlib.flow import InstalledAppFlow
+#from google.auth.transport.requests import Request
 
-os.system("")
-g.es("")
+os.environ['TZ'] = 'Asia/Taipei'
+with open('./../../../40723150_gm_blogger.dat', 'rb') as credentials_dat:
+    credentials = pickle.load(credentials_dat)
+service = build('blogger', 'v3', credentials=credentials)
+
+def get_cat_tag_content(data):
+    # 請注意, 因為 data 來自 .md 的檔案 內容, 第1行為 ---
+    # 用跳行符號分割
+    data_list = data.split("\n")
+    #第 2 行為 title
+    title= data_list[1]
+    #第 4 行為 category
+    category = data_list[3]
+    #第 5 行為 tags
+    tags = data_list[4]
+    # 有多項資料的 content 型別為數列
+    # 再將第 9 行之後的資料數列串回成以跳行隔開的資料
+    content = "\n".join(data_list[8:])
+    # 先將截斷摘要與內文的 pelican md 檔按符號, 換成 Blogger 的 &lt;!--more--&gt;
+    content = content.replace('&lt;!-- PELICAN_END_SUMMARY --&gt;', '&lt;!--more--&gt;')
+    # 接著若內容有 ~~~python 與 ~~~ 則換成 Wordpress 格式
+    #content = content.replace('~~~python', '[code lang="python"]')
+    #content = content.replace('~~~', '[/code]')
+    return title, category, tags, content
+
+# 從目前所在節點的 body pan 中取出類別, tags 以及文章內容
+# p.h 為 @clean filename.md
+# 因為要使用 @clean 節點掛上為後的 blogger post_id, 因此改為讀 .md 檔案
+md_filename = p.h.split(" ")[1]
+with open(md_filename, 'r', encoding="utf-8") as content_file:
+    md_content = content_file.read()
+# title_str, category_str, tags_str, content = get_cat_tag_content(p.b)
+title_str, category_str, tags_str, content = get_cat_tag_content(md_content)
+category = category_str.split(":")[1]
+tags = tags_str.split(":")[1].split(",")
+tags.append(category)
+# title 是一個單獨的字串
+title = title_str.split(":")[1]
+# 將 markdown 格式 content 轉為 html
+content = markdown(content)
+# 以下處理 content 的 &lt;h2&gt; 標題
+content = content.replace("&lt;h2&gt;", "&lt;h2&gt;&lt;font size='4'&gt;")
+content = content.replace("&lt;/h2&gt;", "&lt;/font&gt;&lt;/h2&gt;")
+# g.es(content)
+
+try:
+    blogs = service.blogs()
+    # 取得使用者所建立網誌名稱
+    blogs = blogs.listByUser(userId='self').execute()
+    #blog_id = blogs["items"][0]["id"]
+    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
+    #blog_id = "9163369466257328113"
+    # 設法取得原 post 的 id
+    postid_outline = p.getLastChild()
+    # 直接從標題取得 post 的 id 號碼
+    post_id = postid_outline.h
+    posts = service.posts()
+    # 更新網誌文章時的 body
+    body = {
+    "kind": "blogger#post",
+    "title": title,
+    "content": content
+    }
+    # need to save postId to outline head
+    update = posts.update(blogId=blog_id, postId=post_id, body=body, publish=True)
+    update_doc = update.execute()
+    # 使用 credential token 後, 無需刪除 blogger.dat
+    #os.remove("blogger.dat")
+    g.es("post_id 為", post_id)
+    g.es("已經將更新資料送往 M Blogger!")
+except(client.AccessTokenRefreshError):
+    g.es("error")
 </t>
+<t tx="leo.20200705083902.1">@language md
+---
+Title: Jul 4, 2020 日誌
+Date: Jul 4, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_04_ 2020
+Author: 40723150
+---
+嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+新增/編輯文章到blogger
+到想新增/修改的文章對應到的markdown節點，按 add_to_mblogger 按鈕。想修改按 edit_to_mblogger按鈕。
+修改成功的話會顯示：
+post_id 為 一串文章的ID
+已經將更新資料送往 M Blogger!
+    
+文章內的圖片要放絕對位置(網址)
+
+若出現
+&lt;pre class="brush: jscript"&gt;
+google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
+&lt;/pre&gt;
+
+重新轉一次.dat應該可以解決新增/編輯文章到blogger
+</t>
+<t tx="leo.20200705085423.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

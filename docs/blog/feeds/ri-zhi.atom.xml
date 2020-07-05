@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-05T00:00:00+08:00</updated><entry><title>Jul 5, 2020 日誌</title><link href=".%5CJul_05_%202020.html" rel="alternate"></link><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-05:.\Jul_05_ 2020.html</id><summary type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
+</summary><content type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
+
+Delta printer是運用 Stewart Platform 機構修改出來的機構，一樣有6個自由度。
+Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達到同的功能。&lt;/p&gt;
+&lt;p&gt;正向(順向)運動學(forward kinematics)&lt;/p&gt;
+&lt;p&gt;由各關節變數求效應器(機構末端)的位置與方向角&lt;/p&gt;
+&lt;p&gt;反向運動學(invers kinematics)&lt;/p&gt;
+&lt;p&gt;由末端效應器(機構)的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+</summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+
+新增/編輯文章到blogger
+到想新增/修改的文章對應到的markdown節點，按 add_to_mblogger 按鈕。想修改按 edit_to_mblogger按鈕。
+修改成功的話會顯示：
+post_id 為 一串文章的ID
+已經將更新資料送往 M Blogger!&lt;/p&gt;
+&lt;p&gt;文章內的圖片要放絕對位置(網址)&lt;/p&gt;
+&lt;p&gt;若出現
+&lt;pre class="brush: jscript"&gt;
+google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;重新轉一次.dat應該可以解決新增/編輯文章到blogger&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 3, 2020 日誌</title><link href=".%5CJul_03_%202020.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-03:.\Jul_03_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
+將json轉檔成 .pickle 和 .dat
+</summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
+將json轉檔成 .pickle 和 .dat
+&lt;/p&gt;
+&lt;p&gt;想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考&lt;a href="http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html"&gt;新增 按鈕執行程式&lt;/a&gt;裡面的程式碼，&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;新增Blogger API，去取得json的檔案。&lt;/p&gt;
+&lt;p&gt;獲取client_secrets.json：
+1. 登錄到您的@gm帳戶
+2. 到&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;
+3. 接受許可並創建Google API項目
+4. 啟用Google Blogger API v3
+5. 選擇內部用戶類型並添加新的應用程序名稱
+6. 在“ API和服務”下，進入“憑證”頁面
+7. 為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據
+8. 下載json檔&lt;/p&gt;
+&lt;p&gt;接下來&lt;a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html"&gt;測試json&lt;/a&gt;，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
+到&lt;a href="https://github.com/mdecourse/project2020-1/tree/master/tools"&gt;project2020-1倉儲的tools&lt;/a&gt;gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。&lt;/p&gt;
+&lt;p&gt;轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部&lt;/p&gt;
+&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category></entry></feed>

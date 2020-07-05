@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./</loc>
-<lastmod>2020-07-03T12:22:38-00:00</lastmod>
+<lastmod>2020-07-06T01:47:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./archives.html</loc>
-<lastmod>2020-07-03T12:22:38-00:00</lastmod>
+<lastmod>2020-07-06T01:47:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tags.html</loc>
-<lastmod>2020-07-03T12:22:38-00:00</lastmod>
+<lastmod>2020-07-06T01:47:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./categories.html</loc>
-<lastmod>2020-07-03T12:22:38-00:00</lastmod>
+<lastmod>2020-07-06T01:47:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,6 +39,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>./Jul_05_ 2020.html</loc>
+<lastmod>2020-07-05T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./Jul_04_ 2020.html</loc>
+<lastmod>2020-07-04T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./Jul_03_ 2020.html</loc>
+<lastmod>2020-07-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>./Jul_02_ 2020.html</loc>
 <lastmod>2020-07-02T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -46,7 +67,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>./Jul_01_ 2020.html</loc>
+<loc>./Jul_01_2020.html</loc>
 <lastmod>2020-07-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
@@ -55,6 +76,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>./category/misc.html</loc>
 <lastmod>2020-07-02T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./category/ri-zhi.html</loc>
+<lastmod>2020-07-05T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -75,7 +103,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./author/40723150.html</loc>
-<lastmod>2020-07-02T00:00:00+08:06</lastmod>
+<lastmod>2020-07-05T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
