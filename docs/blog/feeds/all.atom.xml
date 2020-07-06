@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-05T00:00:00+08:00</updated><entry><title>Jul 5, 2020 日誌</title><link href=".%5CJul_05_%202020.html" rel="alternate"></link><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-05:.\Jul_05_ 2020.html</id><summary type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-06T00:00:00+08:00</updated><entry><title>Jul 6, 2020 日誌</title><link href=".%5CJul_06_%202020.html" rel="alternate"></link><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-06:.\Jul_06_ 2020.html</id><summary type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
+</summary><content type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
+&lt;/p&gt;
+&lt;h2&gt;防寫卡複製&lt;/h2&gt;
+&lt;h3&gt;step 1&lt;/h3&gt;
+&lt;p&gt;先開機要複製出去(資料來源)那台的電腦，在防寫卡畫面(選擇磁區畫面)按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。&lt;/p&gt;
+&lt;h3&gt;step2&lt;/h3&gt;
+&lt;p&gt;設定好按套用設定，再進行網路拷貝(按網路拷貝按鈕)。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕&lt;/p&gt;
+&lt;h3&gt;step3&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;網路拷貝：將整個選擇的磁區內容、設定複製過去。覆蓋。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;增量拷貝：將選擇的磁區不同的內容、設定複製過去。覆蓋。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;選擇要複製的選項(視情況選擇網路拷貝或增量拷貝)&lt;/p&gt;
+&lt;h3&gt;step4&lt;/h3&gt;
+&lt;p&gt;補圖後詳細說明&lt;/p&gt;
+&lt;h3&gt;step5&lt;/h3&gt;
+&lt;p&gt;若是要複製第三磁區，選擇複製單一作業統，選第三磁區，勾選C槽，傳輸完成後&lt;/p&gt;
+&lt;h2&gt;clonezilla硬碟複製&lt;/h2&gt;
+&lt;h2&gt;Ubuntu 20.04&lt;/h2&gt;</content><category term="日誌"></category></entry><entry><title>Jul 5, 2020 日誌</title><link href=".%5CJul_05_%202020.html" rel="alternate"></link><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-05:.\Jul_05_ 2020.html</id><summary type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
 </summary><content type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
 
 Delta printer是運用 Stewart Platform 機構修改出來的機構，一樣有6個自由度。

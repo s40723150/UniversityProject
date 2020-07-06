@@ -12,8 +12,6 @@
 </v>
 <v t="yen.20170108171733.1"><vh>@path ../</vh>
 <v t="leo.20180115150519.1"><vh>@edit index.html</vh></v>
-<v t="yen.20170108171733.3"><vh>@edit README.md</vh></v>
-<v t="yen.20170108171733.4"><vh>@edit .gitignore</vh></v>
 <v t="leo.20170908162839.1"><vh>沒有 disqus 論壇</vh>
 <v t="yen.20170108171733.2"><vh>@button local-blog</vh></v>
 </v>
@@ -63,10 +61,9 @@
 <v t="leo.20200329213145.5"><vh>@edit Jul_01_2020.md</vh></v>
 <v t="leo.20200703121642.1"><vh>@edit Jul_02_2020.md</vh></v>
 <v t="leo.20200705054727.1"><vh>@edit Jul_03_2020.md</vh></v>
-<v t="leo.20200705083902.1"><vh>@edit Jul_04_2020.md</vh>
-<v t="leo.20200705085423.2"><vh>1475075686319271096</vh></v>
-</v>
+<v t="leo.20200705083902.1"><vh>@edit Jul_04_2020.md</vh></v>
 <v t="leo.20200705085423.1"><vh>@edit Jul_05_2020.md</vh></v>
+<v t="leo.20200706221607.1"><vh>@edit Jul_06_2020.md</vh></v>
 </v>
 </v>
 </v>
@@ -285,33 +282,6 @@ try:
 except(client.AccessTokenRefreshError):
     g.es("error")
 </t>
-<t tx="leo.20200705083902.1">@language md
----
-Title: Jul 4, 2020 日誌
-Date: Jul 4, 2020
-Category: 日誌
-Tags: 
-Slug: Jul_04_ 2020
-Author: 40723150
----
-嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-新增/編輯文章到blogger
-到想新增/修改的文章對應到的markdown節點，按 add_to_mblogger 按鈕。想修改按 edit_to_mblogger按鈕。
-修改成功的話會顯示：
-post_id 為 一串文章的ID
-已經將更新資料送往 M Blogger!
-    
-文章內的圖片要放絕對位置(網址)
-
-若出現
-&lt;pre class="brush: jscript"&gt;
-google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
-&lt;/pre&gt;
-
-重新轉一次.dat應該可以解決新增/編輯文章到blogger
-</t>
-<t tx="leo.20200705085423.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
