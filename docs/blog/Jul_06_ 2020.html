@@ -258,7 +258,9 @@ init_mathjax();
 2. 光碟機
 3. 存放備份的硬碟(b硬碟)</p>
 <p>P.S. 存放備份的硬碟(b硬碟)需要比 備份硬碟來源 (a硬碟) 的容量大一樣大或更大，比備份來源小會無法複製。</p>
-<p>利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟(到網路上下載clonezilla的iso檔燒錄到光碟裡)，開機時放入clonezilla光碟片，並進入"開機選單"(進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單)會些換到用光碟機開機(會去讀取clonezilla光碟的資料)。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟(disk to disk)進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項(包括其他未提到的設定)，開始複製硬碟，按Enter，2次y(確認抹除)，複製的時間會因硬碟大小而有所差異(當時複製160GB大約是2分鐘)，複製完成後關機。</p>
+<p>利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟(到網路上下載clonezilla的iso檔燒錄到光碟裡)，開機時放入clonezilla光碟片，並進入"開機選單"(進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單)會些換到用光碟機開機(會去讀取clonezilla光碟的資料)。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟(disk to disk)進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項(包括其他未提到的設定)，開始複製硬碟，按Enter，2次y(確認覆蓋開機磁區)，複製的時間會因硬碟大小而有所差異(當時複製160GB大約是2分鐘)，複製完成後關機。</p>
+<p>P.S. clonezilla 硬碟複製是bit by bit，硬碟分割模式為MBR的硬碟在複製的時候開機磁區也會同時複製，不需特別抹除原來的MBR。若硬碟安裝作業系統時無法覆蓋先前的MBR磁區，就必須用clonezilla複製去覆蓋。</p>
+<p>硬碟分割分 MBR 和 GPT兩種。</p>
 <h2>Ubuntu 20.04</h2>
 <h3>建立管理者</h3>
 <p><pre class="brush: jscript">
@@ -274,11 +276,23 @@ sudo usermod -aG sudo s40723150
 <h3>刪除管理者</h3>
 <p>可以刪除 "使用者" 帳號與其 /home/wcm1 對應用戶目錄。</p>
 <p>sudo deluser --remove-home 使用者名稱</p>
-<h3>修改主機名稱/網路設定</h3>
+<h3>修改主機名稱</h3>
 <p>牽涉兩個檔案 /etc/hosts 與 /etc/hostname, 修改後必須重新開機</p>
-<p>sudo vi /etc/hosts 將 wcm1 改為 cad1 或 cad2 或其他主機對應名稱</p>
-<p>sudo vi /etc/hostname 也是將 wcm1 改為 主機對應名稱</p>
-<p>sudo vi /etc/Nosts</p>
+<pre class="brush: jscript">
+sudo vi /etc/hosts 
+</pre>
+
+<p>將 wcm1 改為 cad1 或 cad2 或其他主機對應名稱</p>
+<pre class="brush: jscript">
+sudo vi /etc/hostname 
+</pre>
+
+<p>也是將 wcm1 改為 主機對應名稱</p>
+<h3>修改網路設定</h3>
+<p>到/etc/netplan/net.yaml修改網路設定
+(sudo mv *.yaml net.yaml 將網路設定的yaml重新命名成 net.yaml)</p>
+<h3></h3>
+<p>ssh 使用者@要連上的主機位置</p>
             </section>
 
             <section class="post-info">
