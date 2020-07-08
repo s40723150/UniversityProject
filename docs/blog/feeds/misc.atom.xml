@@ -42,7 +42,7 @@
 &lt;p&gt;連接3D印表機控制板的USB線到電腦後就出現COM3&lt;/p&gt;
 &lt;p&gt;&lt;img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;將操控板連到電腦當時讀到的位置是COM3&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" src="https://s40723150.github.io/UniversityProject/images/Pronterface"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pronterface 介面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Pronterface 可以透過介面上按鈕或是G-cord控制3D印表機噴頭位置，選到正確的Port按connect就可以連上。&lt;/p&gt;
 &lt;p&gt;File link&lt;/p&gt;
