@@ -47,7 +47,6 @@
         <meta name="author" content="40723150">
 
         <meta name="tags" content="3Dprint">
-        <meta name="tags" content="日誌">
 
 
 
@@ -62,9 +61,8 @@
 <meta property="article:published_time" content="2020-07-01 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
-<meta property="article:section" content="Misc"/>
+<meta property="article:section" content="日誌"/>
 <meta property="article:tag" content="3Dprint"/>
-<meta property="article:tag" content="日誌"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -232,20 +230,20 @@ init_mathjax();
 <p>維修張元學長那屆當時組的3D印表機，目前發現兩個問題</p>
 <ol>
 <li>噴嘴加熱(~~無法加熱~~)  已解決
-線路當時情況</li>
+線路當時情況
+<img alt="./../images/原始接線.jpg" height="774" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg" width="581">
+<strong>原始接線</strong></li>
 </ol>
-<p><img alt="./../images/原始接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg">
-<strong>原始接線</strong></p>
-<p><img alt="./../images/各插槽功能.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg">
+<p><img alt="./../images/各插槽功能.jpg" height="409" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg" width="512">
 <strong>各插槽功能</strong></p>
-<p><img alt="./../images/修正後_接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg">
+<p><img alt="./../images/修正後_接線.jpg" height="729" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg" width="541">
 <strong>修正後(噴頭接A13，底板加熱A14)</strong>
 2. Z軸歸零後與底板還有一段距離
 我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，<a href="https://www.repetier.com/firmware/v091/">repetier firmware</a>可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。</p>
 <p>連接3D印表機控制板的USB線到電腦後就出現COM3</p>
-<p><img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png"></p>
+<p><img alt="./../images/連接.png" height="325" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png" width="576"></p>
 <p><strong>將操控板連到電腦當時讀到的位置是COM3</strong></p>
-<p><img alt="./../images/Pronterface 介面.png" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png"></p>
+<p><img alt="./../images/Pronterface 介面.png" height="430" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png" width="672"></p>
 <p><strong>Pronterface 介面</strong></p>
 <p>Pronterface 可以透過介面上按鈕或是G-cord控制3D印表機噴頭位置，選到正確的Port按connect就可以連上。</p>
 <p>File link</p>
@@ -274,7 +272,7 @@ init_mathjax();
                 </div>
 
                 <aside class="post-tags">
-<a href="./tag/3dprint.html">3Dprint</a><a href="./tag/ri-zhi.html">日誌</a>                </aside>
+<a href="./tag/3dprint.html">3Dprint</a>                </aside>
 
                 <div class="clear"></div>
 

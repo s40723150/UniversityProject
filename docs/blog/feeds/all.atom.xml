@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-06T00:00:00+08:00</updated><entry><title>Jul 6, 2020 日誌</title><link href=".%5CJul_06_%202020.html" rel="alternate"></link><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-06:.\Jul_06_ 2020.html</id><summary type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-09T00:00:00+08:00</updated><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 7, 2020 日誌</title><link href=".%5CJul_07_%202020.html" rel="alternate"></link><published>2020-07-07T00:00:00+08:00</published><updated>2020-07-07T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-07:.\Jul_07_ 2020.html</id><summary type="html">&lt;p&gt;今天在做皮件。還有稍微看一下老師傳的資料。
+</summary><content type="html">&lt;p&gt;今天在做皮件。還有稍微看一下老師傳的資料。
+&lt;/p&gt;
+&lt;h2&gt;皮件製作流程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;打版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;裁皮&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;染色、塗保色劑(可有可無)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上床面處理劑&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;推邊&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。&lt;/p&gt;
+&lt;p&gt;6.磨邊&lt;/p&gt;
+&lt;p&gt;將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打孔&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;縫合&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;磨邊、上油&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;</content><category term="日誌"></category><category term="皮革"></category></entry><entry><title>Jul 6, 2020 日誌</title><link href=".%5CJul_06_%202020.html" rel="alternate"></link><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-06:.\Jul_06_ 2020.html</id><summary type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
 </summary><content type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
 &lt;/p&gt;
 &lt;h2&gt;防寫卡複製&lt;/h2&gt;
@@ -27,6 +65,7 @@
 &lt;p&gt;傳送端電腦，查看是否與連上接收端電腦連上，連上後清單列表上會顯示，按完成登錄，發送資料。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-1.jpg" width="450"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-2.jpg" width="450"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-3.jpg" width="450"&gt;&lt;/p&gt;
 &lt;h3&gt;step5&lt;/h3&gt;
 &lt;p&gt;若是要複製第三磁區，選擇複製單一作業統，選第三磁區，勾選C槽，傳輸完成後需要重新啟動接收端電腦，順一次複製後設定。重啟後可順便檢查接上外部網路後是否可以正常連線。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;&lt;/p&gt;
@@ -78,7 +117,7 @@ Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達
 &lt;p&gt;正向(順向)運動學(forward kinematics)&lt;/p&gt;
 &lt;p&gt;由各關節變數求效應器(機構末端)的位置與方向角&lt;/p&gt;
 &lt;p&gt;反向運動學(invers kinematics)&lt;/p&gt;
-&lt;p&gt;由末端效應器(機構)的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+&lt;p&gt;由末端效應器(機構)的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category><category term="機構"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
 </summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
 
 新增/編輯文章到blogger
@@ -91,25 +130,47 @@ post_id 為 一串文章的ID
 &lt;pre class="brush: jscript"&gt;
 google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
 &lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;重新轉一次.dat應該可以解決新增/編輯文章到blogger&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 3, 2020 日誌</title><link href=".%5CJul_03_%202020.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-03:.\Jul_03_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
+&lt;p&gt;重新轉一次.dat應該可以解決新增/編輯文章到blogger&lt;/p&gt;</content><category term="日誌"></category><category term="Blogger"></category></entry><entry><title>Jul 3, 2020 日誌</title><link href=".%5CJul_03_%202020.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-03:.\Jul_03_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
 將json轉檔成 .pickle 和 .dat
 </summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
 將json轉檔成 .pickle 和 .dat
 &lt;/p&gt;
 &lt;p&gt;想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考&lt;a href="http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html"&gt;新增 按鈕執行程式&lt;/a&gt;裡面的程式碼，&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;新增Blogger API，去取得json的檔案。&lt;/p&gt;
-&lt;p&gt;獲取client_secrets.json：
-1. 登錄到您的@gm帳戶
-2. 到&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;
-3. 接受許可並創建Google API項目
-4. 啟用Google Blogger API v3
-5. 選擇內部用戶類型並添加新的應用程序名稱
-6. 在“ API和服務”下，進入“憑證”頁面
-7. 為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據
-8. 下載json檔&lt;/p&gt;
+&lt;p&gt;獲取client_secrets.json：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;登錄到您的@gm帳戶&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;到&lt;a href="https://console.developers.google.com/apis/credentials"&gt;Google API&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接受許可並創建Google API項目&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;啟用Google Blogger API v3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;選擇內部用戶類型並添加新的應用程序名稱&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在“ API和服務”下，進入“憑證”頁面&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下載json檔&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;接下來&lt;a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html"&gt;測試json&lt;/a&gt;，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
 到&lt;a href="https://github.com/mdecourse/project2020-1/tree/master/tools"&gt;project2020-1倉儲的tools&lt;/a&gt;gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。&lt;/p&gt;
 &lt;p&gt;轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部&lt;/p&gt;
-&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;
+&lt;h1&gt;9163369466257328113&lt;/h1&gt;
+&lt;h2&gt;7354375525845457802&lt;/h2&gt;
+&lt;h1&gt;7949497010793271992&lt;/h1&gt;
+&lt;h2&gt;1421111748470519538&lt;/h2&gt;</content><category term="日誌"></category><category term="Pelican"></category><category term="Blogger"></category><category term="API"></category><category term="json"></category><category term="OAuth 2.0"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
 &lt;li&gt;clonezilla硬碟複製&lt;ul&gt;
@@ -139,20 +200,20 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;p&gt;維修張元學長那屆當時組的3D印表機，目前發現兩個問題&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;噴嘴加熱(~~無法加熱~~)  已解決
-線路當時情況&lt;/li&gt;
+線路當時情況
+&lt;img alt="./../images/原始接線.jpg" height="774" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg" width="581"&gt;
+&lt;strong&gt;原始接線&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="./../images/原始接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg"&gt;
-&lt;strong&gt;原始接線&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/各插槽功能.jpg" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg"&gt;
+&lt;p&gt;&lt;img alt="./../images/各插槽功能.jpg" height="409" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg" width="512"&gt;
 &lt;strong&gt;各插槽功能&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/修正後_接線.jpg" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg"&gt;
+&lt;p&gt;&lt;img alt="./../images/修正後_接線.jpg" height="729" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg" width="541"&gt;
 &lt;strong&gt;修正後(噴頭接A13，底板加熱A14)&lt;/strong&gt;
 2. Z軸歸零後與底板還有一段距離
 我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，&lt;a href="https://www.repetier.com/firmware/v091/"&gt;repetier firmware&lt;/a&gt;可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。&lt;/p&gt;
 &lt;p&gt;連接3D印表機控制板的USB線到電腦後就出現COM3&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/連接.png" height="325" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png" width="576"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;將操控板連到電腦當時讀到的位置是COM3&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="./../images/Pronterface 介面.png" height="430" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png" width="672"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pronterface 介面&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Pronterface 可以透過介面上按鈕或是G-cord控制3D印表機噴頭位置，選到正確的Port按connect就可以連上。&lt;/p&gt;
 &lt;p&gt;File link&lt;/p&gt;
@@ -163,4 +224,4 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;p&gt;&lt;a href="http://kliment.kapsi.fi/printrun/Printrun-win-18Nov2017.zip"&gt;http://kliment.kapsi.fi/printrun/Printrun-win-18Nov2017.zip&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Website URL&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://forum.duet3d.com/topic/3800/resetting-the-origin-of-a-delta"&gt;https://forum.duet3d.com/topic/3800/resetting-the-origin-of-a-delta&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.pronterface.com/"&gt;https://www.pronterface.com/&lt;/a&gt;&lt;/p&gt;</content><category term="Misc"></category><category term="3Dprint"></category><category term="日誌"></category></entry></feed>
+&lt;p&gt;&lt;a href="https://www.pronterface.com/"&gt;https://www.pronterface.com/&lt;/a&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="3Dprint"></category></entry></feed>

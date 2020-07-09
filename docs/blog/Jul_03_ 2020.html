@@ -46,6 +46,11 @@
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="Pelican">
+        <meta name="tags" content="Blogger">
+        <meta name="tags" content="API">
+        <meta name="tags" content="json">
+        <meta name="tags" content="OAuth 2.0">
 
 
 
@@ -61,6 +66,11 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="Pelican"/>
+<meta property="article:tag" content="Blogger"/>
+<meta property="article:tag" content="API"/>
+<meta property="article:tag" content="json"/>
+<meta property="article:tag" content="OAuth 2.0"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -225,19 +235,41 @@ init_mathjax();
 將json轉檔成 .pickle 和 .dat
 </p>
 <p>想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考<a href="http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html">新增 按鈕執行程式</a>裡面的程式碼，<a href="https://console.developers.google.com/apis/credentials">Google API</a>新增Blogger API，去取得json的檔案。</p>
-<p>獲取client_secrets.json：
-1. 登錄到您的@gm帳戶
-2. 到<a href="https://console.developers.google.com/apis/credentials">Google API</a>
-3. 接受許可並創建Google API項目
-4. 啟用Google Blogger API v3
-5. 選擇內部用戶類型並添加新的應用程序名稱
-6. 在“ API和服務”下，進入“憑證”頁面
-7. 為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據
-8. 下載json檔</p>
+<p>獲取client_secrets.json：</p>
+<ol>
+<li>
+<p>登錄到您的@gm帳戶</p>
+</li>
+<li>
+<p>到<a href="https://console.developers.google.com/apis/credentials">Google API</a></p>
+</li>
+<li>
+<p>接受許可並創建Google API項目</p>
+</li>
+<li>
+<p>啟用Google Blogger API v3</p>
+</li>
+<li>
+<p>選擇內部用戶類型並添加新的應用程序名稱</p>
+</li>
+<li>
+<p>在“ API和服務”下，進入“憑證”頁面</p>
+</li>
+<li>
+<p>為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據</p>
+</li>
+<li>
+<p>下載json檔</p>
+</li>
+</ol>
 <p>接下來<a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html">測試json</a>，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
 到<a href="https://github.com/mdecourse/project2020-1/tree/master/tools">project2020-1倉儲的tools</a>gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。</p>
 <p>轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部</p>
 <p>@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID</p>
+<h1>9163369466257328113</h1>
+<h2>7354375525845457802</h2>
+<h1>7949497010793271992</h1>
+<h2>1421111748470519538</h2>
             </section>
 
             <section class="post-info">
@@ -254,6 +286,8 @@ init_mathjax();
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/pelican.html">Pelican</a><a href="./tag/blogger.html">Blogger</a><a href="./tag/api.html">API</a><a href="./tag/json.html">json</a><a href="./tag/oauth-20.html">OAuth 2.0</a>                </aside>
 
                 <div class="clear"></div>
 
