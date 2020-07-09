@@ -57,26 +57,57 @@
 </v>
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20200329213145.1"><vh>2020</vh>
-<v t="leo.20200329213145.2"><vh>2020 CD 課程</vh>
-<v t="leo.20200329213145.5"><vh>@edit Jul_01_2020.md</vh>
-<v t="leo.20200708215446.1"><vh>474850292834772845</vh></v>
+<v t="leo.20200329213145.5"><vh>@clean Jul_01_2020.md</vh>
+<v t="leo.20200709124311.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124714.1"><vh>8127651255475999794</vh></v>
 </v>
-<v t="leo.20200703121642.1"><vh>@edit Jul_02_2020.md</vh>
-<v t="leo.20200708140146.1"><vh>6986474971698907462</vh></v>
-</v>
-<v t="leo.20200705054727.1"><vh>@edit Jul_03_2020.md</vh>
-<v t="leo.20200708140201.1"><vh>1421111748470519538</vh></v>
-</v>
-<v t="leo.20200705083902.1"><vh>@edit Jul_04_2020.md</vh>
-<v t="leo.20200708140220.1"><vh>1475075686319271096</vh></v>
-</v>
-<v t="leo.20200705085423.1"><vh>@edit Jul_05_2020.md</vh>
-<v t="leo.20200708140239.1"><vh>2809198191278885031</vh></v>
-</v>
-<v t="leo.20200706221607.1"><vh>@edit Jul_06_2020.md</vh>
-<v t="leo.20200708140259.1"><vh>831954136328385225</vh></v>
+<v t="leo.20200709124737.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709124847.1"><vh>474850292834772845</vh></v>
 </v>
 </v>
+<v t="leo.20200703121642.1"><vh>@clean Jul_02_2020.md</vh>
+<v t="leo.20200709124319.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124657.1"><vh>1208662619044500537</vh></v>
+</v>
+<v t="leo.20200709124743.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709124903.1"><vh>6986474971698907462</vh></v>
+</v>
+</v>
+<v t="leo.20200705054727.1"><vh>@clean Jul_03_2020.md</vh>
+<v t="leo.20200709124328.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124451.1"><vh>7354375525845457802</vh></v>
+</v>
+<v t="leo.20200709124808.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709124923.1"><vh>1421111748470519538</vh></v>
+</v>
+</v>
+<v t="leo.20200705083902.1"><vh>@clean Jul_04_2020.md</vh>
+<v t="leo.20200709124333.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124435.1"><vh>7692365971794527612</vh></v>
+</v>
+<v t="leo.20200709124823.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709124940.1"><vh>1475075686319271096</vh></v>
+</v>
+</v>
+<v t="leo.20200705085423.1"><vh>@clean Jul_05_2020.md</vh>
+<v t="leo.20200709124345.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124422.1"><vh>9028703730593109852</vh></v>
+</v>
+<v t="leo.20200709124829.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709125000.1"><vh>2809198191278885031</vh></v>
+</v>
+</v>
+<v t="leo.20200706221607.1"><vh>@clean Jul_06_2020.md</vh>
+<v t="leo.20200709124350.1"><vh>9163369466257328113</vh>
+<v t="leo.20200709124403.1"><vh>2509031697152131962</vh></v>
+</v>
+<v t="leo.20200709124838.1"><vh>7949497010793271992</vh>
+<v t="leo.20200709125020.1"><vh>831954136328385225</vh></v>
+</v>
+</v>
+<v t="leo.20200709211346.1"><vh>@clean Jul_07_2020.md</vh></v>
+<v t="leo.20200709211408.1"><vh>@clean Jul_08_2020.md</vh></v>
+<v t="leo.20200709211631.1"><vh>@clean Jul_09_2020.md</vh></v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -105,7 +136,6 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115093448.1"></t>
 <t tx="leo.20180115093726.1"></t>
 <t tx="leo.20200329213145.1"></t>
-<t tx="leo.20200329213145.2"></t>
 <t tx="leo.20200329213145.5">@language md
 ---
 Title: Jul 1, 2020 日誌
@@ -125,14 +155,13 @@ Author: 40723150
 
 1. 噴嘴加熱(~~無法加熱~~)  已解決
 線路當時情況
-
-![./../images/原始接線.jpg](https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg)
+&lt;img alt="./../images/原始接線.jpg" height="774" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg" width="581"&gt;
 **原始接線**
 
-![./../images/各插槽功能.jpg](https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg)
+&lt;img alt="./../images/各插槽功能.jpg" height="409" src="https://s40723150.github.io/UniversityProject/images/%E5%90%84%E6%8F%92%E6%A7%BD%E5%8A%9F%E8%83%BD.jpg" width="512"&gt;
 **各插槽功能**
 
-![./../images/修正後_接線.jpg](https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg)
+&lt;img alt="./../images/修正後_接線.jpg" height="729" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg" width="541"&gt;
 **修正後(噴頭接A13，底板加熱A14)**
 2. Z軸歸零後與底板還有一段距離
 我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，[repetier firmware]可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。
@@ -141,11 +170,11 @@ Author: 40723150
 
 連接3D印表機控制板的USB線到電腦後就出現COM3
 
-![./../images/連接.png](https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png)
+&lt;img alt="./../images/連接.png" height="325" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png" width="576"&gt;
 
 **將操控板連到電腦當時讀到的位置是COM3**
 
-![./../images/Pronterface 介面.png](https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png)
+&lt;img alt="./../images/Pronterface 介面.png" height="430" src="https://s40723150.github.io/UniversityProject/images/Pronterface%20%E4%BB%8B%E9%9D%A2.png" width="672"&gt;
 
 **Pronterface 介面**
 
@@ -153,7 +182,7 @@ Pronterface 可以透過介面上按鈕或是G-cord控制3D印表機噴頭位置
 
 File link
 
-![./../images/連接.png](https://s40723150.github.io/UniversityProject/images/Files_list.png)
+&lt;img alt="./../images/連接.png" src="https://s40723150.github.io/UniversityProject/images/Files_list.png"&gt;
 
 **當時下載的檔案**
 
@@ -257,9 +286,9 @@ try:
     blogs = blogs.listByUser(userId='self').execute()
     # post_id is now blogs["items"][0]["id"]
     #blog_id = blogs["items"][0]["id"]
-    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    #blog_id = "9163369466257328113"#UniversityProject 日誌
+    blog_id = "9163369466257328113"#UniversityProject 日誌
     #for blog in blogs['items']:
         #print(blog['name'], blog['url'])
     posts = service.posts()
@@ -352,9 +381,9 @@ try:
     # 取得使用者所建立網誌名稱
     blogs = blogs.listByUser(userId='self').execute()
     #blog_id = blogs["items"][0]["id"]
-    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    #blog_id = "9163369466257328113"
+    blog_id = "9163369466257328113"#UniversityProject 日誌
     # 設法取得原 post 的 id
     postid_outline = p.getLastChild()
     # 直接從標題取得 post 的 id 號碼
@@ -381,7 +410,7 @@ except(client.AccessTokenRefreshError):
 Title: Jul 3, 2020 日誌
 Date: Jul 3, 2020
 Category: 日誌
-Tags: Pelican,Blogger,API,OAuth 2.0,json
+Tags: Pelican,Blogger,API,json,OAuth 2.0
 Slug: Jul_03_ 2020
 Author: 40723150
 ---
@@ -392,6 +421,7 @@ Author: 40723150
 想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考[新增 按鈕執行程式]裡面的程式碼，[Google API]新增Blogger API，去取得json的檔案。
 
 獲取client_secrets.json：
+
 1. 登錄到您的@gm帳戶
 2. 到[Google API]
 3. 接受許可並創建Google API項目
@@ -418,7 +448,7 @@ Author: 40723150
 Title: Jul 4, 2020 日誌
 Date: Jul 4, 2020
 Category: 日誌
-Tags: 
+Tags: Blogger
 Slug: Jul_04_ 2020
 Author: 40723150
 ---
@@ -475,37 +505,49 @@ Author: 40723150
 
 ##防寫卡複製
 
-###step 1
+###step 0
 
-&lt;img  src="https://github.com/s40723150/UniversityProject/blob/master/docs/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A8%AD%E5%AE%9A_step1.jpg
-" width="512" height="409"&gt;
+來源端與接收端需要在同一個網路下，中斷與外部連線網路。
+
+###step 1
 
 先開機要複製出去(資料來源)那台的電腦，在防寫卡畫面(選擇磁區畫面)按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。
 
-###step2
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A8%AD%E5%AE%9A_step1.jpg" width="450"&gt;
 
-&lt;img height="409" src="https://github.com/s40723150/UniversityProject/blob/master/docs/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="512"&gt;
+###step2
 
 設定好按套用設定，再進行網路拷貝(按網路拷貝按鈕)。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕
 
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;
+
 ###step3
-
-&lt;img height="409" src="https://github.com/s40723150/UniversityProject/blob/master/docs/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp3.jpg" width="512"&gt;
-
 
 * 網路拷貝：將整個選擇的磁區內容、設定複製過去。覆蓋。
 
 * 增量拷貝：將選擇的磁區不同的內容、設定複製過去。覆蓋。
 
-選擇要複製的選項(視情況選擇網路拷貝或增量拷貝)
+選擇要複製的選項(視情況選擇網路拷貝或增量拷貝)，確定，等待登錄。
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp3.jpg" width="450"&gt;
 
 ###step4
 
-補圖後詳細說明
+開啟接收端電腦，進入防寫卡畫面(選擇磁區畫面)按下"F9"進入防寫連線傳輸，輸入密碼。
+
+傳送端電腦，查看是否與連上接收端電腦連上，連上後清單列表上會顯示，按完成登錄，發送資料。
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-1.jpg" width="450"&gt;
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-2.jpg" width="450"&gt;
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-3.jpg" width="450"&gt;
 
 ###step5
 
-若是要複製第三磁區，選擇複製單一作業統，選第三磁區，勾選C槽，傳輸完成後
+若是要複製第三磁區，選擇複製單一作業統，選第三磁區，勾選C槽，傳輸完成後需要重新啟動接收端電腦，順一次複製後設定。重啟後可順便檢查接上外部網路後是否可以正常連線。
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;
 
 ##clonezilla硬碟複製
 
@@ -572,12 +614,67 @@ ssh 使用者@要連上的主機位置
 
 
 </t>
-<t tx="leo.20200708140146.1"></t>
-<t tx="leo.20200708140201.1"></t>
-<t tx="leo.20200708140220.1"></t>
-<t tx="leo.20200708140239.1"></t>
-<t tx="leo.20200708140259.1"></t>
-<t tx="leo.20200708215446.1"></t>
+<t tx="leo.20200709124311.1"></t>
+<t tx="leo.20200709124319.1"></t>
+<t tx="leo.20200709124328.1"></t>
+<t tx="leo.20200709124333.1"></t>
+<t tx="leo.20200709124345.1"></t>
+<t tx="leo.20200709124350.1"></t>
+<t tx="leo.20200709124403.1"></t>
+<t tx="leo.20200709124422.1"></t>
+<t tx="leo.20200709124435.1"></t>
+<t tx="leo.20200709124451.1"></t>
+<t tx="leo.20200709124657.1"></t>
+<t tx="leo.20200709124714.1"></t>
+<t tx="leo.20200709124737.1"></t>
+<t tx="leo.20200709124743.1"></t>
+<t tx="leo.20200709124808.1"></t>
+<t tx="leo.20200709124823.1"></t>
+<t tx="leo.20200709124829.1"></t>
+<t tx="leo.20200709124838.1"></t>
+<t tx="leo.20200709124847.1"></t>
+<t tx="leo.20200709124903.1"></t>
+<t tx="leo.20200709124923.1"></t>
+<t tx="leo.20200709124940.1"></t>
+<t tx="leo.20200709125000.1"></t>
+<t tx="leo.20200709125020.1"></t>
+<t tx="leo.20200709211346.1">@language md
+---
+Title: Jul 7, 2020 日誌
+Date: Jul 7, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_07_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+</t>
+<t tx="leo.20200709211408.1">@language md
+---
+Title: Jul 8, 2020 日誌
+Date: Jul 8, 2020
+Category: 日誌
+Tags: 防寫卡,clonezilla,Ubuntu 20.04,硬碟複製,建立管理者
+Slug: Jul_08_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+</t>
+<t tx="leo.20200709211631.1">@language md
+---
+Title: Jul 9, 2020 日誌
+Date: Jul 9, 2020
+Category: 日誌
+Tags: 防寫卡,clonezilla,Ubuntu 20.04,硬碟複製,建立管理者
+Slug: Jul_09_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

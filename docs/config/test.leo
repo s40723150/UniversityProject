@@ -428,9 +428,17 @@ try:
     #print(posts_doc)
     # 改用 credential token 後不會產生 blogger.dat
     #os.remove("blogger.dat")
-    # 利用最後的 child 節點來儲存 post_id
-    to_save_post_id = p.insertAsLastChild()   
+    # 利用最後的 child 節點來儲存 blog_id
+    to_save_blog_id = p.insertAsLastChild()
     # 改為內文為空的節點, id 直接標在 head 標題 
+    to_save_blog_id.b = ""
+    to_save_blog_id.h = blog_id
+    # 利用最後的 child 節點來儲存 post_id
+    #to_save_post_id = p.moveToLastChild()
+    #to_save_post_id = p.insertAsLastChild()
+    to_save_post_id = p.moveToLastChild()
+    to_save_post_id = p.insertAsNthChild(n)
+    # 改為內文為空的節點, id 直接標在 head 標題  
     to_save_post_id.b = ""
     to_save_post_id.h = post_id
     # 因為新增節點, commander 必須 redraw
