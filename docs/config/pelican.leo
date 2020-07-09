@@ -658,41 +658,30 @@ Author: 40723150
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 ## 皮件製作流程
 
-1. 打版
-
+1. 打版：
 將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。
-
-2. 裁皮
-
+2. 裁皮：
 將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。
-
-3. 染色、塗保色劑(可有可無)
-
+3. 染色、塗保色劑(可有可無)：
 染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。
-
-4. 上床面處理劑
-
+4. 上床面處理劑：
 床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。
-
-5. 推邊
-
+5. 推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
-
-6.磨邊
-
+6.磨邊：
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
- 
-7. 打孔
-
+7. 打孔：
 用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
-
-8. 縫合
-
+8. 縫合：
 用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。
-
-9. 磨邊、上油
-
+9. 磨邊、上油：
 縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。
+
+成品
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-1.jpg" width="450"&gt;
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-2.jpg" width="450"&gt;
 
 ## 專題資料
 
@@ -739,6 +728,23 @@ Author: 40723150
 ---
 列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+因為最大台3D印表機的擠料頭的散熱風扇掉落，需要固定，因此利用Onshape 畫風扇支架。
+
+一開始的模型，風扇上面與擠料頭固定的地方寬度太寬基線開關會壓不到，之後寬度改窄。風扇的卡槽寬度需要改大，因為裝上的時候太緊。
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support_v1.png" width="450"&gt;
+
+第一次改版
+
+改完後發現，會和擠出頭的固定螺絲卡到，因此在那挖個槽，消除干涉。
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support_v2.png" width="450"&gt;
+
+修改完組裝後
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-1.jpg" width="450"&gt;
+
+&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;
 </t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {

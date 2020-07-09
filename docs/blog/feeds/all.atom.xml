@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-09T00:00:00+08:00</updated><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 7, 2020 日誌</title><link href=".%5CJul_07_%202020.html" rel="alternate"></link><published>2020-07-07T00:00:00+08:00</published><updated>2020-07-07T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-07:.\Jul_07_ 2020.html</id><summary type="html">&lt;p&gt;今天在做皮件。還有稍微看一下老師傳的資料。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-09T00:00:00+08:00</updated><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html">&lt;p&gt;列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
+</summary><content type="html">&lt;p&gt;列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
+
+因為最大台3D印表機的擠料頭的散熱風扇掉落，需要固定，因此利用Onshape 畫風扇支架。&lt;/p&gt;
+&lt;p&gt;一開始的模型，風扇上面與擠料頭固定的地方寬度太寬基線開關會壓不到，之後寬度改窄。風扇的卡槽寬度需要改大，因為裝上的時候太緊。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support_v1.png" width="450"&gt;&lt;/p&gt;
+&lt;p&gt;第一次改版&lt;/p&gt;
+&lt;p&gt;改完後發現，會和擠出頭的固定螺絲卡到，因此在那挖個槽，消除干涉。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support_v2.png" width="450"&gt;&lt;/p&gt;
+&lt;p&gt;修改完組裝後&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-1.jpg" width="450"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
+</summary><content type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
+&lt;/p&gt;
+&lt;p&gt;nginx：非同步框架的網頁伺服器。(內建支援uwsgi)&lt;/p&gt;
+&lt;p&gt;uwsgi：讓多個執行序常駐啟動，有任務進來時丟給這些執行序處理，處理完之後回傳&lt;/p&gt;
+&lt;p&gt;ufw︰Ubuntu 的防火牆。&lt;/p&gt;
+&lt;p&gt;資料大致上看過，還沒整理，剩&lt;a href="https://uwsgi-docs.readthedocs.io/en/latest/"&gt;uwsgi&lt;/a&gt;、&lt;a href="https://linuxconfig.org/ubuntu-20-04-guide"&gt;ubuntu 20.04 guide&lt;/a&gt;還沒看。&lt;/p&gt;
+&lt;p&gt;下午樂高營開會。&lt;/p&gt;
+&lt;p&gt;Jul,1 修的3D印表機搬位置後噴頭移動沒反應。暫時先布維修。&lt;/p&gt;
+&lt;p&gt;晚上有用最大台的3D印表機印東西，之後因為平面偏移、斷料、風扇掉落停止列印。&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 7, 2020 日誌</title><link href=".%5CJul_07_%202020.html" rel="alternate"></link><published>2020-07-07T00:00:00+08:00</published><updated>2020-07-07T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-07:.\Jul_07_ 2020.html</id><summary type="html">&lt;p&gt;今天在做皮件。還有稍微看一下老師傳的資料。
 </summary><content type="html">&lt;p&gt;今天在做皮件。還有稍微看一下老師傳的資料。
 &lt;/p&gt;
 &lt;h2&gt;皮件製作流程&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;打版&lt;/li&gt;
+&lt;li&gt;打版：
+將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。&lt;/li&gt;
+&lt;li&gt;裁皮：
+將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。&lt;/li&gt;
+&lt;li&gt;染色、塗保色劑(可有可無)：
+染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。&lt;/li&gt;
+&lt;li&gt;上床面處理劑：
+床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。&lt;/li&gt;
+&lt;li&gt;推邊：
+讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
+6.磨邊：
+將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。&lt;/li&gt;
+&lt;li&gt;打孔：
+用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。&lt;/li&gt;
+&lt;li&gt;縫合：
+用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。&lt;/li&gt;
+&lt;li&gt;磨邊、上油：
+縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;裁皮&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;染色、塗保色劑(可有可無)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;上床面處理劑&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;推邊&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。&lt;/p&gt;
-&lt;p&gt;6.磨邊&lt;/p&gt;
-&lt;p&gt;將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;打孔&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;縫合&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;磨邊、上油&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/p&gt;
-&lt;h2&gt;&lt;/h2&gt;</content><category term="日誌"></category><category term="皮革"></category></entry><entry><title>Jul 6, 2020 日誌</title><link href=".%5CJul_06_%202020.html" rel="alternate"></link><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-06:.\Jul_06_ 2020.html</id><summary type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
+&lt;p&gt;成品&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-1.jpg" width="450"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-2.jpg" width="450"&gt;&lt;/p&gt;
+&lt;h2&gt;專題資料&lt;/h2&gt;
+&lt;p&gt;了解專題的伺服器如何配置。&lt;/p&gt;</content><category term="日誌"></category><category term="皮革"></category></entry><entry><title>Jul 6, 2020 日誌</title><link href=".%5CJul_06_%202020.html" rel="alternate"></link><published>2020-07-06T00:00:00+08:00</published><updated>2020-07-06T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-06:.\Jul_06_ 2020.html</id><summary type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
 </summary><content type="html">&lt;p&gt;利用防寫卡、clonezilla複製磁區，在Ubuntu 20.04新增管理員。
 &lt;/p&gt;
 &lt;h2&gt;防寫卡複製&lt;/h2&gt;
