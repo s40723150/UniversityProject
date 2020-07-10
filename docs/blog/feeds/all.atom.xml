@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-09T00:00:00+08:00</updated><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html">&lt;p&gt;列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
-</summary><content type="html">&lt;p&gt;列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-10T00:00:00+08:00</updated><entry><title>Jul 10, 2020 日誌</title><link href=".%5CJul_10_%202020.html" rel="alternate"></link><published>2020-07-10T00:00:00+08:00</published><updated>2020-07-10T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-10:.\Jul_10_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+</summary><content type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+&lt;/p&gt;
+&lt;h2&gt;Ubuntu 20.04&lt;/h2&gt;
+&lt;h2&gt;動態網站(nginx、uwsgi)&lt;/h2&gt;
+&lt;p&gt;因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：&lt;/p&gt;
+&lt;p&gt;sudo pip3 install flask flask_cors bs4 lxml&lt;/p&gt;
+&lt;p&gt;uwsgi 所需模組：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 uwsgi 套件與 Python3 plugin&lt;/p&gt;
+&lt;p&gt;sudo apt install uwsgi uwsgi-plugin-python3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 Python 模組 uwsgi&lt;/p&gt;
+&lt;p&gt;sudo pip3 install uwsgi&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+server {
+
+    listen 9443 ssl;
+    listen [::]:9443 ssl;
+
+    # 指定 static 所在位置
+    location /static {
+    alias /home/yen/cad1_site/cmsimde/static/;
+    }
+
+    location / {
+    # 導入 uwsgi_params 設定參數
+    include uwsgi_params;
+    # 根目錄設為近端的 8080 port 
+    uwsgi_pass  127.0.0.1:8080;
+    }
+
+    ssl_certificate /home/yen/localhost.crt;
+    ssl_certificate_key /home/yen/localhost.key;
+    #ssl_certificate /etc/letsencrypt/live/cad1.kmol.info/fullchain.pem;
+    #ssl_certificate_key /etc/letsencrypt/live/cad1.kmol.info/privkey.pem;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}s
+&lt;/pre&gt;
+
+&lt;p&gt;上述設定的基本概念為：Nginx 設定檔案中, 只要導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。&lt;/p&gt;
+&lt;p&gt;因為 uwsgi 無 SSL 設置，因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務。&lt;/p&gt;
+&lt;p&gt;uwsgi 主機設定&lt;/p&gt;
+&lt;p&gt;首先確認 CMSiMDE 中 init.py 設定 uwsgi = True，表示動態網站系統要以 uwsgi 模式啟動&lt;/p&gt;
+&lt;p&gt;接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。&lt;/p&gt;
+&lt;p&gt;目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。&lt;/p&gt;
+&lt;p&gt;uwsgi.ini 配合設為:&lt;/p&gt;
+&lt;h2&gt;數位簽章&lt;/h2&gt;
+&lt;h2&gt;Ubuntu防火牆(ufw)&lt;/h2&gt;</content><category term="日誌"></category><category term="Ubuntu"></category><category term="20.04"></category><category term="nginx"></category><category term="uwsgi"></category><category term="數位簽章"></category><category term="Ubuntu防火牆"></category><category term="ufw"></category></entry><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html">&lt;p&gt;列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
+</summary><content type="html">&lt;p&gt;列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
 
 因為最大台3D印表機的擠料頭的散熱風扇掉落，需要固定，因此利用Onshape 畫風扇支架。&lt;/p&gt;
 &lt;p&gt;一開始的模型，風扇上面與擠料頭固定的地方寬度太寬基線開關會壓不到，之後寬度改窄。風扇的卡槽寬度需要改大，因為裝上的時候太緊。&lt;/p&gt;
@@ -10,7 +67,7 @@
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support_v2.png" width="450"&gt;&lt;/p&gt;
 &lt;p&gt;修改完組裝後&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-1.jpg" width="450"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
+&lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="Onshape"></category><category term="風扇支架"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
 </summary><content type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
 &lt;/p&gt;
 &lt;p&gt;nginx：非同步框架的網頁伺服器。(內建支援uwsgi)&lt;/p&gt;
@@ -34,15 +91,15 @@
 床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。&lt;/li&gt;
 &lt;li&gt;推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
-6.磨邊：
-將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。&lt;/li&gt;
-&lt;li&gt;打孔：
-用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。&lt;/li&gt;
-&lt;li&gt;縫合：
-用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。&lt;/li&gt;
-&lt;li&gt;磨邊、上油：
-縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/li&gt;
+6.磨邊：&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
+7. 打孔：
+用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
+8. 縫合：
+用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。
+9. 磨邊、上油：
+縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/p&gt;
 &lt;p&gt;成品&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-1.jpg" width="450"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-2.jpg" width="450"&gt;&lt;/p&gt;
@@ -176,11 +233,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;p&gt;接下來&lt;a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html"&gt;測試json&lt;/a&gt;，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
 到&lt;a href="https://github.com/mdecourse/project2020-1/tree/master/tools"&gt;project2020-1倉儲的tools&lt;/a&gt;gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。&lt;/p&gt;
 &lt;p&gt;轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部&lt;/p&gt;
-&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;
-&lt;h1&gt;9163369466257328113&lt;/h1&gt;
-&lt;h2&gt;7354375525845457802&lt;/h2&gt;
-&lt;h1&gt;7949497010793271992&lt;/h1&gt;
-&lt;h2&gt;1421111748470519538&lt;/h2&gt;</content><category term="日誌"></category><category term="Pelican"></category><category term="Blogger"></category><category term="API"></category><category term="json"></category><category term="OAuth 2.0"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category><category term="Pelican"></category><category term="Blogger"></category><category term="API"></category><category term="json"></category><category term="OAuth 2.0"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
 &lt;li&gt;clonezilla硬碟複製&lt;ul&gt;

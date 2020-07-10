@@ -57,57 +57,16 @@
 </v>
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20200329213145.1"><vh>2020</vh>
-<v t="leo.20200329213145.5"><vh>@clean Jul_01_2020.md</vh>
-<v t="leo.20200709124311.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124714.1"><vh>8127651255475999794</vh></v>
-</v>
-<v t="leo.20200709124737.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709124847.1"><vh>474850292834772845</vh></v>
-</v>
-</v>
-<v t="leo.20200703121642.1"><vh>@clean Jul_02_2020.md</vh>
-<v t="leo.20200709124319.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124657.1"><vh>1208662619044500537</vh></v>
-</v>
-<v t="leo.20200709124743.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709124903.1"><vh>6986474971698907462</vh></v>
-</v>
-</v>
-<v t="leo.20200705054727.1"><vh>@claen Jul_03_2020.md</vh>
-<v t="leo.20200709124328.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124451.1"><vh>7354375525845457802</vh></v>
-</v>
-<v t="leo.20200709124808.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709124923.1"><vh>1421111748470519538</vh></v>
-</v>
-</v>
-<v t="leo.20200705083902.1"><vh>@clean Jul_04_2020.md</vh>
-<v t="leo.20200709124333.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124435.1"><vh>7692365971794527612</vh></v>
-</v>
-<v t="leo.20200709124823.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709124940.1"><vh>1475075686319271096</vh></v>
-</v>
-</v>
-<v t="leo.20200705085423.1"><vh>@clean Jul_05_2020.md</vh>
-<v t="leo.20200709124345.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124422.1"><vh>9028703730593109852</vh></v>
-</v>
-<v t="leo.20200709124829.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709125000.1"><vh>2809198191278885031</vh></v>
-</v>
-</v>
-<v t="leo.20200706221607.1"><vh>@clean Jul_06_2020.md</vh>
-<v t="leo.20200709124350.1"><vh>9163369466257328113</vh>
-<v t="leo.20200709124403.1"><vh>2509031697152131962</vh></v>
-</v>
-<v t="leo.20200709124838.1"><vh>7949497010793271992</vh>
-<v t="leo.20200709125020.1"><vh>831954136328385225</vh></v>
-</v>
-</v>
+<v t="leo.20200329213145.5"><vh>@clean Jul_01_2020.md</vh></v>
+<v t="leo.20200703121642.1"><vh>@clean Jul_02_2020.md</vh></v>
+<v t="leo.20200705054727.1"><vh>@clean Jul_03_2020.md</vh></v>
+<v t="leo.20200705083902.1"><vh>@clean Jul_04_2020.md</vh></v>
+<v t="leo.20200705085423.1"><vh>@clean Jul_05_2020.md</vh></v>
+<v t="leo.20200706221607.1"><vh>@clean Jul_06_2020.md</vh></v>
 <v t="leo.20200709211346.1"><vh>@clean Jul_07_2020.md</vh></v>
 <v t="leo.20200709211408.1"><vh>@clean Jul_08_2020.md</vh></v>
 <v t="leo.20200709211631.1"><vh>@clean Jul_09_2020.md</vh></v>
+<v t="leo.20200710104553.1"><vh>@clean Jul_10_2020.md</vh></v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -198,7 +157,7 @@ Website URL
 
 [https://www.pronterface.com/](https://www.pronterface.com/)
  
-</t>
+@others</t>
 <t tx="leo.20200703121642.1">@language md
 ---
 Title: Jul 2, 2020 日誌
@@ -216,7 +175,8 @@ Author: 40723150
     - 網路
 3. 架設深度學習的主機
 學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
-&lt;!-- PELICAN_END_SUMMARY --&gt;</t>
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+@others</t>
 <t tx="leo.20200703123657.1"></t>
 <t tx="leo.20200704110838.1">@language python
 from markdown import markdown
@@ -286,9 +246,9 @@ try:
     blogs = blogs.listByUser(userId='self').execute()
     # post_id is now blogs["items"][0]["id"]
     #blog_id = blogs["items"][0]["id"]
-    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    blog_id = "9163369466257328113"#UniversityProject 日誌
+    #blog_id = "9163369466257328113"#UniversityProject 日誌
     #for blog in blogs['items']:
         #print(blog['name'], blog['url'])
     posts = service.posts()
@@ -381,9 +341,9 @@ try:
     # 取得使用者所建立網誌名稱
     blogs = blogs.listByUser(userId='self').execute()
     #blog_id = blogs["items"][0]["id"]
-    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    blog_id = "9163369466257328113"#UniversityProject 日誌
+    #blog_id = "9163369466257328113"#UniversityProject 日誌
     # 設法取得原 post 的 id
     postid_outline = p.getLastChild()
     # 直接從標題取得 post 的 id 號碼
@@ -438,7 +398,6 @@ Author: 40723150
 
 8. 下載json檔
 
-
 接下來[測試json]，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
 到[project2020-1倉儲的tools]gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。
 
@@ -449,7 +408,9 @@ Author: 40723150
 [新增 按鈕執行程式]: http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html
 [Google API]: https://console.developers.google.com/apis/credentials
 [測試json]: https://2019wcm.blogspot.com/2019/03/posted-via-python.html
-[project2020-1倉儲的tools]: https://github.com/mdecourse/project2020-1/tree/master/tools</t>
+[project2020-1倉儲的tools]: https://github.com/mdecourse/project2020-1/tree/master/tools
+
+@others</t>
 <t tx="leo.20200705083902.1">@language md
 ---
 Title: Jul 4, 2020 日誌
@@ -475,7 +436,8 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;/pre&gt;
 
 重新轉一次.dat應該可以解決新增/編輯文章到blogger
-</t>
+
+@others</t>
 <t tx="leo.20200705085423.1">@language md
 ---
 Title: Jul 5, 2020 日誌
@@ -497,7 +459,8 @@ Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達
 反向運動學(invers kinematics)
 
 由末端效應器(機構)的位置與方向求各關節變數
-</t>
+
+@others</t>
 <t tx="leo.20200706221607.1">@language md
 ---
 Title: Jul 6, 2020 日誌
@@ -618,33 +581,8 @@ sudo vi /etc/hostname
 
 ###
 ssh 使用者@要連上的主機位置
-
-
-</t>
-<t tx="leo.20200709124311.1"></t>
-<t tx="leo.20200709124319.1"></t>
-<t tx="leo.20200709124328.1"></t>
-<t tx="leo.20200709124333.1"></t>
-<t tx="leo.20200709124345.1"></t>
-<t tx="leo.20200709124350.1"></t>
-<t tx="leo.20200709124403.1"></t>
-<t tx="leo.20200709124422.1"></t>
-<t tx="leo.20200709124435.1"></t>
-<t tx="leo.20200709124451.1"></t>
-<t tx="leo.20200709124657.1"></t>
-<t tx="leo.20200709124714.1"></t>
-<t tx="leo.20200709124737.1"></t>
-<t tx="leo.20200709124743.1"></t>
-<t tx="leo.20200709124808.1"></t>
-<t tx="leo.20200709124823.1"></t>
-<t tx="leo.20200709124829.1"></t>
-<t tx="leo.20200709124838.1"></t>
-<t tx="leo.20200709124847.1"></t>
-<t tx="leo.20200709124903.1"></t>
-<t tx="leo.20200709124923.1"></t>
-<t tx="leo.20200709124940.1"></t>
-<t tx="leo.20200709125000.1"></t>
-<t tx="leo.20200709125020.1"></t>
+ 
+@others</t>
 <t tx="leo.20200709211346.1">@language md
 ---
 Title: Jul 7, 2020 日誌
@@ -669,6 +607,7 @@ Author: 40723150
 5. 推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：
+
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
 7. 打孔：
 用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
@@ -685,7 +624,9 @@ Author: 40723150
 
 ## 專題資料
 
-了解專題的伺服器如何配置。</t>
+了解專題的伺服器如何配置。
+
+@others</t>
 <t tx="leo.20200709211408.1">@language md
 ---
 Title: Jul 8, 2020 日誌
@@ -716,17 +657,18 @@ Jul,1 修的3D印表機搬位置後噴頭移動沒反應。暫時先布維修。
 [uwsgi]: https://uwsgi-docs.readthedocs.io/en/latest/
 
 [ubuntu 20.04 guide]: https://linuxconfig.org/ubuntu-20-04-guide
-</t>
+
+@others</t>
 <t tx="leo.20200709211631.1">@language md
 ---
 Title: Jul 9, 2020 日誌
 Date: Jul 9, 2020
 Category: 日誌
-Tags: 防寫卡,clonezilla,Ubuntu 20.04,硬碟複製,建立管理者
+Tags: Onshape,風扇支架
 Slug: Jul_09_ 2020
 Author: 40723150
 ---
-列印風扇支架。嘗試將按ad_to_mblogger 之後會新增 blog_id 子節點為post_id。
+列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 因為最大台3D印表機的擠料頭的散熱風扇掉落，需要固定，因此利用Onshape 畫風扇支架。
 
@@ -745,7 +687,92 @@ Author: 40723150
 &lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-1.jpg" width="450"&gt;
 
 &lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;
-</t>
+
+@others</t>
+<t tx="leo.20200710104553.1">@language md
+---
+Title: Jul 10, 2020 日誌
+Date: Jul 10, 2020
+Category: 日誌
+Tags: Ubuntu,20.04,nginx,uwsgi,數位簽章,Ubuntu防火牆,ufw
+Slug: Jul_10_ 2020
+Author: 40723150
+---
+整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+##Ubuntu 20.04
+
+
+
+##動態網站(nginx、uwsgi)
+
+因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：
+
+sudo pip3 install flask flask_cors bs4 lxml
+
+uwsgi 所需模組：
+
+1. 安裝 uwsgi 套件與 Python3 plugin
+
+    sudo apt install uwsgi uwsgi-plugin-python3
+
+2. 安裝 Python 模組 uwsgi
+
+    sudo pip3 install uwsgi
+
+
+建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：
+
+&lt;pre class="brush: jscript"&gt;
+server {
+  
+    listen 9443 ssl;
+    listen [::]:9443 ssl;
+  
+    # 指定 static 所在位置
+    location /static {
+    alias /home/yen/cad1_site/cmsimde/static/;
+    }
+  
+    location / {
+    # 導入 uwsgi_params 設定參數
+    include uwsgi_params;
+    # 根目錄設為近端的 8080 port 
+    uwsgi_pass  127.0.0.1:8080;
+    }
+  
+    ssl_certificate /home/yen/localhost.crt;
+    ssl_certificate_key /home/yen/localhost.key;
+    #ssl_certificate /etc/letsencrypt/live/cad1.kmol.info/fullchain.pem;
+    #ssl_certificate_key /etc/letsencrypt/live/cad1.kmol.info/privkey.pem;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}s
+&lt;/pre&gt;
+
+上述設定的基本概念為：Nginx 設定檔案中, 只要導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。
+
+因為 uwsgi 無 SSL 設置，因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務。
+
+uwsgi 主機設定
+
+首先確認 CMSiMDE 中 init.py 設定 uwsgi = True，表示動態網站系統要以 uwsgi 模式啟動
+
+接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。
+
+目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。
+
+uwsgi.ini 配合設為:
+
+##數位簽章
+
+##Ubuntu防火牆(ufw)
+
+@others</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
