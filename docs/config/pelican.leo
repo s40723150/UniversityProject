@@ -608,6 +608,7 @@ Author: 40723150
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：
 
+
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
 7. 打孔：
 用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
@@ -626,7 +627,8 @@ Author: 40723150
 
 了解專題的伺服器如何配置。
 
-@others</t>
+@others
+</t>
 <t tx="leo.20200709211408.1">@language md
 ---
 Title: Jul 8, 2020 日誌
@@ -766,7 +768,84 @@ uwsgi 主機設定
 
 目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。
 
-uwsgi.ini 配合設為:
+uwsgi.ini 配合設為：
+
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = yen
+gid = yen
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/yen/cad1_site/cmsimde
+wsgi-file = /home/yen/cad1_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+表示要使用 8080 傳輸資料 (必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應)並指定 wsgi.py 所在目錄。
+
+重新啟動 Nginx 並利用 uwsgi 指令測試
+手動啟動 uwsgi 主機的指令：
+
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
+&lt;/pre&gt;
+ 額外加入 ufw 9443 的防火牆設定
+先暫時關閉 ufw
+&lt;pre class="brush: jscript"&gt;
+ufw disable
+&lt;/pre&gt;
+允許設計系 IP v6 網段連線 9443 port
+&lt;pre class="brush: jscript"&gt;
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+&lt;/pre&gt;
+其他網段主機一律]不准連線
+&lt;pre class="brush: jscript"&gt;
+ufw deny 9443
+&lt;/pre&gt;
+重新開啟 ufw 防火牆
+&lt;pre class="brush: jscript"&gt;
+ufw enable
+&lt;/pre&gt;
+若 https://cad1.kmol.info:9443 已經可以接受連線, 接下來最後一個步驟必須設定以系統 service 隨機啟動 uwsgi
+
+設定 uwsgi service
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=yen
+Group=yen
+WorkingDirectory=/home/yen/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+接著將 cmsimde 服務設為隨系統開機啟動:
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+若要取消 cmsimde 服務隨系統開機啟動:
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl disable cmsimde
+&lt;/pre&gt;
+手動啟動 cmsimde.service 服務
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl start cmsimde
+&lt;/pre&gt;
+手動停止 cmsimde.service 服務
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl stop cmsimde
+&lt;/pre&gt;
+上面完整的步驟也寫在 mdecourse/project2020-1#4
+
+完成後, 只允許系上 IPv6 網段可以直接連到 https://cad1.kmol.info:9443 以 4072kmol 登入管理後改版, 直接 generate pages 就可以在 http://cad1.kmol.info 看到.
 
 ##數位簽章
 
