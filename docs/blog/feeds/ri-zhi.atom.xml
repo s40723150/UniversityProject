@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-10T00:00:00+08:00</updated><entry><title>Jul 10, 2020 日誌</title><link href=".%5CJul_10_%202020.html" rel="alternate"></link><published>2020-07-10T00:00:00+08:00</published><updated>2020-07-10T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-10:.\Jul_10_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-13T00:00:00+08:00</updated><entry><title>Jul 13, 2020 日誌</title><link href=".%5CJul_13_%202020.html" rel="alternate"></link><published>2020-07-13T00:00:00+08:00</published><updated>2020-07-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-13:.\Jul_13_ 2020.html</id><summary type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
+
+
+&lt;p&gt;大間的東西要撤走，&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 12, 2020 日誌</title><link href=".%5CJul_12_%202020.html" rel="alternate"></link><published>2020-07-12T00:00:00+08:00</published><updated>2020-07-12T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-12:.\Jul_12_ 2020.html</id><summary type="html">&lt;p&gt;帶樂高營，第二天。&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;帶樂高營，第二天。&lt;/p&gt;
+
+
+&lt;p&gt;小隊員與對輔比較熟悉，在互動上就比較有回應。在教程式時他們雖然沒什麼反應，但在測試時他們是了解程式運的步驟。在比賽時看到其他小隊較不適當的方式時，他們還是會堅持自己的原則：不會用投機的方式贏得比賽，比完賽後會參考前幾場的經驗去改進，小隊員之間會相互分享討論經驗。&lt;/p&gt;
+&lt;p&gt;這兩天下來，發現有小朋友會特別在意某些點，即使本意是好的，但會因為不善於溝通會造成小衝突。溝通是團隊合作不可或缺的關鍵。&lt;/p&gt;</content><category term="日誌"></category><category term="樂高營"></category></entry><entry><title>Jul 11, 2020 日誌</title><link href=".%5CJul_11_%202020.html" rel="alternate"></link><published>2020-07-11T00:00:00+08:00</published><updated>2020-07-11T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-11:.\Jul_11_ 2020.html</id><summary type="html">&lt;p&gt;帶樂高營，第一天。&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;帶樂高營，第一天。&lt;/p&gt;
+
+
+&lt;p&gt;剛開始和小隊員互動他們可能因為不熟又比較內向，所以在互動上必較沒有回應，但他們有進入狀況：在教他們小隊呼的時候會跟著做：在合作的方面表現很好，會一起組裝，沒有吵架的情形。在小隊比賽時，即使小隊員失誤而沒贏得比賽也不會一味的指責，反而會互相相交流進步。&lt;/p&gt;
+&lt;p&gt;一整天下來，整個小隊員的表現都很好。特殊生的部分：其實比較需要去留意他們的情形，像亞斯伯格就講話比較直接，有時候就會因此而造成小隊員之間的衝突，需要協調、安慰小隊員，這時溝通技巧就很重要。照顧故特殊生需要比較多的耐心和技巧。&lt;/p&gt;</content><category term="日誌"></category><category term="樂高營"></category></entry><entry><title>Jul 10, 2020 日誌</title><link href=".%5CJul_10_%202020.html" rel="alternate"></link><published>2020-07-10T00:00:00+08:00</published><updated>2020-07-10T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-10:.\Jul_10_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
 </summary><content type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
 &lt;/p&gt;
 &lt;h2&gt;Ubuntu 20.04&lt;/h2&gt;
@@ -53,7 +67,7 @@ server {
 &lt;p&gt;uwsgi 主機設定&lt;/p&gt;
 &lt;p&gt;首先確認 CMSiMDE 中 init.py 設定 uwsgi = True，表示動態網站系統要以 uwsgi 模式啟動&lt;/p&gt;
 &lt;p&gt;接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。&lt;/p&gt;
-&lt;p&gt;目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。&lt;/p&gt;
+&lt;p&gt;目前將此一設定目錄放在 /home/yen/enabled, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。&lt;/p&gt;
 &lt;p&gt;uwsgi.ini 配合設為：&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 [uwsgi]
@@ -95,20 +109,23 @@ ufw enable
 &lt;/pre&gt;
 若 https://cad1.kmol.info:9443 已經可以接受連線, 接下來最後一個步驟必須設定以系統 service 隨機啟動 uwsgi&lt;/p&gt;
 &lt;p&gt;設定 uwsgi service
-以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 [Unit]
 Description=uWSGI to serve CMSiMDE 
-After=network.target&lt;/p&gt;
-&lt;p&gt;[Service]
+After=network.target
+
+[Service]
 User=yen
 Group=yen
 WorkingDirectory=/home/yen/uwsgi_ini
-ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini&lt;/p&gt;
-&lt;p&gt;[Install]
+ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
+
+[Install]
 WantedBy=multi-user.target
 &lt;/pre&gt;
-接著將 cmsimde 服務設為隨系統開機啟動:
+
+&lt;p&gt;接著將 cmsimde 服務設為隨系統開機啟動:
 &lt;pre class="brush: jscript"&gt;
 sudo systemctl enable cmsimde
 &lt;/pre&gt;
@@ -127,7 +144,36 @@ sudo systemctl stop cmsimde
 上面完整的步驟也寫在 mdecourse/project2020-1#4&lt;/p&gt;
 &lt;p&gt;完成後, 只允許系上 IPv6 網段可以直接連到 https://cad1.kmol.info:9443 以 4072kmol 登入管理後改版, 直接 generate pages 就可以在 http://cad1.kmol.info 看到.&lt;/p&gt;
 &lt;h2&gt;數位簽章&lt;/h2&gt;
-&lt;h2&gt;Ubuntu防火牆(ufw)&lt;/h2&gt;</content><category term="日誌"></category><category term="Ubuntu"></category><category term="20.04"></category><category term="nginx"></category><category term="uwsgi"></category><category term="數位簽章"></category><category term="Ubuntu防火牆"></category><category term="ufw"></category></entry><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html">&lt;p&gt;列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
+&lt;p&gt;https://letsencrypt.org/&lt;/p&gt;
+&lt;p&gt;https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx 
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install certbot python3-certbot-nginx
+sudo certbot certonly --nginx
+sudo certbot renew --dry-run
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;Ubuntu防火牆(ufw)&lt;/h2&gt;
+&lt;pre class="brush: jscript"&gt;
+ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw enable
+&lt;/pre&gt;
+
+&lt;p&gt;sudo -s 是直接輸入具管理者身份的密碼後，就可以採 root 身份執行後續的指令，退出 root，輸入 exit&lt;/p&gt;
+&lt;p&gt;ufw status 是列出目前防火牆狀態，確認為 inactive 後再進行後續的 rules 設定。&lt;/p&gt;
+&lt;p&gt;ufw allow from 2001:288:6004:17::/32 to any port 22&lt;/p&gt;
+&lt;p&gt;表示允許從 2001:288:6004:17::/32 來的連線可以使用 port 22，也就是可以使用 ssh 對主機連線。&lt;/p&gt;
+&lt;p&gt;2001:288:6004:17::/32 中之 32，表示前面 IPv6 網址，只要前面四個區為 2001:288:6004:17 即符合條件，因為每一區 8 個 bit，因此才以 /32 表示涵蓋的範圍。&lt;/p&gt;
+&lt;p&gt;先設定允許對 port 22 連線的區段後，隨即以 ufw deny 22 封鎖其他非 allow 的所有網段，目的在於只允許系上 IPv6 網段可以 ssh 到主機。&lt;/p&gt;
+&lt;p&gt;隨後也是只允許系上網段可以連線到 port 80，也就是 www 內建的 port。&lt;/p&gt;</content><category term="日誌"></category><category term="Ubuntu"></category><category term="20.04"></category><category term="nginx"></category><category term="uwsgi"></category><category term="數位簽章"></category><category term="Ubuntu防火牆"></category><category term="ufw"></category></entry><entry><title>Jul 9, 2020 日誌</title><link href=".%5CJul_09_%202020.html" rel="alternate"></link><published>2020-07-09T00:00:00+08:00</published><updated>2020-07-09T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-09:.\Jul_09_ 2020.html</id><summary type="html">&lt;p&gt;列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
 </summary><content type="html">&lt;p&gt;列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。
 
 因為最大台3D印表機的擠料頭的散熱風扇掉落，需要固定，因此利用Onshape 畫風扇支架。&lt;/p&gt;

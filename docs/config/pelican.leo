@@ -66,7 +66,24 @@
 <v t="leo.20200709211346.1"><vh>@clean Jul_07_2020.md</vh></v>
 <v t="leo.20200709211408.1"><vh>@clean Jul_08_2020.md</vh></v>
 <v t="leo.20200709211631.1"><vh>@clean Jul_09_2020.md</vh></v>
-<v t="leo.20200710104553.1"><vh>@clean Jul_10_2020.md</vh></v>
+<v t="leo.20200710104553.1"><vh>@clean Jul_10_2020.md</vh>
+<v t="leo.20200714045019.1"><vh>9163369466257328113</vh>
+<v t="leo.20200714122155.1"><vh>9197297659721340338</vh></v>
+</v>
+</v>
+<v t="leo.20200714052303.1"><vh>@clean Jul_11_2020.md</vh>
+<v t="leo.20200714055722.1"><vh>9163369466257328113</vh>
+<v t="leo.20200714055707.1"><vh>4487726790139519978</vh></v>
+</v>
+</v>
+<v t="leo.20200714052313.1"><vh>@clean Jul_12_2020.md</vh>
+<v t="leo.20200714055738.1"><vh>9163369466257328113</vh>
+<v t="leo.20200714055713.1"><vh>6883175281218486955</vh></v>
+</v>
+</v>
+<v t="leo.20200714060405.1"><vh>@clean Jul_13_2020.md</vh>
+<v t="leo.20200714060405.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -246,9 +263,9 @@ try:
     blogs = blogs.listByUser(userId='self').execute()
     # post_id is now blogs["items"][0]["id"]
     #blog_id = blogs["items"][0]["id"]
-    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    #blog_id = "9163369466257328113"#UniversityProject 日誌
+    blog_id = "9163369466257328113"#UniversityProject 日誌
     #for blog in blogs['items']:
         #print(blog['name'], blog['url'])
     posts = service.posts()
@@ -705,8 +722,6 @@ Author: 40723150
 
 ##Ubuntu 20.04
 
-
-
 ##動態網站(nginx、uwsgi)
 
 因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：
@@ -766,7 +781,7 @@ uwsgi 主機設定
 
 接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。
 
-目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。
+目前將此一設定目錄放在 /home/yen/enabled, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。
 
 uwsgi.ini 配合設為：
 
@@ -813,6 +828,7 @@ ufw enable
 
 設定 uwsgi service
 以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+
 &lt;pre class="brush: jscript"&gt;
 [Unit]
 Description=uWSGI to serve CMSiMDE 
@@ -827,6 +843,7 @@ ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
 [Install]
 WantedBy=multi-user.target
 &lt;/pre&gt;
+
 接著將 cmsimde 服務設為隨系統開機啟動:
 &lt;pre class="brush: jscript"&gt;
 sudo systemctl enable cmsimde
@@ -849,9 +866,101 @@ sudo systemctl stop cmsimde
 
 ##數位簽章
 
+https://letsencrypt.org/
+
+https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx 
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install certbot python3-certbot-nginx
+sudo certbot certonly --nginx
+sudo certbot renew --dry-run
+&lt;/pre&gt;
+
 ##Ubuntu防火牆(ufw)
 
+&lt;pre class="brush: jscript"&gt;
+ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw enable
+&lt;/pre&gt;
+
+sudo -s 是直接輸入具管理者身份的密碼後，就可以採 root 身份執行後續的指令，退出 root，輸入 exit
+
+ufw status 是列出目前防火牆狀態，確認為 inactive 後再進行後續的 rules 設定。
+
+ufw allow from 2001:288:6004:17::/32 to any port 22
+
+表示允許從 2001:288:6004:17::/32 來的連線可以使用 port 22，也就是可以使用 ssh 對主機連線。
+
+2001:288:6004:17::/32 中之 32，表示前面 IPv6 網址，只要前面四個區為 2001:288:6004:17 即符合條件，因為每一區 8 個 bit，因此才以 /32 表示涵蓋的範圍。
+
+先設定允許對 port 22 連線的區段後，隨即以 ufw deny 22 封鎖其他非 allow 的所有網段，目的在於只允許系上 IPv6 網段可以 ssh 到主機。
+
+隨後也是只允許系上網段可以連線到 port 80，也就是 www 內建的 port。
+
+
 @others</t>
+<t tx="leo.20200714045019.1"></t>
+<t tx="leo.20200714052303.1">@language md
+---
+Title: Jul 11, 2020 日誌
+Date: Jul 11, 2020
+Category: 日誌
+Tags: 樂高營
+Slug: Jul_11_ 2020
+Author: 40723150
+---
+帶樂高營，第一天。
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+剛開始和小隊員互動他們可能因為不熟又比較內向，所以在互動上必較沒有回應，但他們有進入狀況：在教他們小隊呼的時候會跟著做：在合作的方面表現很好，會一起組裝，沒有吵架的情形。在小隊比賽時，即使小隊員失誤而沒贏得比賽也不會一味的指責，反而會互相相交流進步。
+
+一整天下來，整個小隊員的表現都很好。特殊生的部分：其實比較需要去留意他們的情形，像亞斯伯格就講話比較直接，有時候就會因此而造成小隊員之間的衝突，需要協調、安慰小隊員，這時溝通技巧就很重要。照顧故特殊生需要比較多的耐心和技巧。
+@others</t>
+<t tx="leo.20200714052313.1">@language md
+---
+Title: Jul 12, 2020 日誌
+Date: Jul 12, 2020
+Category: 日誌
+Tags: 樂高營
+Slug: Jul_12_ 2020
+Author: 40723150
+---
+帶樂高營，第二天。
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+小隊員與對輔比較熟悉，在互動上就比較有回應。在教程式時他們雖然沒什麼反應，但在測試時他們是了解程式運的步驟。在比賽時看到其他小隊較不適當的方式時，他們還是會堅持自己的原則：不會用投機的方式贏得比賽，比完賽後會參考前幾場的經驗去改進，小隊員之間會相互分享討論經驗。
+
+這兩天下來，發現有小朋友會特別在意某些點，即使本意是好的，但會因為不善於溝通會造成小衝突。溝通是團隊合作不可或缺的關鍵。
+@others</t>
+<t tx="leo.20200714055707.1"></t>
+<t tx="leo.20200714055713.1"></t>
+<t tx="leo.20200714055722.1"></t>
+<t tx="leo.20200714055738.1"></t>
+<t tx="leo.20200714060405.1">@language md
+---
+Title: Jul 13, 2020 日誌
+Date: Jul 13, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_13_ 2020
+Author: 40723150
+---
+整理大間實驗室，整理和更新電腦。
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+大間的東西要撤走，
+@others</t>
+<t tx="leo.20200714060405.2"></t>
+<t tx="leo.20200714122155.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

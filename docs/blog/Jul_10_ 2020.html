@@ -288,7 +288,7 @@ server {
 <p>uwsgi 主機設定</p>
 <p>首先確認 CMSiMDE 中 init.py 設定 uwsgi = True，表示動態網站系統要以 uwsgi 模式啟動</p>
 <p>接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。</p>
-<p>目前將此一設定目錄放在 /home/yen/uwsgi_ini, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。</p>
+<p>目前將此一設定目錄放在 /home/yen/enabled, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。</p>
 <p>uwsgi.ini 配合設為：</p>
 <pre class="brush: jscript">
 [uwsgi]
@@ -330,20 +330,23 @@ ufw enable
 </pre>
 若 https://cad1.kmol.info:9443 已經可以接受連線, 接下來最後一個步驟必須設定以系統 service 隨機啟動 uwsgi</p>
 <p>設定 uwsgi service
-以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:</p>
 <pre class="brush: jscript">
 [Unit]
 Description=uWSGI to serve CMSiMDE 
-After=network.target</p>
-<p>[Service]
+After=network.target
+
+[Service]
 User=yen
 Group=yen
 WorkingDirectory=/home/yen/uwsgi_ini
-ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini</p>
-<p>[Install]
+ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
+
+[Install]
 WantedBy=multi-user.target
 </pre>
-接著將 cmsimde 服務設為隨系統開機啟動:
+
+<p>接著將 cmsimde 服務設為隨系統開機啟動:
 <pre class="brush: jscript">
 sudo systemctl enable cmsimde
 </pre>
@@ -362,7 +365,36 @@ sudo systemctl stop cmsimde
 上面完整的步驟也寫在 mdecourse/project2020-1#4</p>
 <p>完成後, 只允許系上 IPv6 網段可以直接連到 https://cad1.kmol.info:9443 以 4072kmol 登入管理後改版, 直接 generate pages 就可以在 http://cad1.kmol.info 看到.</p>
 <h2>數位簽章</h2>
+<p>https://letsencrypt.org/</p>
+<p>https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx 
+<pre class="brush: jscript">
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install certbot python3-certbot-nginx
+sudo certbot certonly --nginx
+sudo certbot renew --dry-run
+</pre></p>
 <h2>Ubuntu防火牆(ufw)</h2>
+<pre class="brush: jscript">
+ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw enable
+</pre>
+
+<p>sudo -s 是直接輸入具管理者身份的密碼後，就可以採 root 身份執行後續的指令，退出 root，輸入 exit</p>
+<p>ufw status 是列出目前防火牆狀態，確認為 inactive 後再進行後續的 rules 設定。</p>
+<p>ufw allow from 2001:288:6004:17::/32 to any port 22</p>
+<p>表示允許從 2001:288:6004:17::/32 來的連線可以使用 port 22，也就是可以使用 ssh 對主機連線。</p>
+<p>2001:288:6004:17::/32 中之 32，表示前面 IPv6 網址，只要前面四個區為 2001:288:6004:17 即符合條件，因為每一區 8 個 bit，因此才以 /32 表示涵蓋的範圍。</p>
+<p>先設定允許對 port 22 連線的區段後，隨即以 ufw deny 22 封鎖其他非 allow 的所有網段，目的在於只允許系上 IPv6 網段可以 ssh 到主機。</p>
+<p>隨後也是只允許系上網段可以連線到 port 80，也就是 www 內建的 port。</p>
             </section>
 
             <section class="post-info">
@@ -389,6 +421,13 @@ sudo systemctl stop cmsimde
 
 
                 <aside class="post-nav">
+                    <a class="post-nav-next" href="./Jul_11_ 2020.html">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-left"></i>
+                                <h2 class="post-nav-title">Jul 11, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">帶樂高營，第一天。</p>
+                        </section>
+                    </a>
                     <a class="post-nav-prev" href="./Jul_09_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
