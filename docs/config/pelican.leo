@@ -84,6 +84,9 @@
 <v t="leo.20200714060405.1"><vh>@clean Jul_13_2020.md</vh>
 <v t="leo.20200714060405.2"><vh>9163369466257328113</vh></v>
 </v>
+<v t="leo.20200715232947.1"><vh>@clean Jul_14_2020.md</vh>
+<v t="leo.20200715232947.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -957,10 +960,27 @@ Author: 40723150
 整理大間實驗室，整理和更新電腦。
 
 &lt;!-- PELICAN_END_SUMMARY --&gt;
-大間的東西要撤走，
+大間實驗室的東西要撤走，之後給五專生的科學會的空間，在整理得時候發現有很多以前留下來的書和設備，有將一些原文書和工具書。
+
+下午將之後練習Keras和Pytouch用的電腦升級 Windows10 的版本。
 @others</t>
 <t tx="leo.20200714060405.2"></t>
 <t tx="leo.20200714122155.1"></t>
+<t tx="leo.20200715232947.1">@language md
+---
+Title: Jul 14, 2020 日誌
+Date: Jul 14, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_14_ 2020
+Author: 40723150
+---
+整理Jul,10~12的日誌。
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200715232947.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

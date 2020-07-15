@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-13T00:00:00+08:00</updated><entry><title>Jul 13, 2020 日誌</title><link href=".%5CJul_13_%202020.html" rel="alternate"></link><published>2020-07-13T00:00:00+08:00</published><updated>2020-07-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-13:.\Jul_13_ 2020.html</id><summary type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-14T00:00:00+08:00</updated><entry><title>Jul 14, 2020 日誌</title><link href=".%5CJul_14_%202020.html" rel="alternate"></link><published>2020-07-14T00:00:00+08:00</published><updated>2020-07-14T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-14:.\Jul_14_ 2020.html</id><content type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
+</content><category term="日誌"></category></entry><entry><title>Jul 13, 2020 日誌</title><link href=".%5CJul_13_%202020.html" rel="alternate"></link><published>2020-07-13T00:00:00+08:00</published><updated>2020-07-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-13:.\Jul_13_ 2020.html</id><summary type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
 
 
-&lt;p&gt;大間的東西要撤走，&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 12, 2020 日誌</title><link href=".%5CJul_12_%202020.html" rel="alternate"></link><published>2020-07-12T00:00:00+08:00</published><updated>2020-07-12T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-12:.\Jul_12_ 2020.html</id><summary type="html">&lt;p&gt;帶樂高營，第二天。&lt;/p&gt;
+&lt;p&gt;大間實驗室的東西要撤走，之後給五專生的科學會的空間，在整理得時候發現有很多以前留下來的書和設備，有將一些原文書和工具書。&lt;/p&gt;
+&lt;p&gt;下午將之後練習Keras和Pytouch用的電腦升級 Windows10 的版本。&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 12, 2020 日誌</title><link href=".%5CJul_12_%202020.html" rel="alternate"></link><published>2020-07-12T00:00:00+08:00</published><updated>2020-07-12T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-12:.\Jul_12_ 2020.html</id><summary type="html">&lt;p&gt;帶樂高營，第二天。&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;帶樂高營，第二天。&lt;/p&gt;
 
 
