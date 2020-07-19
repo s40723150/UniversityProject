@@ -1,6 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-14T00:00:00+08:00</updated><entry><title>Jul 14, 2020 日誌</title><link href=".%5CJul_14_%202020.html" rel="alternate"></link><published>2020-07-14T00:00:00+08:00</published><updated>2020-07-14T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-14:.\Jul_14_ 2020.html</id><content type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
-</content><category term="日誌"></category></entry><entry><title>Jul 13, 2020 日誌</title><link href=".%5CJul_13_%202020.html" rel="alternate"></link><published>2020-07-13T00:00:00+08:00</published><updated>2020-07-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-13:.\Jul_13_ 2020.html</id><summary type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-16T00:00:00+08:00</updated><entry><title>Jul 16, 2020 日誌</title><link href=".%5CJul_16_%202020.html" rel="alternate"></link><published>2020-07-16T00:00:00+08:00</published><updated>2020-07-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-16:.\Jul_16_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。
+</summary><content type="html">&lt;p&gt;練習建立server。
+&lt;/p&gt;
+&lt;h2&gt;Ubuntu 20.04 server&lt;/h2&gt;
+&lt;h3&gt;安裝會使用到的模組&lt;/h3&gt;
+&lt;p&gt;安裝 pip 模組&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo apt install python3-pip
+&lt;/pre&gt;
+
+&lt;p&gt;安裝 cmsimde 所需的模組&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo pip install flask flask_cors bs4 lxml
+&lt;/pre&gt;
+
+&lt;p&gt;安裝 uwsgi 、 python plugin&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo apt install uwsgi uwsgi-plugin-python3 
+&lt;/pre&gt;
+
+&lt;p&gt;安裝 python 模組 uwsgi、nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo apt install uwsgi
+sudo apt install nginx
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;建立 key 和 crt&lt;/h3&gt;
+&lt;p&gt;在 /home/kmol2020 目錄下執行&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;設定 nginx&lt;/h3&gt;
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx
+sudo vi nginx.conf
+&lt;/pre&gt;
+
+&lt;p&gt;將 nginx.conf 第62行︰
+sites-enabled/&lt;em&gt; 換成 sites-available/&lt;/em&gt;
+&lt;pre class="brush: jscript"&gt;
+sites-available/*
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;導入 cmsimde &lt;/p&gt;
+&lt;p&gt;在 /home/kmol2020 目錄下新增一個 test_site 目錄，，將 cmsimde clone 下來。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+mkdir test_site
+cd test_site
+git clone https://github.com/mdecourse/cmsimde.git
+&lt;/pre&gt;
+
+&lt;p&gt;將 up_dir 目錄裡面的資料複製到 test_site 目錄下&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cp -r /home/kmol2020/test_site/cmsimde/up-dir/* /home/kmol2020/test_site
+&lt;/pre&gt;
+
+&lt;p&gt;更改 root 預設讀取目錄&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx/sites-available
+sudo vi default
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+#root /var/www/html
+root /home/kmol2020/test_site
+&lt;/pre&gt;
+
+&lt;p&gt;重啟 nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+&lt;p&gt;導入 uwsgi 動態網站&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo vi /etc/nginx/sites-available/default
+&lt;/pre&gt;
+
+&lt;p&gt;將 nginx 設定檔導入 uwsgi_params。其網頁根目錄的資料可以由 uwsgi 網站程式提供&lt;/p&gt;
+&lt;p&gt;因為 uwsgi 無 SSL 設置, 因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務.&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+server {
+
+listen 9443 ssl;
+listen [::]:9443 ssl;
+
+# 指定 static 所在位置
+location /static {
+alias /home/kmol2020/test_site/cmsimde/static/;
+}
+
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
+
+ssl_certificate /home/kmol2020/localhost.crt;
+ssl_certificate_key /home/kmol2020/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;開啟 ini.py 的 uwsgi 功能&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cd /home/kmol2020/test_site
+sudo vi init.py
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+uwsgi = True
+&lt;/pre&gt;
+
+&lt;p&gt;確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動&lt;/p&gt;
+&lt;p&gt;設定 uwsgi.ini&lt;/p&gt;
+&lt;p&gt;在 /home/kmol2020 目錄下新建 uwsgi_ini 的子目錄&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+mkdir uwsgi_ini
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi uwsgi.ini
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = kmol2020
+gid = kmol2020
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/kmol2020/test_site/cmsimde
+wsgi-file = /home/kmol2020/test_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+&lt;p&gt;重啟 nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+&lt;p&gt;若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有打錯。修改完再重啟一次就可以了。&lt;/p&gt;
+&lt;p&gt;重新啟動 Nginx 並利用 uwsgi 指令測試
+手動啟動 uwsgi 主機的指令︰&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+&lt;/pre&gt;</content><category term="日誌"></category></entry><entry><title>Jul 15, 2020 日誌</title><link href=".%5CJul_15_%202020.html" rel="alternate"></link><published>2020-07-15T00:00:00+08:00</published><updated>2020-07-15T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-15:.\Jul_15_ 2020.html</id><summary type="html">&lt;p&gt;調整背英文單字的模式。
+</summary><content type="html">&lt;p&gt;調整背英文單字的模式。
+&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 14, 2020 日誌</title><link href=".%5CJul_14_%202020.html" rel="alternate"></link><published>2020-07-14T00:00:00+08:00</published><updated>2020-07-14T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-14:.\Jul_14_ 2020.html</id><summary type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
+
+
+&lt;p&gt;&lt;a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html"&gt;手寫數字影像辨識&lt;/a&gt;&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 13, 2020 日誌</title><link href=".%5CJul_13_%202020.html" rel="alternate"></link><published>2020-07-13T00:00:00+08:00</published><updated>2020-07-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-13:.\Jul_13_ 2020.html</id><summary type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;整理大間實驗室，整理和更新電腦。&lt;/p&gt;
 
 
@@ -34,6 +195,11 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：&lt;/p&gt;
+&lt;p&gt;建立 localhost.key 與 localhost.crt：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
 &lt;pre class="brush: jscript"&gt;
 server {
 
@@ -61,7 +227,7 @@ server {
     ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
     ssl_prefer_server_ciphers on;
     try_files $uri $uri/ =404;
-}s
+}
 &lt;/pre&gt;
 
 &lt;p&gt;上述設定的基本概念為：Nginx 設定檔案中, 只要導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。&lt;/p&gt;

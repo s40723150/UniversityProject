@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Jul 10, 2020 日誌</title>
+  <title>Jul 16, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,41 +40,27 @@
   <![endif]-->
 
 
-    <link href="./Jul_10_ 2020.html" rel="canonical" />
+    <link href="./Jul_16_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)">
+        <meta name="description" content="練習建立server。">
 
         <meta name="author" content="40723150">
 
-        <meta name="tags" content="Ubuntu">
-        <meta name="tags" content="20.04">
-        <meta name="tags" content="nginx">
-        <meta name="tags" content="uwsgi">
-        <meta name="tags" content="數位簽章">
-        <meta name="tags" content="Ubuntu防火牆">
-        <meta name="tags" content="ufw">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Jul 10, 2020 日誌"/>
-<meta property="og:description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)"/>
+<meta property="og:title" content="Jul 16, 2020 日誌"/>
+<meta property="og:description" content="練習建立server。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Jul_10_ 2020.html"/>
+<meta property="og:url" content="./Jul_16_ 2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-07-10 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-07-16 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
-<meta property="article:tag" content="Ubuntu"/>
-<meta property="article:tag" content="20.04"/>
-<meta property="article:tag" content="nginx"/>
-<meta property="article:tag" content="uwsgi"/>
-<meta property="article:tag" content="數位簽章"/>
-<meta property="article:tag" content="Ubuntu防火牆"/>
-<meta property="article:tag" content="ufw"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -83,9 +69,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Jul 10, 2020 日誌",
-  "headline": "Jul 10, 2020 日誌",
-  "datePublished": "2020-07-10 00:00:00+08:00",
+  "name": "Jul 16, 2020 日誌",
+  "headline": "Jul 16, 2020 日誌",
+  "datePublished": "2020-07-16 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -93,8 +79,8 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Jul_10_ 2020.html",
-  "description": "整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)"
+  "url": "./Jul_16_ 2020.html",
+  "description": "練習建立server。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -209,11 +195,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Jul 10, 2020 日誌</h1>
+        <h1 class="post-title">Jul 16, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週五 10 七月 2020">週五 10 七月 2020</time>
+            | <time datetime="週四 16 七月 2020">週四 16 七月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -235,189 +221,178 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+                <p>練習建立server。
 </p>
-<h2>Ubuntu 20.04</h2>
-<h2>動態網站(nginx、uwsgi)</h2>
-<p>因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：</p>
-<p>sudo pip3 install flask flask_cors bs4 lxml</p>
-<p>uwsgi 所需模組：</p>
-<ol>
-<li>
-<p>安裝 uwsgi 套件與 Python3 plugin</p>
-<p>sudo apt install uwsgi uwsgi-plugin-python3</p>
-</li>
-<li>
-<p>安裝 Python 模組 uwsgi</p>
-<p>sudo pip3 install uwsgi</p>
-</li>
-</ol>
-<p>建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：</p>
-<p>建立 localhost.key 與 localhost.crt：</p>
+<h2>Ubuntu 20.04 server</h2>
+<h3>安裝會使用到的模組</h3>
+<p>安裝 pip 模組</p>
 <pre class="brush: jscript">
-    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+sudo apt install python3-pip
 </pre>
 
+<p>安裝 cmsimde 所需的模組</p>
+<pre class="brush: jscript">
+sudo pip install flask flask_cors bs4 lxml
+</pre>
+
+<p>安裝 uwsgi 、 python plugin</p>
+<pre class="brush: jscript">
+sudo apt install uwsgi uwsgi-plugin-python3 
+</pre>
+
+<p>安裝 python 模組 uwsgi、nginx</p>
+<pre class="brush: jscript">
+sudo apt install uwsgi
+sudo apt install nginx
+</pre>
+
+<hr>
+<h3>建立 key 和 crt</h3>
+<p>在 /home/kmol2020 目錄下執行</p>
+<pre class="brush: jscript">
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+</pre>
+
+<hr>
+<h3>設定 nginx</h3>
+<pre class="brush: jscript">
+cd /etc/nginx
+sudo vi nginx.conf
+</pre>
+
+<p>將 nginx.conf 第62行︰
+sites-enabled/<em> 換成 sites-available/</em>
+<pre class="brush: jscript">
+sites-available/*
+</pre></p>
+<p>導入 cmsimde </p>
+<p>在 /home/kmol2020 目錄下新增一個 test_site 目錄，，將 cmsimde clone 下來。</p>
+<pre class="brush: jscript">
+mkdir test_site
+cd test_site
+git clone https://github.com/mdecourse/cmsimde.git
+</pre>
+
+<p>將 up_dir 目錄裡面的資料複製到 test_site 目錄下</p>
+<pre class="brush: jscript">
+cp -r /home/kmol2020/test_site/cmsimde/up-dir/* /home/kmol2020/test_site
+</pre>
+
+<p>更改 root 預設讀取目錄</p>
+<pre class="brush: jscript">
+cd /etc/nginx/sites-available
+sudo vi default
+</pre>
+
+<pre class="brush: jscript">
+#root /var/www/html
+root /home/kmol2020/test_site
+</pre>
+
+<p>重啟 nginx</p>
+<pre class="brush: jscript">
+sudo /etc/init.d/nginx restart
+</pre>
+
+<p>導入 uwsgi 動態網站</p>
+<pre class="brush: jscript">
+sudo vi /etc/nginx/sites-available/default
+</pre>
+
+<p>將 nginx 設定檔導入 uwsgi_params。其網頁根目錄的資料可以由 uwsgi 網站程式提供</p>
+<p>因為 uwsgi 無 SSL 設置, 因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務.</p>
 <pre class="brush: jscript">
 server {
 
-    listen 9443 ssl;
-    listen [::]:9443 ssl;
+listen 9443 ssl;
+listen [::]:9443 ssl;
 
-    # 指定 static 所在位置
-    location /static {
-    alias /home/yen/cad1_site/cmsimde/static/;
-    }
+# 指定 static 所在位置
+location /static {
+alias /home/kmol2020/test_site/cmsimde/static/;
+}
 
-    location / {
-    # 導入 uwsgi_params 設定參數
-    include uwsgi_params;
-    # 根目錄設為近端的 8080 port 
-    uwsgi_pass  127.0.0.1:8080;
-    }
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
 
-    ssl_certificate /home/yen/localhost.crt;
-    ssl_certificate_key /home/yen/localhost.key;
-    #ssl_certificate /etc/letsencrypt/live/cad1.kmol.info/fullchain.pem;
-    #ssl_certificate_key /etc/letsencrypt/live/cad1.kmol.info/privkey.pem;
-    ssl_session_timeout 5m;
-    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-    ssl_prefer_server_ciphers on;
-    try_files $uri $uri/ =404;
+ssl_certificate /home/kmol2020/localhost.crt;
+ssl_certificate_key /home/kmol2020/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
 }
 </pre>
 
-<p>上述設定的基本概念為：Nginx 設定檔案中, 只要導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。</p>
-<p>因為 uwsgi 無 SSL 設置，因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務。</p>
-<p>uwsgi 主機設定</p>
-<p>首先確認 CMSiMDE 中 init.py 設定 uwsgi = True，表示動態網站系統要以 uwsgi 模式啟動</p>
-<p>接著將利用 uwsgi 啟動模式中的 emperor 選項，每一台主機只要提供一個 .ini 設定檔案，並集中放在某一目錄中，只要在啟動 uwsgi 時，指定該存放 .ini 設定檔案的目錄位置，uwsgi emperor 模式會一一讀取，配合啟動各 uwsgi server。</p>
-<p>目前將此一設定目錄放在 /home/yen/enabled, 而設定檔案 uwsgi.ini 則放入 uwsgi_ini 目錄中。</p>
-<p>uwsgi.ini 配合設為：</p>
+<p>開啟 ini.py 的 uwsgi 功能</p>
+<pre class="brush: jscript">
+cd /home/kmol2020/test_site
+sudo vi init.py
+</pre>
+
+<pre class="brush: jscript">
+uwsgi = True
+</pre>
+
+<p>確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動</p>
+<p>設定 uwsgi.ini</p>
+<p>在 /home/kmol2020 目錄下新建 uwsgi_ini 的子目錄</p>
+<pre class="brush: jscript">
+mkdir uwsgi_ini
+</pre>
+
+<pre class="brush: jscript">
+sudo vi uwsgi.ini
+</pre>
+
 <pre class="brush: jscript">
 [uwsgi]
 socket = :8080
-uid = yen
-gid = yen
+uid = kmol2020
+gid = kmol2020
 plugins-dir = /usr/lib/uwsgi/plugins/
 plugin = python3
 master = true
 process = 4
 threads = 2
-chdir = /home/yen/cad1_site/cmsimde
-wsgi-file = /home/yen/cad1_site/cmsimde/wsgi.py
+chdir = /home/kmol2020/test_site/cmsimde
+wsgi-file = /home/kmol2020/test_site/cmsimde/wsgi.py
 </pre>
 
-<p>表示要使用 8080 傳輸資料 (必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應)並指定 wsgi.py 所在目錄。</p>
+<p>重啟 nginx</p>
+<pre class="brush: jscript">
+sudo /etc/init.d/nginx restart
+</pre>
+
+<p>若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有打錯。修改完再重啟一次就可以了。</p>
 <p>重新啟動 Nginx 並利用 uwsgi 指令測試
-手動啟動 uwsgi 主機的指令：</p>
+手動啟動 uwsgi 主機的指令︰</p>
 <pre class="brush: jscript">
-/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
+/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 </pre>
-
-<p>額外加入 ufw 9443 的防火牆設定
-先暫時關閉 ufw
-<pre class="brush: jscript">
-ufw disable
-</pre>
-允許設計系 IP v6 網段連線 9443 port
-<pre class="brush: jscript">
-ufw allow from 2001:288:6004:17::/32 to any port 9443
-</pre>
-其他網段主機一律]不准連線
-<pre class="brush: jscript">
-ufw deny 9443
-</pre>
-重新開啟 ufw 防火牆
-<pre class="brush: jscript">
-ufw enable
-</pre>
-若 https://cad1.kmol.info:9443 已經可以接受連線, 接下來最後一個步驟必須設定以系統 service 隨機啟動 uwsgi</p>
-<p>設定 uwsgi service
-以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:</p>
-<pre class="brush: jscript">
-[Unit]
-Description=uWSGI to serve CMSiMDE 
-After=network.target
-
-[Service]
-User=yen
-Group=yen
-WorkingDirectory=/home/yen/uwsgi_ini
-ExecStart=/usr/bin/uwsgi --emperor /home/yen/uwsgi_ini
-
-[Install]
-WantedBy=multi-user.target
-</pre>
-
-<p>接著將 cmsimde 服務設為隨系統開機啟動:
-<pre class="brush: jscript">
-sudo systemctl enable cmsimde
-</pre>
-若要取消 cmsimde 服務隨系統開機啟動:
-<pre class="brush: jscript">
-sudo systemctl disable cmsimde
-</pre>
-手動啟動 cmsimde.service 服務
-<pre class="brush: jscript">
-sudo systemctl start cmsimde
-</pre>
-手動停止 cmsimde.service 服務
-<pre class="brush: jscript">
-sudo systemctl stop cmsimde
-</pre>
-上面完整的步驟也寫在 mdecourse/project2020-1#4</p>
-<p>完成後, 只允許系上 IPv6 網段可以直接連到 https://cad1.kmol.info:9443 以 4072kmol 登入管理後改版, 直接 generate pages 就可以在 http://cad1.kmol.info 看到.</p>
-<h2>數位簽章</h2>
-<p>https://letsencrypt.org/</p>
-<p>https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx 
-<pre class="brush: jscript">
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo apt-get update
-sudo apt-get install certbot python3-certbot-nginx
-sudo certbot certonly --nginx
-sudo certbot renew --dry-run
-</pre></p>
-<h2>Ubuntu防火牆(ufw)</h2>
-<pre class="brush: jscript">
-ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
-sudo -s
-ufw status
-ufw allow from 2001:288:6004:17::/32 to any port 22
-ufw deny 22
-ufw allow from 2001:288:6004:17::/32 to any port 80
-ufw deny 80
-ufw enable
-</pre>
-
-<p>sudo -s 是直接輸入具管理者身份的密碼後，就可以採 root 身份執行後續的指令，退出 root，輸入 exit</p>
-<p>ufw status 是列出目前防火牆狀態，確認為 inactive 後再進行後續的 rules 設定。</p>
-<p>ufw allow from 2001:288:6004:17::/32 to any port 22</p>
-<p>表示允許從 2001:288:6004:17::/32 來的連線可以使用 port 22，也就是可以使用 ssh 對主機連線。</p>
-<p>2001:288:6004:17::/32 中之 32，表示前面 IPv6 網址，只要前面四個區為 2001:288:6004:17 即符合條件，因為每一區 8 個 bit，因此才以 /32 表示涵蓋的範圍。</p>
-<p>先設定允許對 port 22 連線的區段後，隨即以 ufw deny 22 封鎖其他非 allow 的所有網段，目的在於只允許系上 IPv6 網段可以 ssh 到主機。</p>
-<p>隨後也是只允許系上網段可以連線到 port 80，也就是 www 內建的 port。</p>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Jul 10, 2020 日誌&amp;url=./Jul_10_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Jul 16, 2020 日誌&amp;url=./Jul_16_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_10_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_16_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_10_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_16_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
-                <aside class="post-tags">
-<a href="./tag/ubuntu.html">Ubuntu</a><a href="./tag/2004.html">20.04</a><a href="./tag/nginx.html">nginx</a><a href="./tag/uwsgi.html">uwsgi</a><a href="./tag/shu-wei-qian-zhang.html">數位簽章</a><a href="./tag/ubuntufang-huo-qiang.html">Ubuntu防火牆</a><a href="./tag/ufw.html">ufw</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -426,18 +401,11 @@ ufw enable
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Jul_11_ 2020.html">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Jul 11, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">帶樂高營，第一天。</p>
-                        </section>
-                    </a>
-                    <a class="post-nav-prev" href="./Jul_09_ 2020.html">
+                    <a class="post-nav-prev" href="./Jul_15_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Jul 9, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">列印風扇支架。嘗試將按add_to_mblogger 之後會新增 blog_id 子節點為post_id。</p>
+                                <h2 class="post-nav-title">Jul 15, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">調整背英文單字的模式。</p>
                         </section>
                     </a>
                     <div class="clear"></div>

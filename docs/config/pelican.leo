@@ -87,6 +87,12 @@
 <v t="leo.20200715232947.1"><vh>@clean Jul_14_2020.md</vh>
 <v t="leo.20200715232947.2"><vh>9163369466257328113</vh></v>
 </v>
+<v t="leo.20200719102133.1"><vh>@clean Jul_15_2020.md</vh>
+<v t="leo.20200719102133.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200719104521.1"><vh>@clean Jul_16_2020.md</vh>
+<v t="leo.20200719104521.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -744,6 +750,12 @@ uwsgi 所需模組：
 
 建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：
 
+建立 localhost.key 與 localhost.crt：
+
+&lt;pre class="brush: jscript"&gt;
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
 &lt;pre class="brush: jscript"&gt;
 server {
   
@@ -771,7 +783,7 @@ server {
     ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
     ssl_prefer_server_ciphers on;
     try_files $uri $uri/ =404;
-}s
+}
 &lt;/pre&gt;
 
 上述設定的基本概念為：Nginx 設定檔案中, 只要導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。
@@ -979,8 +991,218 @@ Author: 40723150
 
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+[手寫數字影像辨識](https://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html)
 @others</t>
 <t tx="leo.20200715232947.2"></t>
+<t tx="leo.20200719102133.1">@language md
+---
+Title: Jul 15, 2020 日誌
+Date: Jul 15, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_15_ 2020
+Author: 40723150
+---
+調整背英文單字的模式。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200719102133.2"></t>
+<t tx="leo.20200719104521.1">@language md
+---
+Title: Jul 16, 2020 日誌
+Date: Jul 16, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_16_ 2020
+Author: 40723150
+---
+練習建立server。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+## Ubuntu 20.04 server
+
+### 安裝會使用到的模組
+
+安裝 pip 模組
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install python3-pip
+&lt;/pre&gt;
+
+安裝 cmsimde 所需的模組
+
+&lt;pre class="brush: jscript"&gt;
+sudo pip install flask flask_cors bs4 lxml
+&lt;/pre&gt;
+
+安裝 uwsgi 、 python plugin
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install uwsgi uwsgi-plugin-python3 
+&lt;/pre&gt;
+
+安裝 python 模組 uwsgi、nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install uwsgi
+sudo apt install nginx
+&lt;/pre&gt;
+
+---
+
+### 建立 key 和 crt
+
+在 /home/kmol2020 目錄下執行
+
+&lt;pre class="brush: jscript"&gt;
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
+---
+
+### 設定 nginx 
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx
+sudo vi nginx.conf
+&lt;/pre&gt;
+
+將 nginx.conf 第62行︰
+sites-enabled/* 換成 sites-available/*
+&lt;pre class="brush: jscript"&gt;
+sites-available/*
+&lt;/pre&gt;
+
+導入 cmsimde 
+
+在 /home/kmol2020 目錄下新增一個 test_site 目錄，，將 cmsimde clone 下來。
+
+&lt;pre class="brush: jscript"&gt;
+mkdir test_site
+cd test_site
+git clone https://github.com/mdecourse/cmsimde.git
+&lt;/pre&gt;
+
+將 up_dir 目錄裡面的資料複製到 test_site 目錄下
+
+&lt;pre class="brush: jscript"&gt;
+cp -r /home/kmol2020/test_site/cmsimde/up-dir/* /home/kmol2020/test_site
+&lt;/pre&gt;
+
+更改 root 預設讀取目錄
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx/sites-available
+sudo vi default
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+#root /var/www/html
+root /home/kmol2020/test_site
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+導入 uwsgi 動態網站
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi /etc/nginx/sites-available/default
+&lt;/pre&gt;
+
+將 nginx 設定檔導入 uwsgi_params。其網頁根目錄的資料可以由 uwsgi 網站程式提供
+
+因為 uwsgi 無 SSL 設置, 因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務.
+
+&lt;pre class="brush: jscript"&gt;
+server {
+
+listen 9443 ssl;
+listen [::]:9443 ssl;
+
+# 指定 static 所在位置
+location /static {
+alias /home/kmol2020/test_site/cmsimde/static/;
+}
+
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
+
+ssl_certificate /home/kmol2020/localhost.crt;
+ssl_certificate_key /home/kmol2020/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
+}
+&lt;/pre&gt;
+
+開啟 ini.py 的 uwsgi 功能
+
+&lt;pre class="brush: jscript"&gt;
+cd /home/kmol2020/test_site
+sudo vi init.py
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+uwsgi = True
+&lt;/pre&gt;
+
+確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動
+
+設定 uwsgi.ini
+
+在 /home/kmol2020 目錄下新建 uwsgi_ini 的子目錄
+
+&lt;pre class="brush: jscript"&gt;
+mkdir uwsgi_ini
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi uwsgi.ini
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = kmol2020
+gid = kmol2020
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/kmol2020/test_site/cmsimde
+wsgi-file = /home/kmol2020/test_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有打錯。修改完再重啟一次就可以了。
+
+重新啟動 Nginx 並利用 uwsgi 指令測試
+手動啟動 uwsgi 主機的指令︰
+
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+&lt;/pre&gt;
+@others</t>
+<t tx="leo.20200719104521.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
