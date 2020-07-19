@@ -90,8 +90,17 @@
 <v t="leo.20200719102133.1"><vh>@clean Jul_15_2020.md</vh>
 <v t="leo.20200719102133.2"><vh>9163369466257328113</vh></v>
 </v>
-<v t="leo.20200719104521.1"><vh>@clean Jul_16_2020.md</vh>
+<v t="leo.20200719232315.1"><vh>@clean Jul_16_2020.md</vh>
+<v t="leo.20200719232315.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200719104521.1"><vh>@clean Jul_17_2020.md</vh>
 <v t="leo.20200719104521.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200719222434.1"><vh>@clean Jul_18_2020.md</vh>
+<v t="leo.20200719222434.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200719232359.1"><vh>@clean Jul_19_2020.md</vh>
+<v t="leo.20200719232359.2"><vh>9163369466257328113</vh></v>
 </v>
 </v>
 </v>
@@ -1010,11 +1019,11 @@ Author: 40723150
 <t tx="leo.20200719102133.2"></t>
 <t tx="leo.20200719104521.1">@language md
 ---
-Title: Jul 16, 2020 日誌
-Date: Jul 16, 2020
+Title: Jul 17, 2020 日誌
+Date: Jul 17, 2020
 Category: 日誌
 Tags: 
-Slug: Jul_16_ 2020
+Slug: Jul_17_ 2020
 Author: 40723150
 ---
 練習建立server。
@@ -1203,6 +1212,91 @@ sudo /etc/init.d/nginx restart
 &lt;/pre&gt;
 @others</t>
 <t tx="leo.20200719104521.2"></t>
+<t tx="leo.20200719222434.1">@language md
+---
+Title: Jul 18, 2020 日誌
+Date: Jul 18, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_18_ 2020
+Author: 40723150
+---
+練習建立server。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+##設定 ufw
+
+&lt;pre class="brush: jscript"&gt;
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw enable
+&lt;/pre&gt;
+
+假如網路不在系上網段, 則需要設定 140.130.17.4:3128 作為代理主機才能連線.
+
+因為 ufw 設定都必須在 sudo 權限下, 因此使用 sudo -s 直接以 root 身份執行後續的指令. 初學者在練習 ufw 時可以在虛擬主機中設定, 避免在遠端連線時, 因設定錯誤而無法 ssh 至主機.
+
+退出root身分：exit
+
+先暫時關閉防火牆
+
+&lt;pre class="brush: jscript"&gt;
+ufw disable
+&lt;/pre&gt;
+
+允許設計系 IP v6 網段連線 9443 port
+
+&lt;pre class="brush: jscript"&gt;
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+&lt;/pre&gt;
+
+其他網段主機一律]不准連線
+
+&lt;pre class="brush: jscript"&gt;
+ufw deny 9443
+&lt;/pre&gt;
+
+重新開啟 ufw 防火牆
+
+&lt;pre class="brush: jscript"&gt;
+ufw enable
+&lt;/pre&gt;
+
+做到步驟，不確定如何測試是否可以成功連線。
+@others
+</t>
+<t tx="leo.20200719222434.2"></t>
+<t tx="leo.20200719232315.1">@language md
+---
+Title: Jul 16, 2020 日誌
+Date: Jul 16, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_16_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200719232315.2"></t>
+<t tx="leo.20200719232359.1">@language md
+---
+Title: Jul 19, 2020 日誌
+Date: Jul 19, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_19_ 2020
+Author: 40723150
+---
+整理Jul,15~18的blog。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+今天在整理15~18日誌，還有整理房間。
+@others</t>
+<t tx="leo.20200719232359.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

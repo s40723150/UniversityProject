@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-16T00:00:00+08:00</updated><entry><title>Jul 16, 2020 日誌</title><link href=".%5CJul_16_%202020.html" rel="alternate"></link><published>2020-07-16T00:00:00+08:00</published><updated>2020-07-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-16:.\Jul_16_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-19T00:00:00+08:00</updated><entry><title>Jul 19, 2020 日誌</title><link href=".%5CJul_19_%202020.html" rel="alternate"></link><published>2020-07-19T00:00:00+08:00</published><updated>2020-07-19T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-19:.\Jul_19_ 2020.html</id><summary type="html">&lt;p&gt;整理Jul,15~18的blog。
+</summary><content type="html">&lt;p&gt;整理Jul,15~18的blog。
+
+今天在整理15~18日誌，還有整理房間。&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 18, 2020 日誌</title><link href=".%5CJul_18_%202020.html" rel="alternate"></link><published>2020-07-18T00:00:00+08:00</published><updated>2020-07-18T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-18:.\Jul_18_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。
+</summary><content type="html">&lt;p&gt;練習建立server。
+&lt;/p&gt;
+&lt;h2&gt;設定 ufw&lt;/h2&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw enable
+&lt;/pre&gt;
+
+&lt;p&gt;假如網路不在系上網段, 則需要設定 140.130.17.4:3128 作為代理主機才能連線.&lt;/p&gt;
+&lt;p&gt;因為 ufw 設定都必須在 sudo 權限下, 因此使用 sudo -s 直接以 root 身份執行後續的指令. 初學者在練習 ufw 時可以在虛擬主機中設定, 避免在遠端連線時, 因設定錯誤而無法 ssh 至主機.&lt;/p&gt;
+&lt;p&gt;退出root身分：exit&lt;/p&gt;
+&lt;p&gt;先暫時關閉防火牆&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+ufw disable
+&lt;/pre&gt;
+
+&lt;p&gt;允許設計系 IP v6 網段連線 9443 port&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+&lt;/pre&gt;
+
+&lt;p&gt;其他網段主機一律]不准連線&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+ufw deny 9443
+&lt;/pre&gt;
+
+&lt;p&gt;重新開啟 ufw 防火牆&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+ufw enable
+&lt;/pre&gt;
+
+&lt;p&gt;做到步驟，不確定如何測試是否可以成功連線。&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 17, 2020 日誌</title><link href=".%5CJul_17_%202020.html" rel="alternate"></link><published>2020-07-17T00:00:00+08:00</published><updated>2020-07-17T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-17:.\Jul_17_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。
 </summary><content type="html">&lt;p&gt;練習建立server。
 &lt;/p&gt;
 &lt;h2&gt;Ubuntu 20.04 server&lt;/h2&gt;
@@ -155,7 +195,7 @@ sudo /etc/init.d/nginx restart
 手動啟動 uwsgi 主機的指令︰&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 /usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
-&lt;/pre&gt;</content><category term="日誌"></category></entry><entry><title>Jul 15, 2020 日誌</title><link href=".%5CJul_15_%202020.html" rel="alternate"></link><published>2020-07-15T00:00:00+08:00</published><updated>2020-07-15T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-15:.\Jul_15_ 2020.html</id><summary type="html">&lt;p&gt;調整背英文單字的模式。
+&lt;/pre&gt;</content><category term="日誌"></category></entry><entry><title>Jul 16, 2020 日誌</title><link href=".%5CJul_16_%202020.html" rel="alternate"></link><published>2020-07-16T00:00:00+08:00</published><updated>2020-07-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-16:.\Jul_16_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 15, 2020 日誌</title><link href=".%5CJul_15_%202020.html" rel="alternate"></link><published>2020-07-15T00:00:00+08:00</published><updated>2020-07-15T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-15:.\Jul_15_ 2020.html</id><summary type="html">&lt;p&gt;調整背英文單字的模式。
 </summary><content type="html">&lt;p&gt;調整背英文單字的模式。
 &lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 14, 2020 日誌</title><link href=".%5CJul_14_%202020.html" rel="alternate"></link><published>2020-07-14T00:00:00+08:00</published><updated>2020-07-14T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-14:.\Jul_14_ 2020.html</id><summary type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;整理Jul,10~12的日誌。&lt;/p&gt;
