@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-19T00:00:00+08:00</updated><entry><title>Jul 19, 2020 日誌</title><link href=".%5CJul_19_%202020.html" rel="alternate"></link><published>2020-07-19T00:00:00+08:00</published><updated>2020-07-19T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-19:.\Jul_19_ 2020.html</id><summary type="html">&lt;p&gt;整理Jul,15~18的blog。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-20T00:00:00+08:00</updated><entry><title>Jul 20, 2020 日誌</title><link href=".%5CJul_20_%202020.html" rel="alternate"></link><published>2020-07-20T00:00:00+08:00</published><updated>2020-07-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-20:.\Jul_20_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。修改網路設定，設定跟隨開機啟動。
+</summary><content type="html">&lt;p&gt;練習建立server。修改網路設定，設定跟隨開機啟動。
+&lt;/p&gt;
+&lt;p&gt;將網路設定，設定成純 IPv6 設定。&lt;/p&gt;
+&lt;p&gt;IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用。&lt;/p&gt;
+&lt;p&gt;可將網路設定檔更名，以便之後設定時修改。
+&lt;pre class="brush: jscript"&gt;
+sudo mv *.yaml net.yaml
+&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;設定 uwsgi service&lt;/h2&gt;
+&lt;p&gt;以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target&lt;/p&gt;
+&lt;p&gt;[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini&lt;/p&gt;
+&lt;p&gt;[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+接著將 cmsimde 服務設為隨系統開機啟動:&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+
+&lt;p&gt;若要取消 cmsimde 服務隨系統開機啟動：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl disable cmsimde
+&lt;/pre&gt;
+
+&lt;p&gt;手動啟動 cmsimde.service 服務&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl start cmsimde
+&lt;/pre&gt;
+
+&lt;p&gt;手動停止 cmsimde.service 服務&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl stop cmsimde
+&lt;/pre&gt;</content><category term="日誌"></category></entry><entry><title>Jul 19, 2020 日誌</title><link href=".%5CJul_19_%202020.html" rel="alternate"></link><published>2020-07-19T00:00:00+08:00</published><updated>2020-07-19T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-19:.\Jul_19_ 2020.html</id><summary type="html">&lt;p&gt;整理Jul,15~18的blog。
 </summary><content type="html">&lt;p&gt;整理Jul,15~18的blog。
 
 今天在整理15~18日誌，還有整理房間。&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 18, 2020 日誌</title><link href=".%5CJul_18_%202020.html" rel="alternate"></link><published>2020-07-18T00:00:00+08:00</published><updated>2020-07-18T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-18:.\Jul_18_ 2020.html</id><summary type="html">&lt;p&gt;練習建立server。
@@ -51,7 +92,7 @@ sudo apt install python3-pip
 
 &lt;p&gt;安裝 cmsimde 所需的模組&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
-sudo pip install flask flask_cors bs4 lxml
+sudo pip3 install flask flask_cors bs4 lxml
 &lt;/pre&gt;
 
 &lt;p&gt;安裝 uwsgi 、 python plugin&lt;/p&gt;
@@ -94,7 +135,7 @@ git clone https://github.com/mdecourse/cmsimde.git
 
 &lt;p&gt;將 up_dir 目錄裡面的資料複製到 test_site 目錄下&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
-cp -r /home/kmol2020/test_site/cmsimde/up-dir/* /home/kmol2020/test_site
+cp -r /home/kmol2020/test_site/cmsimde/up_dir/* /home/kmol2020/test_site
 &lt;/pre&gt;
 
 &lt;p&gt;更改 root 預設讀取目錄&lt;/p&gt;

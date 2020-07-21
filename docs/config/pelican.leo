@@ -102,6 +102,9 @@
 <v t="leo.20200719232359.1"><vh>@clean Jul_19_2020.md</vh>
 <v t="leo.20200719232359.2"><vh>9163369466257328113</vh></v>
 </v>
+<v t="leo.20200720214341.1"><vh>@clean Jul_20_2020.md</vh>
+<v t="leo.20200720214341.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -1042,7 +1045,7 @@ sudo apt install python3-pip
 安裝 cmsimde 所需的模組
 
 &lt;pre class="brush: jscript"&gt;
-sudo pip install flask flask_cors bs4 lxml
+sudo pip3 install flask flask_cors bs4 lxml
 &lt;/pre&gt;
 
 安裝 uwsgi 、 python plugin
@@ -1096,7 +1099,7 @@ git clone https://github.com/mdecourse/cmsimde.git
 將 up_dir 目錄裡面的資料複製到 test_site 目錄下
 
 &lt;pre class="brush: jscript"&gt;
-cp -r /home/kmol2020/test_site/cmsimde/up-dir/* /home/kmol2020/test_site
+cp -r /home/kmol2020/test_site/cmsimde/up_dir/* /home/kmol2020/test_site
 &lt;/pre&gt;
 
 更改 root 預設讀取目錄
@@ -1210,6 +1213,7 @@ sudo /etc/init.d/nginx restart
 &lt;pre class="brush: jscript"&gt;
 /usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 &lt;/pre&gt;
+
 @others</t>
 <t tx="leo.20200719104521.2"></t>
 <t tx="leo.20200719222434.1">@language md
@@ -1297,6 +1301,69 @@ Author: 40723150
 今天在整理15~18日誌，還有整理房間。
 @others</t>
 <t tx="leo.20200719232359.2"></t>
+<t tx="leo.20200720214341.1">@language md
+---
+Title: Jul 20, 2020 日誌
+Date: Jul 20, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_20_ 2020
+Author: 40723150
+---
+練習建立server。修改網路設定，設定跟隨開機啟動。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+將網路設定，設定成純 IPv6 設定。
+
+IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用。
+
+可將網路設定檔更名，以便之後設定時修改。
+&lt;pre class="brush: jscript"&gt;
+sudo mv *.yaml net.yaml
+&lt;/pre&gt;
+##設定 uwsgi service
+
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+接著將 cmsimde 服務設為隨系統開機啟動:
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+
+若要取消 cmsimde 服務隨系統開機啟動：
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl disable cmsimde
+&lt;/pre&gt;
+
+手動啟動 cmsimde.service 服務
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl start cmsimde
+&lt;/pre&gt;
+
+手動停止 cmsimde.service 服務
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl stop cmsimde
+&lt;/pre&gt;
+
+@others</t>
+<t tx="leo.20200720214341.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
