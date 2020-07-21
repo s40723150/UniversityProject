@@ -83,27 +83,45 @@
 </v>
 <v t="leo.20200714060405.1"><vh>@clean Jul_13_2020.md</vh>
 <v t="leo.20200714060405.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200721133025.1"><vh>9110882085790547281</vh></v>
 </v>
 <v t="leo.20200715232947.1"><vh>@clean Jul_14_2020.md</vh>
-<v t="leo.20200715232947.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200715232947.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053030.1"><vh>6464713023864677340</vh></v>
+</v>
 </v>
 <v t="leo.20200719102133.1"><vh>@clean Jul_15_2020.md</vh>
-<v t="leo.20200719102133.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200719102133.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053053.1"><vh>5349542328244307934</vh></v>
+</v>
 </v>
 <v t="leo.20200719232315.1"><vh>@clean Jul_16_2020.md</vh>
 <v t="leo.20200719232315.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200721053117.1"><vh>1829935802534775787</vh></v>
 </v>
 <v t="leo.20200719104521.1"><vh>@clean Jul_17_2020.md</vh>
-<v t="leo.20200719104521.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200719104521.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053343.1"><vh>4242602516446179992</vh></v>
+</v>
 </v>
 <v t="leo.20200719222434.1"><vh>@clean Jul_18_2020.md</vh>
-<v t="leo.20200719222434.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200719222434.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053420.1"><vh>7129215198676915865</vh></v>
+</v>
 </v>
 <v t="leo.20200719232359.1"><vh>@clean Jul_19_2020.md</vh>
-<v t="leo.20200719232359.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200719232359.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053502.1"><vh>6304389780887038156</vh></v>
+</v>
 </v>
 <v t="leo.20200720214341.1"><vh>@clean Jul_20_2020.md</vh>
-<v t="leo.20200720214341.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200720214341.2"><vh>9163369466257328113</vh>
+<v t="leo.20200721053608.1"><vh>4104236337467286607</vh></v>
+</v>
+</v>
+<v t="leo.20200721054130.1"><vh>@clean Jul_21_2020.md</vh>
+<v t="leo.20200721054130.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200721054130.3"><vh>1829935802534775787</vh></v>
 </v>
 </v>
 </v>
@@ -379,9 +397,9 @@ try:
     # 取得使用者所建立網誌名稱
     blogs = blogs.listByUser(userId='self').execute()
     #blog_id = blogs["items"][0]["id"]
-    blog_id = "7949497010793271992"#機械設計與精密機械網誌
+    #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    #blog_id = "9163369466257328113"#UniversityProject 日誌
+    blog_id = "9163369466257328113"#UniversityProject 日誌
     # 設法取得原 post 的 id
     postid_outline = p.getLastChild()
     # 直接從標題取得 post 的 id 號碼
@@ -995,7 +1013,7 @@ Author: 40723150
 Title: Jul 14, 2020 日誌
 Date: Jul 14, 2020
 Category: 日誌
-Tags: 
+Tags: 影像辨識
 Slug: Jul_14_ 2020
 Author: 40723150
 ---
@@ -1025,7 +1043,7 @@ Author: 40723150
 Title: Jul 17, 2020 日誌
 Date: Jul 17, 2020
 Category: 日誌
-Tags: 
+Tags: nginx,uwsgi,key,crt,pip
 Slug: Jul_17_ 2020
 Author: 40723150
 ---
@@ -1221,7 +1239,7 @@ sudo /etc/init.d/nginx restart
 Title: Jul 18, 2020 日誌
 Date: Jul 18, 2020
 Category: 日誌
-Tags: 
+Tags: nginx,uwsgi,pip
 Slug: Jul_18_ 2020
 Author: 40723150
 ---
@@ -1306,7 +1324,7 @@ Author: 40723150
 Title: Jul 20, 2020 日誌
 Date: Jul 20, 2020
 Category: 日誌
-Tags: 
+Tags: mv,IPv6,開機啟動
 Slug: Jul_20_ 2020
 Author: 40723150
 ---
@@ -1324,6 +1342,7 @@ sudo mv *.yaml net.yaml
 ##設定 uwsgi service
 
 以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+
 &lt;pre class="brush: jscript"&gt;
 [Unit]
 Description=uWSGI to serve CMSiMDE 
@@ -1338,6 +1357,7 @@ ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 [Install]
 WantedBy=multi-user.target
 &lt;/pre&gt;
+
 接著將 cmsimde 服務設為隨系統開機啟動:
 
 &lt;pre class="brush: jscript"&gt;
@@ -1364,6 +1384,355 @@ sudo systemctl stop cmsimde
 
 @others</t>
 <t tx="leo.20200720214341.2"></t>
+<t tx="leo.20200721053030.1"></t>
+<t tx="leo.20200721053053.1"></t>
+<t tx="leo.20200721053117.1"></t>
+<t tx="leo.20200721053343.1"></t>
+<t tx="leo.20200721053420.1"></t>
+<t tx="leo.20200721053502.1"></t>
+<t tx="leo.20200721053608.1"></t>
+<t tx="leo.20200721054130.1">@language md
+---
+Title: Jul 21, 2020 日誌
+Date: Jul 21, 2020
+Category: 日誌
+Tags: module,server,netplan,nginx,uwsgi,key,crt,pip,mv,IPv6,開機啟動
+Slug: Jul_21_ 2020
+Author: 40723150
+---
+# 練習建立 Ubuntu 20.04 server
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+##查詢 IP 位址(已安裝 net-tools)
+
+&lt;pre class="brush: jscript"&gt;
+ifconfig 
+&lt;/pre&gt;
+
+### netplan 設定 (only IPv6) :
+
+重新命名 00-installer-config.yaml 成 net.yaml，為了之後修改網路設定時方便輸入。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/netplan
+sudo mv *.yaml net.yaml
+&lt;/pre&gt;
+
+修改網路設定檔
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi net.yaml
+&lt;/pre&gt;
+
+將網路設定成純 IPv6 環境，IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用，在設定位址時需要注意一下。
+
+設定檔內容(net.yaml):
+
+&lt;pre class="brush: jscript"&gt;
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s25:
+      addresses:
+              - 2001:288:6004:17:02:cad::3150/64
+      gateway6: 2001:288:6004:17::254
+      nameservers:
+              addresses:
+                      - 2001:b000:168::1
+  version: 2
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo netplan apply
+&lt;/pre&gt;
+
+### proxy 設定(only IPv6) :
+
+在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機(porxy)。
+
+到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/apt/apt.conf.d
+sudo vi proxy.conf
+&lt;/pre&gt;
+
+proxy 設定檔內容(proxy.conf)：
+
+&lt;pre class="brush: jscript"&gt;
+Acquire::http::proxy "http://[2001:288:6004:17::69]:3128";
+&lt;/pre&gt;
+
+修改後，更新 apt 設定。
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt update
+&lt;/pre&gt;
+
+---
+
+## 導入所需模組
+
+安裝 python3 的 pip 模組
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install python3-pip
+&lt;/pre&gt;
+
+安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)
+
+&lt;pre class="brush: jscript"&gt;
+sudo pip3 install flask flask_cors bs4 lxml
+&lt;/pre&gt;
+
+安裝 uwsgi 和 python plugin
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install uwsgi uwsgi-plugin-python3
+&lt;/pre&gt;
+
+安裝 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt install nginx
+&lt;/pre&gt;
+
+---
+
+## 建立 key and crt
+
+練習時建立自己認證的 key 和 crt 。如果實際要架設 server 就需要第三方任成的 key。
+key 和 crt 放在 /home/kmol2020 目錄下
+
+&lt;pre class="brush: jscript"&gt;
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
+---
+
+## 設定 nginx
+
+###導入 CMSIMDE 模組
+
+在 git clone 前先設定 git 會用到的 proxy設定 
+
+&lt;pre class="brush: jscript"&gt;
+git config --global http.proxy http://[2001:288:6004:17::69]:3128
+&lt;/pre&gt;
+
+為了練習架設網站，所以新建一個 3150_site 目錄在 /home/kmol2020 目錄下，專門來放 cmsimde 的資料。
+
+&lt;pre class="brush: jscript"&gt;
+mkdir 3150_site
+cd 3150_site
+git clone https://github.com/mdecourse/cmsimde.git
+&lt;/pre&gt;
+
+將 up_dir 目錄下的資料複製一份到 3150_site目錄，為了讓之後啟動網站時讀取資料的配置。
+
+&lt;pre class="brush: jscript"&gt;
+cp -r /home/kmol2020/3150_site/cmsimde/up_dir/* /home/kmol2020/3150_site
+&lt;/pre&gt;
+
+### 設定 nginx
+
+將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx
+sudo vi nginx.conf
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+include /etc/nginx/sites-available/*
+&lt;/pre&gt;
+
+修改 sites-available 裡的設定，將 root 的讀取目錄換到 /home/kmol2020/3150_site 。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx/sites-available
+sudo vi default
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+#root /var/www/html
+root /home/kmol2020/3150_site;
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+導入動態網站
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi /etc/nginx/sites-available/default
+&lt;/pre&gt;
+
+加入 port 9443的設定，設定內如下：
+
+&lt;pre class="brush: jscript"&gt;
+server {
+
+listen 9443 ssl;
+listen [::]:9443 ssl;
+
+# 指定 static 所在位置
+location /static {
+alias /home/kmol2020/3150_site/cmsimde/static/;
+}
+
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
+
+ssl_certificate /home/kmol2020/localhost.crt;
+ssl_certificate_key /home/kmol2020/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
+}
+&lt;/pre&gt;
+
+在 nginx 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。
+
+因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。
+
+開啟 uwsgi 功能
+
+&lt;pre class="brush: jscript"&gt;
+cd /home/kmol2020/3150_site
+sudo vi init.py
+&lt;/pre&gt;
+
+確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動
+
+&lt;pre class="brush: jscript"&gt;
+uwsgi = True
+&lt;/pre&gt;
+
+設定 uwsgi.ini
+
+在 /home/kmol2020 新建 uwsgi_ini 目錄，專門存放 uwsgi 的設定。
+
+&lt;pre class="brush: jscript"&gt;
+mkdir uwsgi_ini
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi uwsgi.ini
+&lt;/pre&gt;
+
+uwsgi.ini 的設定內容如下：
+
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = kmol2020
+gid = kmol2020
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/kmol2020/3150_site/cmsimde
+wsgi-file = /home/kmol2020/3150_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有誤。訂正完重啟就可以了。
+
+重新啟動 Nginx 並利用 uwsgi 指令測試
+手動啟動 uwsgi 主機的指令︰
+
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+&lt;/pre&gt;
+
+此時可以測試是否順利連上 [http://[2001:288:6004:17:2:cad:0:3150]:80](http://[2001:288:6004:17:2:cad:0:3150]:80)和 [http://[2001:288:6004:17:2:cad:0:3150]:9443](https://[2001:288:6004:17:2:cad:0:3150]:9443)，若沒問題再設定防火牆。
+
+## 防火牆設定 (ufw)
+
+以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。
+
+&lt;pre class="brush: jscript"&gt;
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+ufw deny 9443
+ufw enable
+&lt;/pre&gt;
+
+若要退出 root 模式： exit
+
+假如網路不在系上網段, 則需要設定 140.130.17.4:3128 作為代理主機才能連線.
+
+因為 ufw 設定都必須在 sudo 權限下, 因此使用 sudo -s 直接以 root 身份執行後續的指令. 初學者在練習 ufw 時可以在虛擬主機中設定, 避免在遠端連線時, 因設定錯誤而無法 ssh 至主機.
+
+### 設定 uwsgi service
+
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+
+接著將 cmsimde 服務設為隨系統開機啟動
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+
+若要取消 cmsimde 服務隨系統開機啟動
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl disable cmsimde
+&lt;/pre&gt;
+
+手動啟動 cmsimde.service 服務
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl start cmsimde
+&lt;/pre&gt;
+
+手動停止 cmsimde.service 服務
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl stop cmsimde
+&lt;/pre&gt;
+@others</t>
+<t tx="leo.20200721054130.2"></t>
+<t tx="leo.20200721054130.3"></t>
+<t tx="leo.20200721133025.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

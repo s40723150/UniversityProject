@@ -46,6 +46,9 @@
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="mv">
+        <meta name="tags" content="IPv6">
+        <meta name="tags" content="開機啟動">
 
 
 
@@ -61,6 +64,9 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="mv"/>
+<meta property="article:tag" content="IPv6"/>
+<meta property="article:tag" content="開機啟動"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -230,20 +236,23 @@ init_mathjax();
 sudo mv *.yaml net.yaml
 </pre></p>
 <h2>設定 uwsgi service</h2>
-<p>以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:
+<p>以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:</p>
 <pre class="brush: jscript">
 [Unit]
 Description=uWSGI to serve CMSiMDE 
-After=network.target</p>
-<p>[Service]
+After=network.target
+
+[Service]
 User=kmol2020
 Group=kmol2020
 WorkingDirectory=/home/kmol2020/uwsgi_ini
-ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini</p>
-<p>[Install]
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
 WantedBy=multi-user.target
 </pre>
-接著將 cmsimde 服務設為隨系統開機啟動:</p>
+
+<p>接著將 cmsimde 服務設為隨系統開機啟動:</p>
 <pre class="brush: jscript">
 sudo systemctl enable cmsimde
 </pre>
@@ -278,6 +287,8 @@ sudo systemctl stop cmsimde
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/mv.html">mv</a><a href="./tag/ipv6.html">IPv6</a><a href="./tag/kai-ji-qi-dong.html">開機啟動</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -286,6 +297,13 @@ sudo systemctl stop cmsimde
 
 
                 <aside class="post-nav">
+                    <a class="post-nav-next" href="./Jul_21_ 2020.html">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-left"></i>
+                                <h2 class="post-nav-title">Jul 21, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">練習建立 Ubuntu 20.04 server</p>
+                        </section>
+                    </a>
                     <a class="post-nav-prev" href="./Jul_19_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>

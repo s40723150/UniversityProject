@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Jul 17, 2020 日誌</title>
+  <title>Jul 21, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,37 +40,49 @@
   <![endif]-->
 
 
-    <link href="./Jul_17_ 2020.html" rel="canonical" />
+    <link href="./Jul_21_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="練習建立server。">
+        <meta name="description" content="練習建立 Ubuntu 20.04 server">
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="module">
+        <meta name="tags" content="server">
+        <meta name="tags" content="netplan">
         <meta name="tags" content="nginx">
         <meta name="tags" content="uwsgi">
         <meta name="tags" content="key">
         <meta name="tags" content="crt">
         <meta name="tags" content="pip">
+        <meta name="tags" content="mv">
+        <meta name="tags" content="IPv6">
+        <meta name="tags" content="開機啟動">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Jul 17, 2020 日誌"/>
-<meta property="og:description" content="練習建立server。"/>
+<meta property="og:title" content="Jul 21, 2020 日誌"/>
+<meta property="og:description" content="練習建立 Ubuntu 20.04 server"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Jul_17_ 2020.html"/>
+<meta property="og:url" content="./Jul_21_ 2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-07-17 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-07-21 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="module"/>
+<meta property="article:tag" content="server"/>
+<meta property="article:tag" content="netplan"/>
 <meta property="article:tag" content="nginx"/>
 <meta property="article:tag" content="uwsgi"/>
 <meta property="article:tag" content="key"/>
 <meta property="article:tag" content="crt"/>
 <meta property="article:tag" content="pip"/>
+<meta property="article:tag" content="mv"/>
+<meta property="article:tag" content="IPv6"/>
+<meta property="article:tag" content="開機啟動"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -79,9 +91,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Jul 17, 2020 日誌",
-  "headline": "Jul 17, 2020 日誌",
-  "datePublished": "2020-07-17 00:00:00+08:00",
+  "name": "Jul 21, 2020 日誌",
+  "headline": "Jul 21, 2020 日誌",
+  "datePublished": "2020-07-21 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -89,8 +101,8 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Jul_17_ 2020.html",
-  "description": "練習建立server。"
+  "url": "./Jul_21_ 2020.html",
+  "description": "練習建立 Ubuntu 20.04 server"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -205,11 +217,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Jul 17, 2020 日誌</h1>
+        <h1 class="post-title">Jul 21, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週五 17 七月 2020">週五 17 七月 2020</time>
+            | <time datetime="週二 21 七月 2020">週二 21 七月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -231,64 +243,126 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>練習建立server。
-</p>
-<h2>Ubuntu 20.04 server</h2>
-<h3>安裝會使用到的模組</h3>
-<p>安裝 pip 模組</p>
+                <h1>練習建立 Ubuntu 20.04 server</h1>
+
+
+<h2>查詢 IP 位址(已安裝 net-tools)</h2>
+<pre class="brush: jscript">
+ifconfig 
+</pre>
+
+<h3>netplan 設定 (only IPv6) :</h3>
+<p>重新命名 00-installer-config.yaml 成 net.yaml，為了之後修改網路設定時方便輸入。</p>
+<pre class="brush: jscript">
+cd /etc/netplan
+sudo mv *.yaml net.yaml
+</pre>
+
+<p>修改網路設定檔</p>
+<pre class="brush: jscript">
+sudo vi net.yaml
+</pre>
+
+<p>將網路設定成純 IPv6 環境，IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用，在設定位址時需要注意一下。</p>
+<p>設定檔內容(net.yaml):</p>
+<pre class="brush: jscript">
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s25:
+      addresses:
+              - 2001:288:6004:17:02:cad::3150/64
+      gateway6: 2001:288:6004:17::254
+      nameservers:
+              addresses:
+                      - 2001:b000:168::1
+  version: 2
+</pre>
+
+<pre class="brush: jscript">
+sudo netplan apply
+</pre>
+
+<h3>proxy 設定(only IPv6) :</h3>
+<p>在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機(porxy)。</p>
+<p>到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。</p>
+<pre class="brush: jscript">
+cd /etc/apt/apt.conf.d
+sudo vi proxy.conf
+</pre>
+
+<p>proxy 設定檔內容(proxy.conf)：</p>
+<pre class="brush: jscript">
+Acquire::http::proxy "http://[2001:288:6004:17::69]:3128";
+</pre>
+
+<p>修改後，更新 apt 設定。</p>
+<pre class="brush: jscript">
+sudo apt update
+</pre>
+
+<hr>
+<h2>導入所需模組</h2>
+<p>安裝 python3 的 pip 模組</p>
 <pre class="brush: jscript">
 sudo apt install python3-pip
 </pre>
 
-<p>安裝 cmsimde 所需的模組</p>
+<p>安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)</p>
 <pre class="brush: jscript">
 sudo pip3 install flask flask_cors bs4 lxml
 </pre>
 
-<p>安裝 uwsgi 、 python plugin</p>
+<p>安裝 uwsgi 和 python plugin</p>
 <pre class="brush: jscript">
-sudo apt install uwsgi uwsgi-plugin-python3 
+sudo apt install uwsgi uwsgi-plugin-python3
 </pre>
 
-<p>安裝 python 模組 uwsgi、nginx</p>
+<p>安裝 nginx</p>
 <pre class="brush: jscript">
-sudo apt install uwsgi
 sudo apt install nginx
 </pre>
 
 <hr>
-<h3>建立 key 和 crt</h3>
-<p>在 /home/kmol2020 目錄下執行</p>
+<h2>建立 key and crt</h2>
+<p>練習時建立自己認證的 key 和 crt 。如果實際要架設 server 就需要第三方任成的 key。
+key 和 crt 放在 /home/kmol2020 目錄下</p>
 <pre class="brush: jscript">
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
 </pre>
 
 <hr>
+<h2>設定 nginx</h2>
+<h3>導入 CMSIMDE 模組</h3>
+<p>在 git clone 前先設定 git 會用到的 proxy設定 </p>
+<pre class="brush: jscript">
+git config --global http.proxy http://[2001:288:6004:17::69]:3128
+</pre>
+
+<p>為了練習架設網站，所以新建一個 3150_site 目錄在 /home/kmol2020 目錄下，專門來放 cmsimde 的資料。</p>
+<pre class="brush: jscript">
+mkdir 3150_site
+cd 3150_site
+git clone https://github.com/mdecourse/cmsimde.git
+</pre>
+
+<p>將 up_dir 目錄下的資料複製一份到 3150_site目錄，為了讓之後啟動網站時讀取資料的配置。</p>
+<pre class="brush: jscript">
+cp -r /home/kmol2020/3150_site/cmsimde/up_dir/* /home/kmol2020/3150_site
+</pre>
+
 <h3>設定 nginx</h3>
+<p>將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。</p>
 <pre class="brush: jscript">
 cd /etc/nginx
 sudo vi nginx.conf
 </pre>
 
-<p>將 nginx.conf 第62行︰
-sites-enabled/<em> 換成 sites-available/</em>
 <pre class="brush: jscript">
-sites-available/*
-</pre></p>
-<p>導入 cmsimde </p>
-<p>在 /home/kmol2020 目錄下新增一個 test_site 目錄，，將 cmsimde clone 下來。</p>
-<pre class="brush: jscript">
-mkdir test_site
-cd test_site
-git clone https://github.com/mdecourse/cmsimde.git
+include /etc/nginx/sites-available/*
 </pre>
 
-<p>將 up_dir 目錄裡面的資料複製到 test_site 目錄下</p>
-<pre class="brush: jscript">
-cp -r /home/kmol2020/test_site/cmsimde/up_dir/* /home/kmol2020/test_site
-</pre>
-
-<p>更改 root 預設讀取目錄</p>
+<p>修改 sites-available 裡的設定，將 root 的讀取目錄換到 /home/kmol2020/3150_site 。</p>
 <pre class="brush: jscript">
 cd /etc/nginx/sites-available
 sudo vi default
@@ -296,7 +370,7 @@ sudo vi default
 
 <pre class="brush: jscript">
 #root /var/www/html
-root /home/kmol2020/test_site
+root /home/kmol2020/3150_site;
 </pre>
 
 <p>重啟 nginx</p>
@@ -304,13 +378,12 @@ root /home/kmol2020/test_site
 sudo /etc/init.d/nginx restart
 </pre>
 
-<p>導入 uwsgi 動態網站</p>
+<p>導入動態網站</p>
 <pre class="brush: jscript">
 sudo vi /etc/nginx/sites-available/default
 </pre>
 
-<p>將 nginx 設定檔導入 uwsgi_params。其網頁根目錄的資料可以由 uwsgi 網站程式提供</p>
-<p>因為 uwsgi 無 SSL 設置, 因此當內部動態網站以 localhost:8080 將資料送交 Nginx 之後, 可以由 Nginx 提供聯外的 SSL 服務.</p>
+<p>加入 port 9443的設定，設定內如下：</p>
 <pre class="brush: jscript">
 server {
 
@@ -319,7 +392,7 @@ listen [::]:9443 ssl;
 
 # 指定 static 所在位置
 location /static {
-alias /home/kmol2020/test_site/cmsimde/static/;
+alias /home/kmol2020/3150_site/cmsimde/static/;
 }
 
 location / {
@@ -341,19 +414,21 @@ try_files $uri $uri/ =404;
 }
 </pre>
 
-<p>開啟 ini.py 的 uwsgi 功能</p>
+<p>在 nginx 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。</p>
+<p>因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。</p>
+<p>開啟 uwsgi 功能</p>
 <pre class="brush: jscript">
-cd /home/kmol2020/test_site
+cd /home/kmol2020/3150_site
 sudo vi init.py
 </pre>
 
+<p>確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動</p>
 <pre class="brush: jscript">
 uwsgi = True
 </pre>
 
-<p>確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動</p>
 <p>設定 uwsgi.ini</p>
-<p>在 /home/kmol2020 目錄下新建 uwsgi_ini 的子目錄</p>
+<p>在 /home/kmol2020 新建 uwsgi_ini 目錄，專門存放 uwsgi 的設定。</p>
 <pre class="brush: jscript">
 mkdir uwsgi_ini
 </pre>
@@ -362,6 +437,7 @@ mkdir uwsgi_ini
 sudo vi uwsgi.ini
 </pre>
 
+<p>uwsgi.ini 的設定內容如下：</p>
 <pre class="brush: jscript">
 [uwsgi]
 socket = :8080
@@ -372,8 +448,8 @@ plugin = python3
 master = true
 process = 4
 threads = 2
-chdir = /home/kmol2020/test_site/cmsimde
-wsgi-file = /home/kmol2020/test_site/cmsimde/wsgi.py
+chdir = /home/kmol2020/3150_site/cmsimde
+wsgi-file = /home/kmol2020/3150_site/cmsimde/wsgi.py
 </pre>
 
 <p>重啟 nginx</p>
@@ -381,30 +457,85 @@ wsgi-file = /home/kmol2020/test_site/cmsimde/wsgi.py
 sudo /etc/init.d/nginx restart
 </pre>
 
-<p>若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有打錯。修改完再重啟一次就可以了。</p>
+<p>若出現錯誤，有可能是 /etc/nginx/sites-available/default 內容有誤。訂正完重啟就可以了。</p>
 <p>重新啟動 Nginx 並利用 uwsgi 指令測試
 手動啟動 uwsgi 主機的指令︰</p>
 <pre class="brush: jscript">
 /usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 </pre>
+
+<p>此時可以測試是否順利連上 <a href="http://[2001:288:6004:17:2:cad:0:3150]:80">http://[2001:288:6004:17:2:cad:0:3150]:80</a>和 <a href="https://[2001:288:6004:17:2:cad:0:3150]:9443">http://[2001:288:6004:17:2:cad:0:3150]:9443</a>，若沒問題再設定防火牆。</p>
+<h2>防火牆設定 (ufw)</h2>
+<p>以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。</p>
+<pre class="brush: jscript">
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+ufw deny 9443
+ufw enable
+</pre>
+
+<p>若要退出 root 模式： exit</p>
+<p>假如網路不在系上網段, 則需要設定 140.130.17.4:3128 作為代理主機才能連線.</p>
+<p>因為 ufw 設定都必須在 sudo 權限下, 因此使用 sudo -s 直接以 root 身份執行後續的指令. 初學者在練習 ufw 時可以在虛擬主機中設定, 避免在遠端連線時, 因設定錯誤而無法 ssh 至主機.</p>
+<h3>設定 uwsgi service</h3>
+<p>以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下:</p>
+<pre class="brush: jscript">
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<p>接著將 cmsimde 服務設為隨系統開機啟動</p>
+<pre class="brush: jscript">
+sudo systemctl enable cmsimde
+</pre>
+
+<p>若要取消 cmsimde 服務隨系統開機啟動</p>
+<pre class="brush: jscript">
+sudo systemctl disable cmsimde
+</pre>
+
+<p>手動啟動 cmsimde.service 服務</p>
+<pre class="brush: jscript">
+sudo systemctl start cmsimde
+</pre>
+
+<p>手動停止 cmsimde.service 服務</p>
+<pre class="brush: jscript">
+sudo systemctl stop cmsimde
+</pre>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Jul 17, 2020 日誌&amp;url=./Jul_17_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Jul 21, 2020 日誌&amp;url=./Jul_21_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_17_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_21_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_17_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_21_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
                 <aside class="post-tags">
-<a href="./tag/nginx.html">nginx</a><a href="./tag/uwsgi.html">uwsgi</a><a href="./tag/key.html">key</a><a href="./tag/crt.html">crt</a><a href="./tag/pip.html">pip</a>                </aside>
+<a href="./tag/module.html">module</a><a href="./tag/server.html">server</a><a href="./tag/netplan.html">netplan</a><a href="./tag/nginx.html">nginx</a><a href="./tag/uwsgi.html">uwsgi</a><a href="./tag/key.html">key</a><a href="./tag/crt.html">crt</a><a href="./tag/pip.html">pip</a><a href="./tag/mv.html">mv</a><a href="./tag/ipv6.html">IPv6</a><a href="./tag/kai-ji-qi-dong.html">開機啟動</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -413,18 +544,11 @@ sudo /etc/init.d/nginx restart
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Jul_18_ 2020.html">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Jul 18, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">練習建立server。</p>
-                        </section>
-                    </a>
-                    <a class="post-nav-prev" href="./Jul_16_ 2020.html">
+                    <a class="post-nav-prev" href="./Jul_20_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Jul 16, 2020 日誌</h2>
-                            <p class="post-nav-excerpt"></p>
+                                <h2 class="post-nav-title">Jul 20, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">練習建立server。修改網路設定，設定跟隨開機啟動。</p>
                         </section>
                     </a>
                     <div class="clear"></div>
