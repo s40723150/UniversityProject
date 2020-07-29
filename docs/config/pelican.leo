@@ -124,6 +124,27 @@
 <v t="leo.20200721071915.1"><vh>7195412831705999830</vh></v>
 </v>
 </v>
+<v t="leo.20200728143649.1"><vh>@clean Jul_22_2020.md</vh>
+<v t="leo.20200728143649.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144200.1"><vh>@clean Jul_23_2020.md</vh>
+<v t="leo.20200728144200.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144248.1"><vh>@clean Jul_24_2020.md</vh>
+<v t="leo.20200728144248.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144228.1"><vh>@clean Jul_25_2020.md</vh>
+<v t="leo.20200728144228.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144250.1"><vh>@clean Jul_26_2020.md</vh>
+<v t="leo.20200728144250.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144253.1"><vh>@clean Jul_27_2020.md</vh>
+<v t="leo.20200728144253.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200728144348.1"><vh>@clean Jul_28_2020.md</vh>
+<v t="leo.20200728144348.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -1734,6 +1755,176 @@ sudo systemctl stop cmsimde
 <t tx="leo.20200721054130.2"></t>
 <t tx="leo.20200721071915.1"></t>
 <t tx="leo.20200721133025.1"></t>
+<t tx="leo.20200728143649.1">@language md
+---
+Title: Jul 22, 2020 日誌
+Date: Jul 22, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_22_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200728143649.2"></t>
+<t tx="leo.20200728144200.1">@language md
+---
+Title: Jul 23, 2020 日誌
+Date: Jul 23, 2020
+Category: 日誌
+Tags: opencv,numpy
+Slug: Jul_23_ 2020
+Author: 40723150
+---
+學習如何使用opencv。CH1~2。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+#Opencv
+
+可用於影像處理、電腦視覺、影像辨識等。所以想說先去了解 Opencv 是要如何使用。目前是參考這個影片自己練習。
+
+&lt;iframe width="1280" height="720" src="https://www.youtube.com/embed/WQeoO7MI0Bs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+[網頁程式碼](https://www.murtazahassan.com/learn-opencv-3hours/)
+
+## Chapter 1 影像讀取
+
+如何將讀取到的影像、影片或是 Webcam 用 Opencv 呼叫視窗顯示
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+
+#------part 1 show the lena image
+'''
+img = cv2.imread("lena.png") #read the lena.png
+
+cv2.imshow("Output",img) #show lena.png in "Output" window
+cv2.waitKey(0) #"0" is mean: hold previous command to user press  anykey.
+'''
+#------part 2 show the mp4 video
+'''
+cap= cv2.VideoCapture("test_video.mp4")#read the test_video.mp4
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Video",img)
+    if cv2.waitKey(3) &amp; 0xFF ==ord('q'):
+        break
+'''
+#------part 3 show the webcam vidoe stream 
+
+cap = cv2.VideoCapture(0)#Catch camera0 video stream
+cap.set(3,640) #width of the frames in the video stream
+cap.set(4,480) #height of the frames in the video stream
+cap.set(10,128) #brightness of the image (only for cameras)
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Capture",img)
+    if cv2.waitKey(1) &amp; 0xFF ==ord('q'):
+        break
+&lt;/pre&gt;
+
+## Chapter 2
+
+將影像灰階、高斯模糊、Canny、
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+img = cv2.imread("lena.png")
+kernel = np.ones((5,5),np.uint8) #return a new array of given shape and type, filled with ones.
+
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) #convert lena.png to gray
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),0) #blurs an image using a Gaussian filter
+imgCanny = cv2.Canny(img,195,195) #blurs an image using a Canny filter
+imgDialation = cv2.dilate(imgCanny,kernel,iterations=1) #dilate Canny filter image
+imgEroded = cv2.erode(imgDialation,kernel,iterations=1)
+
+cv2.imshow("Gray Image",imgGray)
+cv2.imshow("Blur Image",imgBlur)
+cv2.imshow("Canny Image",imgCanny)
+cv2.imshow("Dilate Image",imgDialation)
+cv2.imshow("Eroded Image",imgEroded)
+cv2.waitKey(0)
+&lt;/pre&gt;
+
+@others</t>
+<t tx="leo.20200728144200.2"></t>
+<t tx="leo.20200728144228.1">@language md
+---
+Title: Jul 25, 2020 日誌
+Date: Jul 25, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_25_ 2020
+Author: 40723150
+---
+學opencv。CH4
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200728144228.2"></t>
+<t tx="leo.20200728144248.1">@language md
+---
+Title: Jul 24, 2020 日誌
+Date: Jul 24, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_24_ 2020
+Author: 40723150
+---
+學opencv。CH3
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200728144248.2"></t>
+<t tx="leo.20200728144250.1">@language md
+---
+Title: Jul 26, 2020 日誌
+Date: Jul 26, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_26_ 2020
+Author: 40723150
+---
+CH5。摸索 VScode 設定。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200728144250.2"></t>
+<t tx="leo.20200728144253.1">@language md
+---
+Title: Jul 27, 2020 日誌
+Date: Jul 27, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_27_ 2020
+Author: 40723150
+---
+學opencv。CH6
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others</t>
+<t tx="leo.20200728144253.2"></t>
+<t tx="leo.20200728144348.1">@language md
+---
+Title: Jul 28, 2020 日誌
+Date: Jul 28, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_28_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20200728144348.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
