@@ -42,7 +42,7 @@
 
     <link href="./Jul_10_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)">
+        <meta name="description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）">
 
         <meta name="author" content="40723150">
 
@@ -60,7 +60,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
 <meta property="og:title" content="Jul 10, 2020 日誌"/>
-<meta property="og:description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)"/>
+<meta property="og:description" content="整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./Jul_10_ 2020.html"/>
 <meta property="og:type" content="article"/>
@@ -94,7 +94,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./Jul_10_ 2020.html",
-  "description": "整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)"
+  "description": "整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -235,10 +235,10 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+                <p>整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）
 </p>
 <h2>Ubuntu 20.04</h2>
-<h2>動態網站(nginx、uwsgi)</h2>
+<h2>動態網站（nginx、uwsgi）</h2>
 <p>因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：</p>
 <p>sudo pip3 install flask flask_cors bs4 lxml</p>
 <p>uwsgi 所需模組：</p>
@@ -252,7 +252,7 @@ init_mathjax();
 <p>sudo pip3 install uwsgi</p>
 </li>
 </ol>
-<p>建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：</p>
+<p>建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定（/etc/nginx/sites-available/default 附加 server 設定 ）：</p>
 <p>建立 localhost.key 與 localhost.crt：</p>
 <pre class="brush: jscript">
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
@@ -309,7 +309,7 @@ chdir = /home/yen/cad1_site/cmsimde
 wsgi-file = /home/yen/cad1_site/cmsimde/wsgi.py
 </pre>
 
-<p>表示要使用 8080 傳輸資料 (必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應)並指定 wsgi.py 所在目錄。</p>
+<p>表示要使用 8080 傳輸資料 （必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應）並指定 wsgi.py 所在目錄。</p>
 <p>重新啟動 Nginx 並利用 uwsgi 指令測試
 手動啟動 uwsgi 主機的指令：</p>
 <pre class="brush: jscript">
@@ -381,7 +381,7 @@ sudo apt-get install certbot python3-certbot-nginx
 sudo certbot certonly --nginx
 sudo certbot renew --dry-run
 </pre></p>
-<h2>Ubuntu防火牆(ufw)</h2>
+<h2>Ubuntu防火牆（ufw）</h2>
 <pre class="brush: jscript">
 ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
 sudo -s

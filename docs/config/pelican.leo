@@ -190,7 +190,7 @@ Author: 40723150
 
 維修張元學長那屆當時組的3D印表機，目前發現兩個問題
 
-1. 噴嘴加熱(~~無法加熱~~)  已解決
+1. 噴嘴加熱（無法加熱）  已解決
 線路當時情況
 &lt;img alt="./../images/原始接線.jpg" height="774" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg" width="581"&gt;
 **原始接線**
@@ -201,7 +201,7 @@ Author: 40723150
 &lt;img alt="./../images/修正後_接線.jpg" height="729" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg" width="541"&gt;
 **修正後(噴頭接A13，底板加熱A14)**
 2. Z軸歸零後與底板還有一段距離
-我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，[repetier firmware]可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。
+我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All（同Auto home的功能），所以初步推測要校正Z軸原點的位置可能需要去修改firmware（韌體），在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，[repetier firmware]可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。
 
 [repetier firmware]: https://www.repetier.com/firmware/v091/
 
@@ -252,7 +252,7 @@ Author: 40723150
     - 單機
     - 網路
 3. 架設深度學習的主機
-學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
+學會Keras（Python編寫的開源神經網路庫）和Pytorch（開源的Python機器學習庫），看會Keras的電子書學會影像辨識手寫數字
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 @others</t>
 <t tx="leo.20200703123657.1"></t>
@@ -481,7 +481,7 @@ Author: 40723150
 
 轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部
 
-@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID
+@button 裡面的程式，.dat要指到對應的檔案（剛剛轉出來的），blog_id是對應到該網誌ID，post_id則是代    表文章的ID
 
 [新增 按鈕執行程式]: http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html
 [Google API]: https://console.developers.google.com/apis/credentials
@@ -506,7 +506,7 @@ Author: 40723150
 post_id 為 一串文章的ID
 已經將更新資料送往 M Blogger!
     
-文章內的圖片要放絕對位置(網址)
+文章內的圖片要放絕對位置（網址）
 
 若出現
 &lt;pre class="brush: jscript"&gt;
@@ -530,13 +530,13 @@ Author: 40723150
 Delta printer是運用 Stewart Platform 機構修改出來的機構，一樣有6個自由度。
 Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達到同的功能。
 
-正向(順向)運動學(forward kinematics)
+正向（順向）運動學（forward kinematics）
 
-由各關節變數求效應器(機構末端)的位置與方向角
+由各關節變數求效應器（機構末端）的位置與方向角
 
-反向運動學(invers kinematics)
+反向運動學（invers kinematics）
 
-由末端效應器(機構)的位置與方向求各關節變數
+由末端效應器（機構）的位置與方向求各關節變數
 
 @others</t>
 <t tx="leo.20200706221607.1">@language md
@@ -559,13 +559,13 @@ Author: 40723150
 
 ###step 1
 
-先開機要複製出去(資料來源)那台的電腦，在防寫卡畫面(選擇磁區畫面)按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。
+先開機要複製出去（資料來源）那台的電腦，在防寫卡畫面（選擇磁區畫面）按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。
 
 &lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A8%AD%E5%AE%9A_step1.jpg" width="450"&gt;
 
 ###step2
 
-設定好按套用設定，再進行網路拷貝(按網路拷貝按鈕)。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕
+設定好按套用設定，再進行網路拷貝（按網路拷貝按鈕）。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕
 
 &lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;
 
@@ -575,13 +575,13 @@ Author: 40723150
 
 * 增量拷貝：將選擇的磁區不同的內容、設定複製過去。覆蓋。
 
-選擇要複製的選項(視情況選擇網路拷貝或增量拷貝)，確定，等待登錄。
+選擇要複製的選項（視情況選擇網路拷貝或增量拷貝），確定，等待登錄。
 
 &lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp3.jpg" width="450"&gt;
 
 ###step4
 
-開啟接收端電腦，進入防寫卡畫面(選擇磁區畫面)按下"F9"進入防寫連線傳輸，輸入密碼。
+開啟接收端電腦，進入防寫卡畫面（選擇磁區畫面）按下"F9"進入防寫連線傳輸，輸入密碼。
 
 傳送端電腦，查看是否與連上接收端電腦連上，連上後清單列表上會顯示，按完成登錄，發送資料。
 
@@ -601,13 +601,13 @@ Author: 40723150
 
 clonezilla硬碟複製 開機前硬體確認：硬碟與光碟機連接順序。
 
-1.備份硬碟來源 (a硬碟)
+1.備份硬碟來源 （a硬碟）
 2. 光碟機
-3. 存放備份的硬碟(b硬碟)
+3. 存放備份的硬碟（b硬碟）
 
-P.S. 存放備份的硬碟(b硬碟)需要比 備份硬碟來源 (a硬碟) 的容量大一樣大或更大，比備份來源小會無法複製。
+P.S. 存放備份的硬碟（b硬碟）需要比 備份硬碟來源 （a硬碟） 的容量大一樣大或更大，比備份來源小會無法複製。
 
-利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟(到網路上下載clonezilla的iso檔燒錄到光碟裡)，開機時放入clonezilla光碟片，並進入"開機選單"(進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單)會些換到用光碟機開機(會去讀取clonezilla光碟的資料)。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟(disk to disk)進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項(包括其他未提到的設定)，開始複製硬碟，按Enter，2次y(確認覆蓋開機磁區)，複製的時間會因硬碟大小而有所差異(當時複製160GB大約是2分鐘)，複製完成後關機。
+利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟（到網路上下載clonezilla的iso檔燒錄到光碟裡），開機時放入clonezilla光碟片，並進入"開機選單"（進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單）會些換到用光碟機開機（會去讀取clonezilla光碟的資料）。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟（disk to disk）進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項（包括其他未提到的設定），開始複製硬碟，按Enter，2次y（確認覆蓋開機磁區），複製的時間會因硬碟大小而有所差異（當時複製160GB大約是2分鐘），複製完成後關機。
 
 P.S. clonezilla 硬碟複製是bit by bit，硬碟分割模式為MBR的硬碟在複製的時候開機磁區也會同時複製，不需特別抹除原來的MBR。若硬碟安裝作業系統時無法覆蓋先前的MBR磁區，就必須用clonezilla複製去覆蓋。
 
@@ -655,7 +655,7 @@ sudo vi /etc/hostname
 ###修改網路設定
 
 到/etc/netplan/net.yaml修改網路設定
-(sudo mv *.yaml net.yaml 將網路設定的yaml重新命名成 net.yaml)
+（sudo mv *.yaml net.yaml 將網路設定的yaml重新命名成 net.yaml）
 
 ###
 ssh 使用者@要連上的主機位置
@@ -678,22 +678,23 @@ Author: 40723150
 將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。
 2. 裁皮：
 將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。
-3. 染色、塗保色劑(可有可無)：
+3. 染色、塗保色劑（可有可無）：
 染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。
 4. 上床面處理劑：
-床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。
+床面處理劑是塗在毛面（非光滑面，較粗糙那面），讓毛面的纖維比較平整。
 5. 推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：
+
 
 
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
 7. 打孔：
 用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
 8. 縫合：
-用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。
+用蠟線縫合皮片，組合成皮件（像皮包、皮夾等）。手縫都使用雙針縫。
 9. 磨邊、上油：
-縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。
+縫合後將邊緣磨平（接縫處），在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。
 
 成品
 
@@ -719,7 +720,7 @@ Author: 40723150
 看nginx、uwsgi、ufw設定。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
-nginx：非同步框架的網頁伺服器。(內建支援uwsgi)
+nginx：非同步框架的網頁伺服器。（內建支援uwsgi）
 
 uwsgi：讓多個執行序常駐啟動，有任務進來時丟給這些執行序處理，處理完之後回傳
 
@@ -778,12 +779,12 @@ Tags: Ubuntu,20.04,nginx,uwsgi,數位簽章,Ubuntu防火牆,ufw
 Slug: Jul_10_ 2020
 Author: 40723150
 ---
-整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 ##Ubuntu 20.04
 
-##動態網站(nginx、uwsgi)
+##動態網站（nginx、uwsgi）
 
 因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：
 
@@ -800,7 +801,7 @@ uwsgi 所需模組：
     sudo pip3 install uwsgi
 
 
-建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：
+建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定（/etc/nginx/sites-available/default 附加 server 設定 ）：
 
 建立 localhost.key 與 localhost.crt：
 
@@ -866,7 +867,7 @@ chdir = /home/yen/cad1_site/cmsimde
 wsgi-file = /home/yen/cad1_site/cmsimde/wsgi.py
 &lt;/pre&gt;
 
-表示要使用 8080 傳輸資料 (必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應)並指定 wsgi.py 所在目錄。
+表示要使用 8080 傳輸資料 （必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應）並指定 wsgi.py 所在目錄。
 
 重新啟動 Nginx 並利用 uwsgi 指令測試
 手動啟動 uwsgi 主機的指令：
@@ -946,7 +947,7 @@ sudo certbot certonly --nginx
 sudo certbot renew --dry-run
 &lt;/pre&gt;
 
-##Ubuntu防火牆(ufw)
+##Ubuntu防火牆（ufw）
 
 &lt;pre class="brush: jscript"&gt;
 ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
@@ -1425,13 +1426,13 @@ Author: 40723150
 # 練習建立 Ubuntu 20.04 server
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
-##查詢 IP 位址(已安裝 net-tools)
+##查詢 IP 位址（已安裝 net-tools）
 
 &lt;pre class="brush: jscript"&gt;
 ifconfig 
 &lt;/pre&gt;
 
-### netplan 設定 (only IPv6) :
+### netplan 設定 （only IPv6） :
 
 重新命名 00-installer-config.yaml 成 net.yaml，為了之後修改網路設定時方便輸入。
 
@@ -1448,7 +1449,7 @@ sudo vi net.yaml
 
 將網路設定成純 IPv6 環境，IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用，在設定位址時需要注意一下。
 
-設定檔內容(net.yaml):
+設定檔內容（net.yaml）:
 
 &lt;pre class="brush: jscript"&gt;
 # This is the network config written by 'subiquity'
@@ -1468,9 +1469,9 @@ network:
 sudo netplan apply
 &lt;/pre&gt;
 
-### proxy 設定(only IPv6) :
+### proxy 設定（only IPv6） :
 
-在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機(porxy)。
+在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機（porxy）。
 
 到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。
 
@@ -1479,7 +1480,7 @@ cd /etc/apt/apt.conf.d
 sudo vi proxy.conf
 &lt;/pre&gt;
 
-proxy 設定檔內容(proxy.conf)：
+proxy 設定檔內容（proxy.conf）：
 
 &lt;pre class="brush: jscript"&gt;
 Acquire::http::proxy "http://[2001:288:6004:17::69]:3128";
@@ -1501,7 +1502,7 @@ sudo apt update
 sudo apt install python3-pip
 &lt;/pre&gt;
 
-安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)
+安裝 cmsimde 所需要的模組（flask、flask_cors、bs4、lxml）
 
 &lt;pre class="brush: jscript"&gt;
 sudo pip3 install flask flask_cors bs4 lxml
@@ -1558,7 +1559,7 @@ cp -r /home/kmol2020/3150_site/cmsimde/up_dir/* /home/kmol2020/3150_site
 
 ### 設定 nginx
 
-將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。
+將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available （第62行）。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。
 
 &lt;pre class="brush: jscript"&gt;
 cd /etc/nginx
@@ -1627,7 +1628,7 @@ try_files $uri $uri/ =404;
 
 在 nginx 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。
 
-因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。
+因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx （9443） 之後，可以由 Nginx 提供聯外的 SSL 服務。
 
 開啟 uwsgi 功能
 
@@ -1687,7 +1688,7 @@ sudo /etc/init.d/nginx restart
 
 此時可以測試是否順利連上 [http://[2001:288:6004:17:2:cad:0:3150]:80](http://[2001:288:6004:17:2:cad:0:3150]:80)和 [http://[2001:288:6004:17:2:cad:0:3150]:9443](https://[2001:288:6004:17:2:cad:0:3150]:9443)，若沒問題再設定防火牆。
 
-## 防火牆設定 (ufw)
+## 防火牆設定 （ufw）
 
 以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。
 
@@ -1774,11 +1775,11 @@ Author: 40723150
 Title: Jul 23, 2020 日誌
 Date: Jul 23, 2020
 Category: 日誌
-Tags: opencv,numpy
+Tags: opencv,numpy,cvtcolor,gaussianblur,canny,dilate,erode
 Slug: Jul_23_ 2020
 Author: 40723150
 ---
-學習如何使用opencv。CH1~2。
+學習如何使用opencv。Chapter 1~2。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 #Opencv
@@ -1787,7 +1788,7 @@ Author: 40723150
 
 &lt;iframe width="1280" height="720" src="https://www.youtube.com/embed/WQeoO7MI0Bs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
-[網頁程式碼](https://www.murtazahassan.com/learn-opencv-3hours/)
+[程式碼網頁](https://www.murtazahassan.com/learn-opencv-3hours/)
 
 ## Chapter 1 影像讀取
 
@@ -1827,9 +1828,23 @@ while True:
         break
 &lt;/pre&gt;
 
+---
+
 ## Chapter 2
 
-將影像灰階、高斯模糊、Canny、
+將影像色調轉換 ( 灰階 ) 、高斯模糊、 Canny （邊緣檢測）、 dilate （擴張）、 erode （侵蝕）。
+
+* [色調轉換](https://docs.opencv.org/3.0-beta/modules/cudaimgproc/doc/color.html?highlight=cvtcolor)
+
+可以將原本的顯示模式 (BGR) 切換成 RGB、HSV、Gray等顯示色調的模式。
+
+* [Gaussianblur](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=GaussianBlur#cv2.GaussianBlur) (高斯模糊)
+
+* [Canny](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_canny/py_canny.html?highlight=canny)
+
+* [dilate](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=dilate#cv2.dilate)
+
+* [erode](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=erode#cv2.erode)
 
 &lt;pre class="brush: jscript"&gt;
 import cv2
@@ -1863,9 +1878,47 @@ Tags:
 Slug: Jul_25_ 2020
 Author: 40723150
 ---
-學opencv。CH4
+學習如何使用opencv。Chapter 4
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+## Chapter 4 
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+#img = np.zeros((512,512,3),np.uint8) #zero: black . (weith,height,channel)
+img = np.ones((512,512,3),np.uint8)
+#------Part 1--area
+'''
+print(img)
+#img[:] = 255,0,0 #a blue square full the black square
+
+img[0:100,200:300] = 255,0,0 #blue square[y1:y2,x1:x2] = B,G,R
+'''
+#------Part 2--line
+'''
+#cv2.line(img,(10,10),(300,400),(0,0,255),2) #draw a line : (image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
+
+cv2.line(img,(0,0),(img.shape[1],img.shape[0]),(0,255,0),3)
+'''
+#------Part 3--rectangle
+'''
+cv2.rectangle(img,(5,5),(150,240),(180,60,255),2) #a rectangle box:(image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
+cv2.rectangle(img,(125,125),(250,460),(255,60,180),cv2.FILLED) #a rectangle shape
+'''
+#------Part4--circle
+'''
+cv2.circle(img,(256,256),100,(60,180,255),2) #draw a circle: (image,center_point(x,y),color(B,G,R),thickness,line_type)
+'''
+#------Part5--text
+
+cv2.putText(img,"Opencv",(200,256),cv2.FONT_ITALIC ,1,(180,180,180),2) #show text: (image,"text",org,font_type ,font_scale,color(B,G,R),thickness,line_type) org:Bottom-left corner of the text
+
+cv2.imshow("Image",img)
+
+cv2.waitKey(0)
+&lt;/pre&gt;
 @others</t>
 <t tx="leo.20200728144228.2"></t>
 <t tx="leo.20200728144248.1">@language md
@@ -1873,13 +1926,38 @@ Author: 40723150
 Title: Jul 24, 2020 日誌
 Date: Jul 24, 2020
 Category: 日誌
-Tags: 
+Tags: opencv,resize,cropped
 Slug: Jul_24_ 2020
 Author: 40723150
 ---
-學opencv。CH3
+學習如何使用opencv。Chapter 3
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+## Chapter 3 影像切割及調整尺寸
+
+### 調整影像尺寸( Resize )
+
+[Resize](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/geometric_transformations.html?highlight=resize#cv2.resize)
+
+### 影像切割
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+
+img = cv2.imread("lena.png")
+print(img.shape)#show the image size(width,height,channel)
+
+imgResize = cv2.resize(img,(1024,1024))#resize the lean.png:(image,(Y_size,X_size))
+print(imgResize.shape)
+print(imgResize.shape[:2])
+imgCropped = img[200:388,220:355]#cut the image [y1:y2,x1:x2],the origin of image at upper left corner.
+
+cv2.imshow("Image",img)
+cv2.imshow("Image Resize",imgResize)
+cv2.imshow("Cropped Image",imgCropped)
+
+cv2.waitKey(0)
+&lt;/pre&gt;
 @others</t>
 <t tx="leo.20200728144248.2"></t>
 <t tx="leo.20200728144250.1">@language md

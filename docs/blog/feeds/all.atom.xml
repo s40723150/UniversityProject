@@ -1,14 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-21T00:00:00+08:00</updated><entry><title>Jul 21, 2020 日誌</title><link href=".%5CJul_21_%202020.html" rel="alternate"></link><published>2020-07-21T00:00:00+08:00</published><updated>2020-07-21T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-21:.\Jul_21_ 2020.html</id><summary type="html">&lt;h1&gt;練習建立 Ubuntu 20.04 server&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-07-28T00:00:00+08:00</updated><entry><title>Jul 28, 2020 日誌</title><link href=".%5CJul_28_%202020.html" rel="alternate"></link><published>2020-07-28T00:00:00+08:00</published><updated>2020-07-28T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-28:.\Jul_28_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 27, 2020 日誌</title><link href=".%5CJul_27_%202020.html" rel="alternate"></link><published>2020-07-27T00:00:00+08:00</published><updated>2020-07-27T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-27:.\Jul_27_ 2020.html</id><summary type="html">&lt;p&gt;學opencv。CH6
+</summary><content type="html">&lt;p&gt;學opencv。CH6
+&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 26, 2020 日誌</title><link href=".%5CJul_26_%202020.html" rel="alternate"></link><published>2020-07-26T00:00:00+08:00</published><updated>2020-07-26T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-26:.\Jul_26_ 2020.html</id><summary type="html">&lt;p&gt;CH5。摸索 VScode 設定。
+</summary><content type="html">&lt;p&gt;CH5。摸索 VScode 設定。
+&lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 25, 2020 日誌</title><link href=".%5CJul_25_%202020.html" rel="alternate"></link><published>2020-07-25T00:00:00+08:00</published><updated>2020-07-25T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-25:.\Jul_25_ 2020.html</id><summary type="html">&lt;p&gt;學opencv。CH4
+</summary><content type="html">&lt;p&gt;學opencv。CH4
+&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+&lt;/pre&gt;</content><category term="日誌"></category></entry><entry><title>Jul 24, 2020 日誌</title><link href=".%5CJul_24_%202020.html" rel="alternate"></link><published>2020-07-24T00:00:00+08:00</published><updated>2020-07-24T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-24:.\Jul_24_ 2020.html</id><summary type="html">&lt;p&gt;學習如何使用opencv。Chapter 3
+</summary><content type="html">&lt;p&gt;學習如何使用opencv。Chapter 3
+&lt;/p&gt;
+&lt;h2&gt;Chapter 3 影像切割及調整尺寸&lt;/h2&gt;
+&lt;h3&gt;調整影像尺寸( Resize )&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/geometric_transformations.html?highlight=resize#cv2.resize"&gt;Resize&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;影像切割&lt;/h3&gt;
+&lt;pre class="brush: jscript"&gt;
+import cv2
+
+img = cv2.imread("lena.png")
+print(img.shape)#show the image size(width,height,channel)
+
+imgResize = cv2.resize(img,(1024,1024))#resize the lean.png:(image,(Y_size,X_size))
+print(imgResize.shape)
+print(imgResize.shape[:2])
+imgCropped = img[200:388,220:355]#cut the image [y1:y2,x1:x2],the origin of image at upper left corner.
+
+cv2.imshow("Image",img)
+cv2.imshow("Image Resize",imgResize)
+cv2.imshow("Cropped Image",imgCropped)
+
+cv2.waitKey(0)
+&lt;/pre&gt;</content><category term="日誌"></category><category term="opencv"></category><category term="resize"></category><category term="cropped"></category></entry><entry><title>Jul 23, 2020 日誌</title><link href=".%5CJul_23_%202020.html" rel="alternate"></link><published>2020-07-23T00:00:00+08:00</published><updated>2020-07-23T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-23:.\Jul_23_ 2020.html</id><summary type="html">&lt;p&gt;學習如何使用opencv。Chapter 1~2。
+</summary><content type="html">&lt;p&gt;學習如何使用opencv。Chapter 1~2。
+&lt;/p&gt;
+&lt;h1&gt;Opencv&lt;/h1&gt;
+&lt;p&gt;可用於影像處理、電腦視覺、影像辨識等。所以想說先去了解 Opencv 是要如何使用。目前是參考這個影片自己練習。&lt;/p&gt;
+&lt;iframe width="1280" height="720" src="https://www.youtube.com/embed/WQeoO7MI0Bs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://www.murtazahassan.com/learn-opencv-3hours/"&gt;程式碼網頁&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Chapter 1 影像讀取&lt;/h2&gt;
+&lt;p&gt;如何將讀取到的影像、影片或是 Webcam 用 Opencv 呼叫視窗顯示&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+import cv2
+
+#------part 1 show the lena image
+'''
+img = cv2.imread("lena.png") #read the lena.png
+
+cv2.imshow("Output",img) #show lena.png in "Output" window
+cv2.waitKey(0) #"0" is mean: hold previous command to user press  anykey.
+'''
+#------part 2 show the mp4 video
+'''
+cap= cv2.VideoCapture("test_video.mp4")#read the test_video.mp4
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Video",img)
+    if cv2.waitKey(3) &amp; 0xFF ==ord('q'):
+        break
+'''
+#------part 3 show the webcam vidoe stream 
+
+cap = cv2.VideoCapture(0)#Catch camera0 video stream
+cap.set(3,640) #width of the frames in the video stream
+cap.set(4,480) #height of the frames in the video stream
+cap.set(10,128) #brightness of the image (only for cameras)
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Capture",img)
+    if cv2.waitKey(1) &amp; 0xFF ==ord('q'):
+        break
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;Chapter 2&lt;/h2&gt;
+&lt;p&gt;將影像色調轉換 ( 灰階 ) 、高斯模糊、 Canny （邊緣檢測）、 dilate （擴張）、 erode （侵蝕）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.opencv.org/3.0-beta/modules/cudaimgproc/doc/color.html?highlight=cvtcolor"&gt;色調轉換&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以將原本的顯示模式 (BGR) 切換成 RGB、HSV、Gray等顯示色調的模式。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=GaussianBlur#cv2.GaussianBlur"&gt;Gaussianblur&lt;/a&gt; (高斯模糊)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_canny/py_canny.html?highlight=canny"&gt;Canny&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=dilate#cv2.dilate"&gt;dilate&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=erode#cv2.erode"&gt;erode&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+img = cv2.imread("lena.png")
+kernel = np.ones((5,5),np.uint8) #return a new array of given shape and type, filled with ones.
+
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) #convert lena.png to gray
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),0) #blurs an image using a Gaussian filter
+imgCanny = cv2.Canny(img,195,195) #blurs an image using a Canny filter
+imgDialation = cv2.dilate(imgCanny,kernel,iterations=1) #dilate Canny filter image
+imgEroded = cv2.erode(imgDialation,kernel,iterations=1)
+
+cv2.imshow("Gray Image",imgGray)
+cv2.imshow("Blur Image",imgBlur)
+cv2.imshow("Canny Image",imgCanny)
+cv2.imshow("Dilate Image",imgDialation)
+cv2.imshow("Eroded Image",imgEroded)
+cv2.waitKey(0)
+&lt;/pre&gt;</content><category term="日誌"></category><category term="opencv"></category><category term="numpy"></category><category term="cvtcolor"></category><category term="gaussianblur"></category><category term="canny"></category><category term="dilate"></category><category term="erode"></category></entry><entry><title>Jul 22, 2020 日誌</title><link href=".%5CJul_22_%202020.html" rel="alternate"></link><published>2020-07-22T00:00:00+08:00</published><updated>2020-07-22T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-22:.\Jul_22_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 21, 2020 日誌</title><link href=".%5CJul_21_%202020.html" rel="alternate"></link><published>2020-07-21T00:00:00+08:00</published><updated>2020-07-21T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-21:.\Jul_21_ 2020.html</id><summary type="html">&lt;h1&gt;練習建立 Ubuntu 20.04 server&lt;/h1&gt;
 </summary><content type="html">&lt;h1&gt;練習建立 Ubuntu 20.04 server&lt;/h1&gt;
 
 
-&lt;h2&gt;查詢 IP 位址(已安裝 net-tools)&lt;/h2&gt;
+&lt;h2&gt;查詢 IP 位址（已安裝 net-tools）&lt;/h2&gt;
 &lt;pre class="brush: jscript"&gt;
 ifconfig 
 &lt;/pre&gt;
 
-&lt;h3&gt;netplan 設定 (only IPv6) :&lt;/h3&gt;
+&lt;h3&gt;netplan 設定 （only IPv6） :&lt;/h3&gt;
 &lt;p&gt;重新命名 00-installer-config.yaml 成 net.yaml，為了之後修改網路設定時方便輸入。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 cd /etc/netplan
@@ -21,7 +136,7 @@ sudo vi net.yaml
 &lt;/pre&gt;
 
 &lt;p&gt;將網路設定成純 IPv6 環境，IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用，在設定位址時需要注意一下。&lt;/p&gt;
-&lt;p&gt;設定檔內容(net.yaml):&lt;/p&gt;
+&lt;p&gt;設定檔內容（net.yaml）:&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 # This is the network config written by 'subiquity'
 network:
@@ -40,15 +155,15 @@ network:
 sudo netplan apply
 &lt;/pre&gt;
 
-&lt;h3&gt;proxy 設定(only IPv6) :&lt;/h3&gt;
-&lt;p&gt;在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機(porxy)。&lt;/p&gt;
+&lt;h3&gt;proxy 設定（only IPv6） :&lt;/h3&gt;
+&lt;p&gt;在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機（porxy）。&lt;/p&gt;
 &lt;p&gt;到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 cd /etc/apt/apt.conf.d
 sudo vi proxy.conf
 &lt;/pre&gt;
 
-&lt;p&gt;proxy 設定檔內容(proxy.conf)：&lt;/p&gt;
+&lt;p&gt;proxy 設定檔內容（proxy.conf）：&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 Acquire::http::proxy "http://[2001:288:6004:17::69]:3128";
 &lt;/pre&gt;
@@ -65,7 +180,7 @@ sudo apt update
 sudo apt install python3-pip
 &lt;/pre&gt;
 
-&lt;p&gt;安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)&lt;/p&gt;
+&lt;p&gt;安裝 cmsimde 所需要的模組（flask、flask_cors、bs4、lxml）&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 sudo pip3 install flask flask_cors bs4 lxml
 &lt;/pre&gt;
@@ -109,7 +224,7 @@ cp -r /home/kmol2020/3150_site/cmsimde/up_dir/* /home/kmol2020/3150_site
 &lt;/pre&gt;
 
 &lt;h3&gt;設定 nginx&lt;/h3&gt;
-&lt;p&gt;將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。&lt;/p&gt;
+&lt;p&gt;將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available （第62行）。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 cd /etc/nginx
 sudo vi nginx.conf
@@ -172,7 +287,7 @@ try_files $uri $uri/ =404;
 &lt;/pre&gt;
 
 &lt;p&gt;在 nginx 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。&lt;/p&gt;
-&lt;p&gt;因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。&lt;/p&gt;
+&lt;p&gt;因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx （9443） 之後，可以由 Nginx 提供聯外的 SSL 服務。&lt;/p&gt;
 &lt;p&gt;開啟 uwsgi 功能&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 cd /home/kmol2020/3150_site
@@ -222,7 +337,7 @@ sudo /etc/init.d/nginx restart
 &lt;/pre&gt;
 
 &lt;p&gt;此時可以測試是否順利連上 &lt;a href="http://[2001:288:6004:17:2:cad:0:3150]:80"&gt;http://[2001:288:6004:17:2:cad:0:3150]:80&lt;/a&gt;和 &lt;a href="https://[2001:288:6004:17:2:cad:0:3150]:9443"&gt;http://[2001:288:6004:17:2:cad:0:3150]:9443&lt;/a&gt;，若沒問題再設定防火牆。&lt;/p&gt;
-&lt;h2&gt;防火牆設定 (ufw)&lt;/h2&gt;
+&lt;h2&gt;防火牆設定 （ufw）&lt;/h2&gt;
 &lt;p&gt;以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
 sudo -s
@@ -535,11 +650,11 @@ sudo /etc/init.d/nginx restart
 
 
 &lt;p&gt;剛開始和小隊員互動他們可能因為不熟又比較內向，所以在互動上必較沒有回應，但他們有進入狀況：在教他們小隊呼的時候會跟著做：在合作的方面表現很好，會一起組裝，沒有吵架的情形。在小隊比賽時，即使小隊員失誤而沒贏得比賽也不會一味的指責，反而會互相相交流進步。&lt;/p&gt;
-&lt;p&gt;一整天下來，整個小隊員的表現都很好。特殊生的部分：其實比較需要去留意他們的情形，像亞斯伯格就講話比較直接，有時候就會因此而造成小隊員之間的衝突，需要協調、安慰小隊員，這時溝通技巧就很重要。照顧故特殊生需要比較多的耐心和技巧。&lt;/p&gt;</content><category term="日誌"></category><category term="樂高營"></category></entry><entry><title>Jul 10, 2020 日誌</title><link href=".%5CJul_10_%202020.html" rel="alternate"></link><published>2020-07-10T00:00:00+08:00</published><updated>2020-07-10T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-10:.\Jul_10_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
-</summary><content type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站(nginx、uwsgi)、數位簽章、Ubuntu防火牆(ufw)
+&lt;p&gt;一整天下來，整個小隊員的表現都很好。特殊生的部分：其實比較需要去留意他們的情形，像亞斯伯格就講話比較直接，有時候就會因此而造成小隊員之間的衝突，需要協調、安慰小隊員，這時溝通技巧就很重要。照顧故特殊生需要比較多的耐心和技巧。&lt;/p&gt;</content><category term="日誌"></category><category term="樂高營"></category></entry><entry><title>Jul 10, 2020 日誌</title><link href=".%5CJul_10_%202020.html" rel="alternate"></link><published>2020-07-10T00:00:00+08:00</published><updated>2020-07-10T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-10:.\Jul_10_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）
+</summary><content type="html">&lt;p&gt;整理 Jul,7~8 的資料。Ubuntu 20.04、動態網站（nginx、uwsgi）、數位簽章、Ubuntu防火牆（ufw）
 &lt;/p&gt;
 &lt;h2&gt;Ubuntu 20.04&lt;/h2&gt;
-&lt;h2&gt;動態網站(nginx、uwsgi)&lt;/h2&gt;
+&lt;h2&gt;動態網站（nginx、uwsgi）&lt;/h2&gt;
 &lt;p&gt;因為 CMSiMDE 的動態網站需要 flask、flask_cors、bs4 與 lxml 等模組，所以要先確定 Ubuntu 20.04 中的 Python3 已經安裝這些模組：&lt;/p&gt;
 &lt;p&gt;sudo pip3 install flask flask_cors bs4 lxml&lt;/p&gt;
 &lt;p&gt;uwsgi 所需模組：&lt;/p&gt;
@@ -553,7 +668,7 @@ sudo /etc/init.d/nginx restart
 &lt;p&gt;sudo pip3 install uwsgi&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定(/etc/nginx/sites-available/default 附加 server 設定 )：&lt;/p&gt;
+&lt;p&gt;建立 crt 與 key，並修改 Nginx sites-available/default，加入執行 uwsgi 動態網站的設定（/etc/nginx/sites-available/default 附加 server 設定 ）：&lt;/p&gt;
 &lt;p&gt;建立 localhost.key 與 localhost.crt：&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
@@ -610,7 +725,7 @@ chdir = /home/yen/cad1_site/cmsimde
 wsgi-file = /home/yen/cad1_site/cmsimde/wsgi.py
 &lt;/pre&gt;
 
-&lt;p&gt;表示要使用 8080 傳輸資料 (必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應)並指定 wsgi.py 所在目錄。&lt;/p&gt;
+&lt;p&gt;表示要使用 8080 傳輸資料 （必須與 Nginx /etc/nginx/sites-available/default 中的設，定對應）並指定 wsgi.py 所在目錄。&lt;/p&gt;
 &lt;p&gt;重新啟動 Nginx 並利用 uwsgi 指令測試
 手動啟動 uwsgi 主機的指令：&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
@@ -682,7 +797,7 @@ sudo apt-get install certbot python3-certbot-nginx
 sudo certbot certonly --nginx
 sudo certbot renew --dry-run
 &lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;Ubuntu防火牆(ufw)&lt;/h2&gt;
+&lt;h2&gt;Ubuntu防火牆（ufw）&lt;/h2&gt;
 &lt;pre class="brush: jscript"&gt;
 ufw 是 Ubuntu 內建的防火牆, 與 KMOLab 有關的設定：
 sudo -s
@@ -714,7 +829,7 @@ ufw enable
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/Fan_support-2.jpg" width="450"&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="Onshape"></category><category term="風扇支架"></category></entry><entry><title>Jul 8, 2020 日誌</title><link href=".%5CJul_08_%202020.html" rel="alternate"></link><published>2020-07-08T00:00:00+08:00</published><updated>2020-07-08T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-08:.\Jul_08_ 2020.html</id><summary type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
 </summary><content type="html">&lt;p&gt;看nginx、uwsgi、ufw設定。
 &lt;/p&gt;
-&lt;p&gt;nginx：非同步框架的網頁伺服器。(內建支援uwsgi)&lt;/p&gt;
+&lt;p&gt;nginx：非同步框架的網頁伺服器。（內建支援uwsgi）&lt;/p&gt;
 &lt;p&gt;uwsgi：讓多個執行序常駐啟動，有任務進來時丟給這些執行序處理，處理完之後回傳&lt;/p&gt;
 &lt;p&gt;ufw︰Ubuntu 的防火牆。&lt;/p&gt;
 &lt;p&gt;資料大致上看過，還沒整理，剩&lt;a href="https://uwsgi-docs.readthedocs.io/en/latest/"&gt;uwsgi&lt;/a&gt;、&lt;a href="https://linuxconfig.org/ubuntu-20-04-guide"&gt;ubuntu 20.04 guide&lt;/a&gt;還沒看。&lt;/p&gt;
@@ -729,10 +844,10 @@ ufw enable
 將要做的皮件的展開圖畫好，可以利用較高磅數的紙或是木板來當作裁皮的版型。&lt;/li&gt;
 &lt;li&gt;裁皮：
 將先前製作好的版型放在皮上，用鐕子或筆畫上裁切的記號、邊線。&lt;/li&gt;
-&lt;li&gt;染色、塗保色劑(可有可無)：
+&lt;li&gt;染色、塗保色劑（可有可無）：
 染色的染料有分鹽基和酒精性的染劑。染完色可以塗保色劑來讓染好的皮革較不容易退色。&lt;/li&gt;
 &lt;li&gt;上床面處理劑：
-床面處理劑是塗在毛面(非光滑面，較粗糙那面)，讓毛面的纖維比較平整。&lt;/li&gt;
+床面處理劑是塗在毛面（非光滑面，較粗糙那面），讓毛面的纖維比較平整。&lt;/li&gt;
 &lt;li&gt;推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：&lt;/li&gt;
@@ -741,9 +856,9 @@ ufw enable
 7. 打孔：
 用菱斬打縫孔，由於皮的厚度比較厚也比一般的布強度強，用針不容一刺穿皮革，打過縫孔後，皮片手縫會很輕鬆。
 8. 縫合：
-用蠟線縫合皮片，組合成皮件(像皮包、皮夾等)。手縫都使用雙針縫。
+用蠟線縫合皮片，組合成皮件（像皮包、皮夾等）。手縫都使用雙針縫。
 9. 磨邊、上油：
-縫合後將邊緣磨平(接縫處)，在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/p&gt;
+縫合後將邊緣磨平（接縫處），在將它磨光滑。完成後皮革的表面可以上一層保護油、保養油，讓皮革較為柔軟。&lt;/p&gt;
 &lt;p&gt;成品&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-1.jpg" width="450"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E7%9A%AE%E5%A4%BE-2.jpg" width="450"&gt;&lt;/p&gt;
@@ -755,10 +870,10 @@ ufw enable
 &lt;h3&gt;step 0&lt;/h3&gt;
 &lt;p&gt;來源端與接收端需要在同一個網路下，中斷與外部連線網路。&lt;/p&gt;
 &lt;h3&gt;step 1&lt;/h3&gt;
-&lt;p&gt;先開機要複製出去(資料來源)那台的電腦，在防寫卡畫面(選擇磁區畫面)按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。&lt;/p&gt;
+&lt;p&gt;先開機要複製出去（資料來源）那台的電腦，在防寫卡畫面（選擇磁區畫面）按下"F10"進入防寫卡設定，輸入密碼，在系統管理畫面，選擇左方的網路拷貝，拷貝環境：32位元；網卡類型：11 : Intel 1G ndis。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A8%AD%E5%AE%9A_step1.jpg" width="450"&gt;&lt;/p&gt;
 &lt;h3&gt;step2&lt;/h3&gt;
-&lt;p&gt;設定好按套用設定，再進行網路拷貝(按網路拷貝按鈕)。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕&lt;/p&gt;
+&lt;p&gt;設定好按套用設定，再進行網路拷貝（按網路拷貝按鈕）。選擇"模式1"為拷貝模式，確認接收端開機自動連線是勾選。按網路拷貝按鈕&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;&lt;/p&gt;
 &lt;h3&gt;step3&lt;/h3&gt;
 &lt;ul&gt;
@@ -769,10 +884,10 @@ ufw enable
 &lt;p&gt;增量拷貝：將選擇的磁區不同的內容、設定複製過去。覆蓋。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;選擇要複製的選項(視情況選擇網路拷貝或增量拷貝)，確定，等待登錄。&lt;/p&gt;
+&lt;p&gt;選擇要複製的選項（視情況選擇網路拷貝或增量拷貝），確定，等待登錄。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp3.jpg" width="450"&gt;&lt;/p&gt;
 &lt;h3&gt;step4&lt;/h3&gt;
-&lt;p&gt;開啟接收端電腦，進入防寫卡畫面(選擇磁區畫面)按下"F9"進入防寫連線傳輸，輸入密碼。&lt;/p&gt;
+&lt;p&gt;開啟接收端電腦，進入防寫卡畫面（選擇磁區畫面）按下"F9"進入防寫連線傳輸，輸入密碼。&lt;/p&gt;
 &lt;p&gt;傳送端電腦，查看是否與連上接收端電腦連上，連上後清單列表上會顯示，按完成登錄，發送資料。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-1.jpg" width="450"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp4-2.jpg" width="450"&gt;&lt;/p&gt;
@@ -782,11 +897,11 @@ ufw enable
 &lt;p&gt;&lt;img src="https://s40723150.github.io/UniversityProject/images/%E9%82%84%E5%8E%9F%E5%8D%A1%E8%A4%87%E8%A3%BD_setp2.jpg" width="450"&gt;&lt;/p&gt;
 &lt;h2&gt;clonezilla硬碟複製&lt;/h2&gt;
 &lt;p&gt;clonezilla硬碟複製 開機前硬體確認：硬碟與光碟機連接順序。&lt;/p&gt;
-&lt;p&gt;1.備份硬碟來源 (a硬碟)
+&lt;p&gt;1.備份硬碟來源 （a硬碟）
 2. 光碟機
-3. 存放備份的硬碟(b硬碟)&lt;/p&gt;
-&lt;p&gt;P.S. 存放備份的硬碟(b硬碟)需要比 備份硬碟來源 (a硬碟) 的容量大一樣大或更大，比備份來源小會無法複製。&lt;/p&gt;
-&lt;p&gt;利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟(到網路上下載clonezilla的iso檔燒錄到光碟裡)，開機時放入clonezilla光碟片，並進入"開機選單"(進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單)會些換到用光碟機開機(會去讀取clonezilla光碟的資料)。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟(disk to disk)進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項(包括其他未提到的設定)，開始複製硬碟，按Enter，2次y(確認覆蓋開機磁區)，複製的時間會因硬碟大小而有所差異(當時複製160GB大約是2分鐘)，複製完成後關機。&lt;/p&gt;
+3. 存放備份的硬碟（b硬碟）&lt;/p&gt;
+&lt;p&gt;P.S. 存放備份的硬碟（b硬碟）需要比 備份硬碟來源 （a硬碟） 的容量大一樣大或更大，比備份來源小會無法複製。&lt;/p&gt;
+&lt;p&gt;利用clonezilla來進行複製硬碟，事先須準備一片已經入燒入進去clonezilla的光碟（到網路上下載clonezilla的iso檔燒錄到光碟裡），開機時放入clonezilla光碟片，並進入"開機選單"（進入開機選單的快捷鍵會因為各廠牌的電腦而有所不同，當時測試為aser電腦，在出現電腦商logo時按"F12"就進入開機選單）會些換到用光碟機開機（會去讀取clonezilla光碟的資料）。等待一段時間後會進到clonezilla的畫面，選英文，鍵盤定選預設，接下來選硬碟對硬碟（disk to disk）進行複製，硬碟來源選 a硬碟，接收選 b硬碟，其他設定都是預設選項（包括其他未提到的設定），開始複製硬碟，按Enter，2次y（確認覆蓋開機磁區），複製的時間會因硬碟大小而有所差異（當時複製160GB大約是2分鐘），複製完成後關機。&lt;/p&gt;
 &lt;p&gt;P.S. clonezilla 硬碟複製是bit by bit，硬碟分割模式為MBR的硬碟在複製的時候開機磁區也會同時複製，不需特別抹除原來的MBR。若硬碟安裝作業系統時無法覆蓋先前的MBR磁區，就必須用clonezilla複製去覆蓋。&lt;/p&gt;
 &lt;p&gt;硬碟分割分 MBR 和 GPT兩種。&lt;/p&gt;
 &lt;h2&gt;Ubuntu 20.04&lt;/h2&gt;
@@ -818,17 +933,17 @@ sudo vi /etc/hostname
 &lt;p&gt;也是將 wcm1 改為 主機對應名稱&lt;/p&gt;
 &lt;h3&gt;修改網路設定&lt;/h3&gt;
 &lt;p&gt;到/etc/netplan/net.yaml修改網路設定
-(sudo mv *.yaml net.yaml 將網路設定的yaml重新命名成 net.yaml)&lt;/p&gt;
+（sudo mv *.yaml net.yaml 將網路設定的yaml重新命名成 net.yaml）&lt;/p&gt;
 &lt;h3&gt;&lt;/h3&gt;
 &lt;p&gt;ssh 使用者@要連上的主機位置&lt;/p&gt;</content><category term="日誌"></category><category term="防寫卡"></category><category term="clonezilla"></category><category term="Ubuntu 20.04"></category><category term="硬碟複製"></category><category term="建立管理者"></category></entry><entry><title>Jul 5, 2020 日誌</title><link href=".%5CJul_05_%202020.html" rel="alternate"></link><published>2020-07-05T00:00:00+08:00</published><updated>2020-07-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-05:.\Jul_05_ 2020.html</id><summary type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
 </summary><content type="html">&lt;p&gt;了解 delta printer 的正向與逆向運動方程式
 
 Delta printer是運用 Stewart Platform 機構修改出來的機構，一樣有6個自由度。
 Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達到同的功能。&lt;/p&gt;
-&lt;p&gt;正向(順向)運動學(forward kinematics)&lt;/p&gt;
-&lt;p&gt;由各關節變數求效應器(機構末端)的位置與方向角&lt;/p&gt;
-&lt;p&gt;反向運動學(invers kinematics)&lt;/p&gt;
-&lt;p&gt;由末端效應器(機構)的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category><category term="機構"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
+&lt;p&gt;正向（順向）運動學（forward kinematics）&lt;/p&gt;
+&lt;p&gt;由各關節變數求效應器（機構末端）的位置與方向角&lt;/p&gt;
+&lt;p&gt;反向運動學（invers kinematics）&lt;/p&gt;
+&lt;p&gt;由末端效應器（機構）的位置與方向求各關節變數&lt;/p&gt;</content><category term="日誌"></category><category term="機構"></category></entry><entry><title>Jul 4, 2020 日誌</title><link href=".%5CJul_04_%202020.html" rel="alternate"></link><published>2020-07-04T00:00:00+08:00</published><updated>2020-07-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-04:.\Jul_04_ 2020.html</id><summary type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
 </summary><content type="html">&lt;p&gt;嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。
 
 新增/編輯文章到blogger
@@ -836,7 +951,7 @@ Stewart Platform 可伸縮連桿的部分 Delta printer 換成兩個連桿來達
 修改成功的話會顯示：
 post_id 為 一串文章的ID
 已經將更新資料送往 M Blogger!&lt;/p&gt;
-&lt;p&gt;文章內的圖片要放絕對位置(網址)&lt;/p&gt;
+&lt;p&gt;文章內的圖片要放絕對位置（網址）&lt;/p&gt;
 &lt;p&gt;若出現
 &lt;pre class="brush: jscript"&gt;
 google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were invalid. {invalid=[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}', '{\n  "error": "invalid_scope",\n  "error_description": "Some requested scopes were invalid. {invalid\u003d[a, b, c, e, g, h, i, l, m, ., /, o, p, r, s, t, u, w, :]}",\n  "error_uri": "http://code.google.com/apis/accounts/docs/OAuth2.html"\n}')
@@ -877,7 +992,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;p&gt;接下來&lt;a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html"&gt;測試json&lt;/a&gt;，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
 到&lt;a href="https://github.com/mdecourse/project2020-1/tree/master/tools"&gt;project2020-1倉儲的tools&lt;/a&gt;gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。&lt;/p&gt;
 &lt;p&gt;轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部&lt;/p&gt;
-&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案(剛剛轉出來的)，blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category><category term="Pelican"></category><category term="Blogger"></category><category term="API"></category><category term="json"></category><category term="OAuth 2.0"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
+&lt;p&gt;@button 裡面的程式，.dat要指到對應的檔案（剛剛轉出來的），blog_id是對應到該網誌ID，post_id則是代    表文章的ID&lt;/p&gt;</content><category term="日誌"></category><category term="Pelican"></category><category term="Blogger"></category><category term="API"></category><category term="json"></category><category term="OAuth 2.0"></category></entry><entry><title>Jul 2, 2020 日誌</title><link href=".%5CJul_02_%202020.html" rel="alternate"></link><published>2020-07-02T00:00:00+08:00</published><updated>2020-07-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-02:.\Jul_02_ 2020.html</id><summary type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
 &lt;li&gt;clonezilla硬碟複製&lt;ul&gt;
@@ -886,7 +1001,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;架設深度學習的主機
-學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
+學會Keras（Python編寫的開源神經網路庫）和Pytorch（開源的Python機器學習庫），看會Keras的電子書學會影像辨識手寫數字
 </summary><content type="html">&lt;p&gt;暑假三大重點&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;複製0810教室的磁碟，學會防寫卡硬碟複製&lt;/li&gt;
@@ -896,7 +1011,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;架設深度學習的主機
-學會Keras(Python編寫的開源神經網路庫)和Pytorch(開源的Python機器學習庫)，看會Keras的電子書學會影像辨識手寫數字
+學會Keras（Python編寫的開源神經網路庫）和Pytorch（開源的Python機器學習庫），看會Keras的電子書學會影像辨識手寫數字
 &lt;/li&gt;
 &lt;/ol&gt;</content><category term="Misc"></category><category term="日誌"></category></entry><entry><title>Jul 1, 2020 日誌</title><link href=".%5CJul_01_2020.html" rel="alternate"></link><published>2020-07-01T00:00:00+08:00</published><updated>2020-07-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-01:.\Jul_01_2020.html</id><summary type="html">&lt;p&gt;日誌
 維修3D列印：噴嘴加熱和原點Z軸校正&lt;/p&gt;
@@ -906,7 +1021,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 
 &lt;p&gt;維修張元學長那屆當時組的3D印表機，目前發現兩個問題&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;噴嘴加熱(~~無法加熱~~)  已解決
+&lt;li&gt;噴嘴加熱（無法加熱）  已解決
 線路當時情況
 &lt;img alt="./../images/原始接線.jpg" height="774" src="https://s40723150.github.io/UniversityProject/images/%E5%8E%9F%E5%A7%8B%E6%8E%A5%E7%B7%9A.jpg" width="581"&gt;
 &lt;strong&gt;原始接線&lt;/strong&gt;&lt;/li&gt;
@@ -916,7 +1031,7 @@ google.auth.exceptions.RefreshError: ('invalid_scope: Some requested scopes were
 &lt;p&gt;&lt;img alt="./../images/修正後_接線.jpg" height="729" src="https://s40723150.github.io/UniversityProject/images/%E4%BF%AE%E6%AD%A3%E5%BE%8C_%E6%8E%A5%E7%B7%9A.jpg" width="541"&gt;
 &lt;strong&gt;修正後(噴頭接A13，底板加熱A14)&lt;/strong&gt;
 2. Z軸歸零後與底板還有一段距離
-我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All(同Auto home的功能)，所以初步推測要校正Z軸原點的位置可能需要去修改firmware(韌體)，在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，&lt;a href="https://www.repetier.com/firmware/v091/"&gt;repetier firmware&lt;/a&gt;可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。&lt;/p&gt;
+我們一開始先讓機器回歸原點，發現離下面的平台至少有14mm左右，然後稍微嘗試一下，發現印表機的介面沒有可以單獨控制Z軸的選項，只有L R B三個回歸原點和Home All（同Auto home的功能），所以初步推測要校正Z軸原點的位置可能需要去修改firmware（韌體），在網路上一番搜尋後，找到Marlin和Repetier都是可以裝在控制3D印表機的韌體。後來大三學長拿了之前學長的書面資料給我們看，發現當時是使用Repetier的firmware，其中"Configuration.h"是機台主要參數設定的檔，&lt;a href="https://www.repetier.com/firmware/v091/"&gt;repetier firmware&lt;/a&gt;可以上傳舊的Configuration.h 或 config.json進行參數設定的更新。&lt;/p&gt;
 &lt;p&gt;連接3D印表機控制板的USB線到電腦後就出現COM3&lt;/p&gt;
 &lt;p&gt;&lt;img alt="./../images/連接.png" height="325" src="https://s40723150.github.io/UniversityProject/images/%E9%80%A3%E6%8E%A5.png" width="576"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;將操控板連到電腦當時讀到的位置是COM3&lt;/strong&gt;&lt;/p&gt;

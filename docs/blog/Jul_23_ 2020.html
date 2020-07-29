@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Jul 3, 2020 日誌</title>
+  <title>Jul 23, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,37 +40,41 @@
   <![endif]-->
 
 
-    <link href="./Jul_03_ 2020.html" rel="canonical" />
+    <link href="./Jul_23_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。 將json轉檔成 .pickle 和 .dat">
+        <meta name="description" content="學習如何使用opencv。Chapter 1~2。">
 
         <meta name="author" content="40723150">
 
-        <meta name="tags" content="Pelican">
-        <meta name="tags" content="Blogger">
-        <meta name="tags" content="API">
-        <meta name="tags" content="json">
-        <meta name="tags" content="OAuth 2.0">
+        <meta name="tags" content="opencv">
+        <meta name="tags" content="numpy">
+        <meta name="tags" content="cvtcolor">
+        <meta name="tags" content="gaussianblur">
+        <meta name="tags" content="canny">
+        <meta name="tags" content="dilate">
+        <meta name="tags" content="erode">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Jul 3, 2020 日誌"/>
-<meta property="og:description" content="嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。 將json轉檔成 .pickle 和 .dat"/>
+<meta property="og:title" content="Jul 23, 2020 日誌"/>
+<meta property="og:description" content="學習如何使用opencv。Chapter 1~2。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Jul_03_ 2020.html"/>
+<meta property="og:url" content="./Jul_23_ 2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-07-03 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-07-23 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
-<meta property="article:tag" content="Pelican"/>
-<meta property="article:tag" content="Blogger"/>
-<meta property="article:tag" content="API"/>
-<meta property="article:tag" content="json"/>
-<meta property="article:tag" content="OAuth 2.0"/>
+<meta property="article:tag" content="opencv"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="article:tag" content="cvtcolor"/>
+<meta property="article:tag" content="gaussianblur"/>
+<meta property="article:tag" content="canny"/>
+<meta property="article:tag" content="dilate"/>
+<meta property="article:tag" content="erode"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -79,9 +83,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Jul 3, 2020 日誌",
-  "headline": "Jul 3, 2020 日誌",
-  "datePublished": "2020-07-03 00:00:00+08:00",
+  "name": "Jul 23, 2020 日誌",
+  "headline": "Jul 23, 2020 日誌",
+  "datePublished": "2020-07-23 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -89,8 +93,8 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Jul_03_ 2020.html",
-  "description": "嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。 將json轉檔成 .pickle 和 .dat"
+  "url": "./Jul_23_ 2020.html",
+  "description": "學習如何使用opencv。Chapter 1~2。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -205,11 +209,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Jul 3, 2020 日誌</h1>
+        <h1 class="post-title">Jul 23, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週五 03 七月 2020">週五 03 七月 2020</time>
+            | <time datetime="週四 23 七月 2020">週四 23 七月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -231,59 +235,108 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，但還沒成功。
-將json轉檔成 .pickle 和 .dat
+                <p>學習如何使用opencv。Chapter 1~2。
 </p>
-<p>想將Pelican網誌利用Pyrhon程式把文章傳到Blogger，我有參考<a href="http://lab.mde.tw/blog/sync-pelican-and-blogger-content.html">新增 按鈕執行程式</a>裡面的程式碼，<a href="https://console.developers.google.com/apis/credentials">Google API</a>新增Blogger API，去取得json的檔案。</p>
-<p>獲取client_secrets.json：</p>
-<ol>
+<h1>Opencv</h1>
+<p>可用於影像處理、電腦視覺、影像辨識等。所以想說先去了解 Opencv 是要如何使用。目前是參考這個影片自己練習。</p>
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/WQeoO7MI0Bs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><a href="https://www.murtazahassan.com/learn-opencv-3hours/">程式碼網頁</a></p>
+<h2>Chapter 1 影像讀取</h2>
+<p>如何將讀取到的影像、影片或是 Webcam 用 Opencv 呼叫視窗顯示</p>
+<pre class="brush: jscript">
+import cv2
+
+#------part 1 show the lena image
+'''
+img = cv2.imread("lena.png") #read the lena.png
+
+cv2.imshow("Output",img) #show lena.png in "Output" window
+cv2.waitKey(0) #"0" is mean: hold previous command to user press  anykey.
+'''
+#------part 2 show the mp4 video
+'''
+cap= cv2.VideoCapture("test_video.mp4")#read the test_video.mp4
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Video",img)
+    if cv2.waitKey(3) & 0xFF ==ord('q'):
+        break
+'''
+#------part 3 show the webcam vidoe stream 
+
+cap = cv2.VideoCapture(0)#Catch camera0 video stream
+cap.set(3,640) #width of the frames in the video stream
+cap.set(4,480) #height of the frames in the video stream
+cap.set(10,128) #brightness of the image (only for cameras)
+
+while True:
+    success,img = cap.read()
+    cv2.imshow("Capture",img)
+    if cv2.waitKey(1) & 0xFF ==ord('q'):
+        break
+</pre>
+
+<hr>
+<h2>Chapter 2</h2>
+<p>將影像色調轉換 ( 灰階 ) 、高斯模糊、 Canny （邊緣檢測）、 dilate （擴張）、 erode （侵蝕）。</p>
+<ul>
+<li><a href="https://docs.opencv.org/3.0-beta/modules/cudaimgproc/doc/color.html?highlight=cvtcolor">色調轉換</a></li>
+</ul>
+<p>可以將原本的顯示模式 (BGR) 切換成 RGB、HSV、Gray等顯示色調的模式。</p>
+<ul>
 <li>
-<p>登錄到您的@gm帳戶</p>
+<p><a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=GaussianBlur#cv2.GaussianBlur">Gaussianblur</a> (高斯模糊)</p>
 </li>
 <li>
-<p>到<a href="https://console.developers.google.com/apis/credentials">Google API</a></p>
+<p><a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_canny/py_canny.html?highlight=canny">Canny</a></p>
 </li>
 <li>
-<p>接受許可並創建Google API項目</p>
+<p><a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=dilate#cv2.dilate">dilate</a></p>
 </li>
 <li>
-<p>啟用Google Blogger API v3</p>
+<p><a href="https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html?highlight=erode#cv2.erode">erode</a></p>
 </li>
-<li>
-<p>選擇內部用戶類型並添加新的應用程序名稱</p>
-</li>
-<li>
-<p>在“ API和服務”下，進入“憑證”頁面</p>
-</li>
-<li>
-<p>為電腦版應用程式創建“ OAuth 2.0客戶端ID”類型的憑據</p>
-</li>
-<li>
-<p>下載json檔</p>
-</li>
-</ol>
-<p>接下來<a href="https://2019wcm.blogspot.com/2019/03/posted-via-python.html">測試json</a>，裡面的程式碼是用來測試.json是否正常，正常的話再將.json轉檔成 .pickle 和 .dat。
-到<a href="https://github.com/mdecourse/project2020-1/tree/master/tools">project2020-1倉儲的tools</a>gmail_json_to_pickle.py是將json轉成pickle，blogger_json_to_pickle.py也是轉成pickle，但存成dat。由於Blogger 憑證與 Gmail 憑證的差異在於 SCOPES 與 build 時 LIbrary 名稱與版本的差異，所以需要分別轉出來。</p>
-<p>轉出來的 .pickle 和 .dat 以及一開始下載的 .json 都需要放在倉儲目錄外部</p>
-<p>@button 裡面的程式，.dat要指到對應的檔案（剛剛轉出來的），blog_id是對應到該網誌ID，post_id則是代    表文章的ID</p>
+</ul>
+<pre class="brush: jscript">
+import cv2
+import numpy as np
+
+img = cv2.imread("lena.png")
+kernel = np.ones((5,5),np.uint8) #return a new array of given shape and type, filled with ones.
+
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) #convert lena.png to gray
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),0) #blurs an image using a Gaussian filter
+imgCanny = cv2.Canny(img,195,195) #blurs an image using a Canny filter
+imgDialation = cv2.dilate(imgCanny,kernel,iterations=1) #dilate Canny filter image
+imgEroded = cv2.erode(imgDialation,kernel,iterations=1)
+
+cv2.imshow("Gray Image",imgGray)
+cv2.imshow("Blur Image",imgBlur)
+cv2.imshow("Canny Image",imgCanny)
+cv2.imshow("Dilate Image",imgDialation)
+cv2.imshow("Eroded Image",imgEroded)
+cv2.waitKey(0)
+</pre>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Jul 3, 2020 日誌&amp;url=./Jul_03_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Jul 23, 2020 日誌&amp;url=./Jul_23_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_03_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_23_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_03_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_23_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
                 <aside class="post-tags">
-<a href="./tag/pelican.html">Pelican</a><a href="./tag/blogger.html">Blogger</a><a href="./tag/api.html">API</a><a href="./tag/json.html">json</a><a href="./tag/oauth-20.html">OAuth 2.0</a>                </aside>
+<a href="./tag/opencv.html">opencv</a><a href="./tag/numpy.html">numpy</a><a href="./tag/cvtcolor.html">cvtcolor</a><a href="./tag/gaussianblur.html">gaussianblur</a><a href="./tag/canny.html">canny</a><a href="./tag/dilate.html">dilate</a><a href="./tag/erode.html">erode</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -292,18 +345,18 @@ init_mathjax();
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Jul_04_ 2020.html">
+                    <a class="post-nav-next" href="./Jul_24_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Jul 4, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">嘗試利用 Python程式將 Plican 網誌傳送到 Blogger，成功傳送到 Blogger。</p>
+                                <h2 class="post-nav-title">Jul 24, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 3</p>
                         </section>
                     </a>
-                    <a class="post-nav-prev" href="./Jul_02_ 2020.html">
+                    <a class="post-nav-prev" href="./Jul_22_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Jul 2, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">暑假三大重點 複製0810教室的磁碟，學會防寫卡硬碟複製 clonezilla硬碟複製 單機 網路 架設深度學習的主機...</p>
+                                <h2 class="post-nav-title">Jul 22, 2020 日誌</h2>
+                            <p class="post-nav-excerpt"></p>
                         </section>
                     </a>
                     <div class="clear"></div>

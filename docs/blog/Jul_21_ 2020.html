@@ -246,12 +246,12 @@ init_mathjax();
                 <h1>練習建立 Ubuntu 20.04 server</h1>
 
 
-<h2>查詢 IP 位址(已安裝 net-tools)</h2>
+<h2>查詢 IP 位址（已安裝 net-tools）</h2>
 <pre class="brush: jscript">
 ifconfig 
 </pre>
 
-<h3>netplan 設定 (only IPv6) :</h3>
+<h3>netplan 設定 （only IPv6） :</h3>
 <p>重新命名 00-installer-config.yaml 成 net.yaml，為了之後修改網路設定時方便輸入。</p>
 <pre class="brush: jscript">
 cd /etc/netplan
@@ -264,7 +264,7 @@ sudo vi net.yaml
 </pre>
 
 <p>將網路設定成純 IPv6 環境，IPv6 網路位址是 16 進制，所以只能使用0~9和 a~f 可以使用，在設定位址時需要注意一下。</p>
-<p>設定檔內容(net.yaml):</p>
+<p>設定檔內容（net.yaml）:</p>
 <pre class="brush: jscript">
 # This is the network config written by 'subiquity'
 network:
@@ -283,15 +283,15 @@ network:
 sudo netplan apply
 </pre>
 
-<h3>proxy 設定(only IPv6) :</h3>
-<p>在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機(porxy)。</p>
+<h3>proxy 設定（only IPv6） :</h3>
+<p>在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機（porxy）。</p>
 <p>到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。</p>
 <pre class="brush: jscript">
 cd /etc/apt/apt.conf.d
 sudo vi proxy.conf
 </pre>
 
-<p>proxy 設定檔內容(proxy.conf)：</p>
+<p>proxy 設定檔內容（proxy.conf）：</p>
 <pre class="brush: jscript">
 Acquire::http::proxy "http://[2001:288:6004:17::69]:3128";
 </pre>
@@ -308,7 +308,7 @@ sudo apt update
 sudo apt install python3-pip
 </pre>
 
-<p>安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)</p>
+<p>安裝 cmsimde 所需要的模組（flask、flask_cors、bs4、lxml）</p>
 <pre class="brush: jscript">
 sudo pip3 install flask flask_cors bs4 lxml
 </pre>
@@ -352,7 +352,7 @@ cp -r /home/kmol2020/3150_site/cmsimde/up_dir/* /home/kmol2020/3150_site
 </pre>
 
 <h3>設定 nginx</h3>
-<p>將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。</p>
+<p>將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available （第62行）。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。</p>
 <pre class="brush: jscript">
 cd /etc/nginx
 sudo vi nginx.conf
@@ -415,7 +415,7 @@ try_files $uri $uri/ =404;
 </pre>
 
 <p>在 nginx 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。</p>
-<p>因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。</p>
+<p>因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx （9443） 之後，可以由 Nginx 提供聯外的 SSL 服務。</p>
 <p>開啟 uwsgi 功能</p>
 <pre class="brush: jscript">
 cd /home/kmol2020/3150_site
@@ -465,7 +465,7 @@ sudo /etc/init.d/nginx restart
 </pre>
 
 <p>此時可以測試是否順利連上 <a href="http://[2001:288:6004:17:2:cad:0:3150]:80">http://[2001:288:6004:17:2:cad:0:3150]:80</a>和 <a href="https://[2001:288:6004:17:2:cad:0:3150]:9443">http://[2001:288:6004:17:2:cad:0:3150]:9443</a>，若沒問題再設定防火牆。</p>
-<h2>防火牆設定 (ufw)</h2>
+<h2>防火牆設定 （ufw）</h2>
 <p>以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。</p>
 <pre class="brush: jscript">
 sudo -s
@@ -544,6 +544,13 @@ sudo systemctl stop cmsimde
 
 
                 <aside class="post-nav">
+                    <a class="post-nav-next" href="./Jul_22_ 2020.html">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-left"></i>
+                                <h2 class="post-nav-title">Jul 22, 2020 日誌</h2>
+                            <p class="post-nav-excerpt"></p>
+                        </section>
+                    </a>
                     <a class="post-nav-prev" href="./Jul_20_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
