@@ -145,6 +145,12 @@
 <v t="leo.20200728144348.1"><vh>@clean Jul_28_2020.md</vh>
 <v t="leo.20200728144348.2"><vh>9163369466257328113</vh></v>
 </v>
+<v t="leo.20200731075532.1"><vh>@clean Jul_29_2020.md</vh>
+<v t="leo.20200731075532.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20200731075534.1"><vh>@clean Jul_30_2020.md</vh>
+<v t="leo.20200731075534.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -1775,11 +1781,11 @@ Author: 40723150
 Title: Jul 23, 2020 日誌
 Date: Jul 23, 2020
 Category: 日誌
-Tags: opencv,numpy,cvtcolor,gaussianblur,canny,dilate,erode
+Tags: opencv,numpy,cvtcolor,gaussianblur,canny,dilate,erode,blur
 Slug: Jul_23_ 2020
 Author: 40723150
 ---
-學習如何使用opencv。Chapter 1~2。
+學習如何使用opencv。Chapter 1影像讀取 、Chapter 2 影像轉換。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 #Opencv
@@ -1830,7 +1836,7 @@ while True:
 
 ---
 
-## Chapter 2
+## Chapter 2 影像轉換
 
 將影像色調轉換 ( 灰階 ) 、高斯模糊、 Canny （邊緣檢測）、 dilate （擴張）、 erode （侵蝕）。
 
@@ -1874,43 +1880,55 @@ cv2.waitKey(0)
 Title: Jul 25, 2020 日誌
 Date: Jul 25, 2020
 Category: 日誌
-Tags: 
+Tags: cv2,numpy,line,rectangle,circle,text,zero
 Slug: Jul_25_ 2020
 Author: 40723150
 ---
-學習如何使用opencv。Chapter 4
+學習如何使用opencv。Chapter 4 插入圖型及文字。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
-## Chapter 4 
+## Chapter 4 插入圖型及文字
+
+[np.zeros](https://numpy.org/doc/stable/reference/generated/numpy.zeros.html) :
+
+產生一個用零填滿的矩陣。我們用來產生一個黑色的畫布(圖片)，之後會在上面插入圖型及文字。
+
+* [line](https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2) : 指定兩點畫一直線。
+
+* [rectangle](https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9) : 指定兩點畫出一矩形框。
+
+* [circle](https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670) : 指定圓心位置，再給定半徑大小。
+
+* [putText](https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576) : 輸入要顯示的文字，指定文字的基準位置(左下角)的座標。
 
 &lt;pre class="brush: jscript"&gt;
 import cv2
 import numpy as np
 
-#img = np.zeros((512,512,3),np.uint8) #zero: black . (weith,height,channel)
-img = np.ones((512,512,3),np.uint8)
+img = np.zeros((512,512,3),np.uint8) #zero: black . (weith,height,channel)
+
 #------Part 1--area
-'''
+
 print(img)
 #img[:] = 255,0,0 #a blue square full the black square
 
 img[0:100,200:300] = 255,0,0 #blue square[y1:y2,x1:x2] = B,G,R
-'''
+
 #------Part 2--line
-'''
+
 #cv2.line(img,(10,10),(300,400),(0,0,255),2) #draw a line : (image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
 
 cv2.line(img,(0,0),(img.shape[1],img.shape[0]),(0,255,0),3)
-'''
+
 #------Part 3--rectangle
-'''
+
 cv2.rectangle(img,(5,5),(150,240),(180,60,255),2) #a rectangle box:(image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
 cv2.rectangle(img,(125,125),(250,460),(255,60,180),cv2.FILLED) #a rectangle shape
-'''
+
 #------Part4--circle
-'''
-cv2.circle(img,(256,256),100,(60,180,255),2) #draw a circle: (image,center_point(x,y),color(B,G,R),thickness,line_type)
-'''
+
+cv2.circle(img,(256,256),100,(60,180,255),2) #draw a circle: (image,center_point(x,y),radius,color(B,G,R),thickness,line_type)
+
 #------Part5--text
 
 cv2.putText(img,"Opencv",(200,256),cv2.FONT_ITALIC ,1,(180,180,180),2) #show text: (image,"text",org,font_type ,font_scale,color(B,G,R),thickness,line_type) org:Bottom-left corner of the text
@@ -1930,14 +1948,16 @@ Tags: opencv,resize,cropped
 Slug: Jul_24_ 2020
 Author: 40723150
 ---
-學習如何使用opencv。Chapter 3
+學習如何使用opencv。Chapter 3 影像切割及調整尺寸。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 ## Chapter 3 影像切割及調整尺寸
 
 ### 調整影像尺寸( Resize )
 
-[Resize](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/geometric_transformations.html?highlight=resize#cv2.resize)
+[Resize](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga47a974309e9102f5f08231edc7e7529d)
+
+Opencv 的 XY 軸座標的原點是在左上角越往右下 X 和 Y 的值越大。
 
 ### 影像切割
 
@@ -1947,10 +1967,10 @@ import cv2
 img = cv2.imread("lena.png")
 print(img.shape)#show the image size(width,height,channel)
 
-imgResize = cv2.resize(img,(1024,1024))#resize the lean.png:(image,(Y_size,X_size))
+imgResize = cv2.resize(img,(1024,1024)) #resize the lean.png:(image,(Y_size,X_size))
 print(imgResize.shape)
-print(imgResize.shape[:2])
-imgCropped = img[200:388,220:355]#cut the image [y1:y2,x1:x2],the origin of image at upper left corner.
+
+imgCropped = img[200:388,220:355] #cut the image [y1:y2,x1:x2],the origin of image at upper left corner.
 
 cv2.imshow("Image",img)
 cv2.imshow("Image Resize",imgResize)
@@ -1965,13 +1985,41 @@ cv2.waitKey(0)
 Title: Jul 26, 2020 日誌
 Date: Jul 26, 2020
 Category: 日誌
-Tags: 
+Tags: cv2,numpy,getPerspectiveTransform,warpPerspective,透視轉換
 Slug: Jul_26_ 2020
 Author: 40723150
 ---
-CH5。摸索 VScode 設定。
+學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+## Chapter 5 透視轉換
+
+* [getPerspectiveTransform](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga8c1ae0e3589a9d77fffc962c49b22043) : 四點透視轉換
+
+
+* [warpPerspective](https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#gaf73673a7e8e18ec6963e3774e6a94b87) : 矩陣轉圖像
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+img = cv2.imread("license_plate_number.jpg")
+width,height = 76,31
+
+lpn1_o = np.float32([[188,397],[256,399],[189,432],[265,430]])
+lpn1_m = np.float32([[0,0],[width,0],[0,height],[width,height]])
+
+matrix = cv2.getPerspectiveTransform(lpn1_o,lpn1_m)
+imgOutput = cv2.warpPerspective(img,matrix,(width,height))
+imgResize = cv2.resize(imgOutput,(width*3,height*3))
+
+cv2.imshow("Image",img)
+cv2.imshow("Image Output",imgOutput)
+cv2.imshow("Resize Image",imgResize)
+
+cv2.waitKey(0)
+
+&lt;/pre&gt;
 @others</t>
 <t tx="leo.20200728144250.2"></t>
 <t tx="leo.20200728144253.1">@language md
@@ -1979,13 +2027,83 @@ CH5。摸索 VScode 設定。
 Title: Jul 27, 2020 日誌
 Date: Jul 27, 2020
 Category: 日誌
-Tags: 
+Tags: cv2,numpy,isinstance,hstack,vstack,def
 Slug: Jul_27_ 2020
 Author: 40723150
 ---
-學opencv。CH6
+學習如何使用opencv。Chapter 6 影像排列。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+## Chapter 6 影像排列
+
+[def](https://www.w3schools.com/python/ref_keyword_def.asp) : 新建一個函數
+
+[isinstance](https://www.w3schools.com/python/ref_func_isinstance.asp) : 比對資料格式
+
+[hstack](https://numpy.org/doc/stable/reference/generated/numpy.hstack.html) : 水平排列
+
+[vstack](https://numpy.org/doc/stable/reference/generated/numpy.vstack.html) : 垂直排列
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+
+#------Part1
+'''
+img = cv2.imread("lena.png")
+imgHor = np.hstack((img,img)) # 2 range horizontal in a window
+imgVer = np.vstack((img,img)) # 2 range vertical in a window
+img4 = np.vstack((imgHor,imgHor)) # 4 images in a window
+
+cv2.imshow("Horizontal Images",imgHor)
+cv2.imshow("Vertical Images",imgVer)
+cv2.imshow("4 Images",img4)
+'''
+#------Part2
+
+def stackImages(scale,imgArray):
+    rows = len(imgArray) # how many rows(有幾行)
+    cols = len(imgArray[0]) # how many columns(有幾列)
+    rowsAvailable = isinstance(imgArray[0], list) # check if "imgArray" is list
+    width = imgArray[0][0].shape[1] # get the first image width size
+    height = imgArray[0][0].shape[0] #get the first image height size
+    if rowsAvailable:
+        for x in range ( 0, rows):
+            for y in range(0, cols):
+                if imgArray[x][y].shape[:2] == imgArray[0][0].shape [:2]:
+                    # if the first image size equal to another one
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                    # resize the images
+                else:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]), None, scale, scale)
+                    # resize the  different size image to first image size.
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y]= cv2.cvtColor( imgArray[x][y], cv2.COLOR_GRAY2BGR)
+                # if the image is gray will change to BGR
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank]*rows
+        hor_con = [imageBlank]*rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+        ver = np.vstack(hor)
+    else:
+        for x in range(0, rows):
+            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            else:
+                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None,scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor= np.hstack(imgArray)
+        ver = hor
+    return ver
+    
+img = cv2.imread("lena.png")
+
+imgStack = stackImages(0.5,([img,img],[img,img]))
+cv2.imshow("ImagesStack",imgStack)
+
+cv2.waitKey(0)
+&lt;/pre&gt;
 @others</t>
 <t tx="leo.20200728144253.2"></t>
 <t tx="leo.20200728144348.1">@language md
@@ -1993,16 +2111,133 @@ Author: 40723150
 Title: Jul 28, 2020 日誌
 Date: Jul 28, 2020
 Category: 日誌
-Tags: 
+Tags: cv2,numpy,while,createTrackbar,getTrackbarPos
 Slug: Jul_28_ 2020
 Author: 40723150
 ---
+學習如何使用opencv。Chapter 7 影像遮罩。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
 
+## Chapter 7 影像遮罩
+
+[while](https://www.w3schools.com/python/python_while_loops.asp) : 迴圈
+
+[createTrackbar](https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#gaf78d2155d30b728fc413803745b67a9b) : 新建軌跡欄
+
+[getTrackbarPos](https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#ga122632e9e91b9ec06943472c55d9cda8) : 回傳軌跡欄數值
+
+[inRange](https://docs.opencv.org/3.4/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981) : 選取範圍(檢查數值在範圍值內留下)
+
+[bitwise_and](https://docs.opencv.org/3.4/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14) ; 遮罩
+
+&lt;pre class="brush: jscript"&gt;
+import cv2
+import numpy as np
+
+path = 'lambo.png'
+def empty(a):
+    pass
+# stackImage
+def stackImages(scale,imgArray):
+    rows = len(imgArray)
+    cols = len(imgArray[0])
+    rowsAvailable = isinstance(imgArray[0], list)
+    width = imgArray[0][0].shape[1]
+    height = imgArray[0][0].shape[0]
+    if rowsAvailable:
+        for x in range ( 0, rows):
+            for y in range(0, cols):
+                if imgArray[x][y].shape[:2] == imgArray[0][0].shape [:2]:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                else:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]), None, scale, scale)
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y]= cv2.cvtColor( imgArray[x][y], cv2.COLOR_GRAY2BGR)
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank]*rows
+        hor_con = [imageBlank]*rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+        ver = np.vstack(hor)
+    else:
+        for x in range(0, rows):
+            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            else:
+                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None,scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor= np.hstack(imgArray)
+        ver = hor
+    return ver
+
+
+# ------CreateTrackbar
+cv2.namedWindow("TrackBars")
+cv2.resizeWindow("TrackBars",640,240)
+cv2.createTrackbar("Hue Min","TrackBars",0,179,empty)
+cv2.createTrackbar("Hue Max","TrackBars",179,179,empty)
+cv2.createTrackbar("Sat Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Sat Max","TrackBars",255,255,empty)
+cv2.createTrackbar("Val Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Val Max","TrackBars",255,255,empty)
+
+while True:
+    img = cv2.imread(path)
+    imgHSV = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    h_min = cv2.getTrackbarPos("Hue Min","TrackBars")
+    h_max = cv2.getTrackbarPos("Hue Max", "TrackBars")
+    s_min = cv2.getTrackbarPos("Sat Min","TrackBars")
+    s_max = cv2.getTrackbarPos("Sat Max", "TrackBars")
+    v_min = cv2.getTrackbarPos("Val Min","TrackBars")
+    v_max = cv2.getTrackbarPos("Val Max", "TrackBars")
+    print(h_min,h_max,s_min,s_max,v_min,v_max)
+    lower = np.array([h_min,s_min,v_min])
+    upper = np.array([h_max,s_max,v_max])
+    mask = cv2.inRange(imgHSV,lower,upper)
+    imgResult = cv2.bitwise_and(img,img,mask=mask)
+    # cv2.imshow("Original",img)
+    # cv2.imshow("HSV",imgHSV)
+    # cv2.imshow("Mask",mask)
+
+    imgStack = stackImages(0.6, ([img, imgHSV], [mask, imgResult]))
+    cv2.imshow("Stacked Images", imgStack)
+    cv2.imshow("Result", imgResult)
+
+    cv2.waitKey(1)
+
+&lt;/pre&gt;
+@others
+</t>
+<t tx="leo.20200728144348.2"></t>
+<t tx="leo.20200731075532.1">@language md
+---
+Title: Jul 29, 2020 日誌
+Date: Jul 29, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_29_ 2020
+Author: 40723150
+---
+整理 Jul,23~25 的 blog.
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 @others
 </t>
-<t tx="leo.20200728144348.2"></t>
+<t tx="leo.20200731075532.2"></t>
+<t tx="leo.20200731075534.1">@language md
+---
+Title: Jul 30, 2020 日誌
+Date: Jul 30, 2020
+Category: 日誌
+Tags: 
+Slug: Jul_30_ 2020
+Author: 40723150
+---
+搭車回家，休息一天。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20200731075534.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

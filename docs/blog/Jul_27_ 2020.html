@@ -42,10 +42,16 @@
 
     <link href="./Jul_27_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="學opencv。CH6">
+        <meta name="description" content="學習如何使用opencv。Chapter 6 影像排列。">
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="cv2">
+        <meta name="tags" content="numpy">
+        <meta name="tags" content="isinstance">
+        <meta name="tags" content="hstack">
+        <meta name="tags" content="vstack">
+        <meta name="tags" content="def">
 
 
 
@@ -53,7 +59,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
 <meta property="og:title" content="Jul 27, 2020 日誌"/>
-<meta property="og:description" content="學opencv。CH6"/>
+<meta property="og:description" content="學習如何使用opencv。Chapter 6 影像排列。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./Jul_27_ 2020.html"/>
 <meta property="og:type" content="article"/>
@@ -61,6 +67,12 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="cv2"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="article:tag" content="isinstance"/>
+<meta property="article:tag" content="hstack"/>
+<meta property="article:tag" content="vstack"/>
+<meta property="article:tag" content="def"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -80,7 +92,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./Jul_27_ 2020.html",
-  "description": "學opencv。CH6"
+  "description": "學習如何使用opencv。Chapter 6 影像排列。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -221,8 +233,72 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>學opencv。CH6
+                <p>學習如何使用opencv。Chapter 6 影像排列。
 </p>
+<h2>Chapter 6 影像排列</h2>
+<p><a href="https://www.w3schools.com/python/ref_keyword_def.asp">def</a> : 新建一個函數</p>
+<p><a href="https://www.w3schools.com/python/ref_func_isinstance.asp">isinstance</a> : 比對資料格式</p>
+<p><a href="https://numpy.org/doc/stable/reference/generated/numpy.hstack.html">hstack</a> : 水平排列</p>
+<p><a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html">vstack</a> : 垂直排列</p>
+<pre class="brush: jscript">
+import cv2
+import numpy as np
+
+#------Part1
+'''
+img = cv2.imread("lena.png")
+imgHor = np.hstack((img,img)) # 2 range horizontal in a window
+imgVer = np.vstack((img,img)) # 2 range vertical in a window
+img4 = np.vstack((imgHor,imgHor)) # 4 images in a window
+
+cv2.imshow("Horizontal Images",imgHor)
+cv2.imshow("Vertical Images",imgVer)
+cv2.imshow("4 Images",img4)
+'''
+#------Part2
+
+def stackImages(scale,imgArray):
+    rows = len(imgArray) # how many rows(有幾行)
+    cols = len(imgArray[0]) # how many columns(有幾列)
+    rowsAvailable = isinstance(imgArray[0], list) # check if "imgArray" is list
+    width = imgArray[0][0].shape[1] # get the first image width size
+    height = imgArray[0][0].shape[0] #get the first image height size
+    if rowsAvailable:
+        for x in range ( 0, rows):
+            for y in range(0, cols):
+                if imgArray[x][y].shape[:2] == imgArray[0][0].shape [:2]:
+                    # if the first image size equal to another one
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                    # resize the images
+                else:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]), None, scale, scale)
+                    # resize the  different size image to first image size.
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y]= cv2.cvtColor( imgArray[x][y], cv2.COLOR_GRAY2BGR)
+                # if the image is gray will change to BGR
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank]*rows
+        hor_con = [imageBlank]*rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+        ver = np.vstack(hor)
+    else:
+        for x in range(0, rows):
+            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            else:
+                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None,scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor= np.hstack(imgArray)
+        ver = hor
+    return ver
+
+img = cv2.imread("lena.png")
+
+imgStack = stackImages(0.5,([img,img],[img,img]))
+cv2.imshow("ImagesStack",imgStack)
+
+cv2.waitKey(0)
+</pre>
             </section>
 
             <section class="post-info">
@@ -239,6 +315,8 @@ init_mathjax();
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/cv2.html">cv2</a><a href="./tag/numpy.html">numpy</a><a href="./tag/isinstance.html">isinstance</a><a href="./tag/hstack.html">hstack</a><a href="./tag/vstack.html">vstack</a><a href="./tag/def.html">def</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -251,14 +329,14 @@ init_mathjax();
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
                                 <h2 class="post-nav-title">Jul 28, 2020 日誌</h2>
-                            <p class="post-nav-excerpt"></p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 7 影像遮罩。</p>
                         </section>
                     </a>
                     <a class="post-nav-prev" href="./Jul_26_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
                                 <h2 class="post-nav-title">Jul 26, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">CH5。摸索 VScode 設定。</p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。</p>
                         </section>
                     </a>
                     <div class="clear"></div>

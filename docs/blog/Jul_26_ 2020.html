@@ -42,10 +42,15 @@
 
     <link href="./Jul_26_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="CH5。摸索 VScode 設定。">
+        <meta name="description" content="學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。">
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="cv2">
+        <meta name="tags" content="numpy">
+        <meta name="tags" content="getPerspectiveTransform">
+        <meta name="tags" content="warpPerspective">
+        <meta name="tags" content="透視轉換">
 
 
 
@@ -53,7 +58,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
 <meta property="og:title" content="Jul 26, 2020 日誌"/>
-<meta property="og:description" content="CH5。摸索 VScode 設定。"/>
+<meta property="og:description" content="學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./Jul_26_ 2020.html"/>
 <meta property="og:type" content="article"/>
@@ -61,6 +66,11 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="cv2"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="article:tag" content="getPerspectiveTransform"/>
+<meta property="article:tag" content="warpPerspective"/>
+<meta property="article:tag" content="透視轉換"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -80,7 +90,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./Jul_26_ 2020.html",
-  "description": "CH5。摸索 VScode 設定。"
+  "description": "學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -221,8 +231,38 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>CH5。摸索 VScode 設定。
+                <p>學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。
 </p>
+<h2>Chapter 5 透視轉換</h2>
+<ul>
+<li>
+<p><a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#ga8c1ae0e3589a9d77fffc962c49b22043">getPerspectiveTransform</a> : 四點透視轉換</p>
+</li>
+<li>
+<p><a href="https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#gaf73673a7e8e18ec6963e3774e6a94b87">warpPerspective</a> : 矩陣轉圖像</p>
+</li>
+</ul>
+<pre class="brush: jscript">
+import cv2
+import numpy as np
+
+img = cv2.imread("license_plate_number.jpg")
+width,height = 76,31
+
+lpn1_o = np.float32([[188,397],[256,399],[189,432],[265,430]])
+lpn1_m = np.float32([[0,0],[width,0],[0,height],[width,height]])
+
+matrix = cv2.getPerspectiveTransform(lpn1_o,lpn1_m)
+imgOutput = cv2.warpPerspective(img,matrix,(width,height))
+imgResize = cv2.resize(imgOutput,(width*3,height*3))
+
+cv2.imshow("Image",img)
+cv2.imshow("Image Output",imgOutput)
+cv2.imshow("Resize Image",imgResize)
+
+cv2.waitKey(0)
+
+</pre>
             </section>
 
             <section class="post-info">
@@ -239,6 +279,8 @@ init_mathjax();
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/cv2.html">cv2</a><a href="./tag/numpy.html">numpy</a><a href="./tag/getperspectivetransform.html">getPerspectiveTransform</a><a href="./tag/warpperspective.html">warpPerspective</a><a href="./tag/tou-shi-zhuan-huan.html">透視轉換</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -251,14 +293,14 @@ init_mathjax();
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
                                 <h2 class="post-nav-title">Jul 27, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">學opencv。CH6</p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 6 影像排列。</p>
                         </section>
                     </a>
                     <a class="post-nav-prev" href="./Jul_25_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
                                 <h2 class="post-nav-title">Jul 25, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">學opencv。CH4</p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 4 插入圖型及文字。</p>
                         </section>
                     </a>
                     <div class="clear"></div>

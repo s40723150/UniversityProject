@@ -42,10 +42,17 @@
 
     <link href="./Jul_25_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="學opencv。CH4">
+        <meta name="description" content="學習如何使用opencv。Chapter 4 插入圖型及文字。">
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="cv2">
+        <meta name="tags" content="numpy">
+        <meta name="tags" content="line">
+        <meta name="tags" content="rectangle">
+        <meta name="tags" content="circle">
+        <meta name="tags" content="text">
+        <meta name="tags" content="zero">
 
 
 
@@ -53,7 +60,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
 <meta property="og:title" content="Jul 25, 2020 日誌"/>
-<meta property="og:description" content="學opencv。CH4"/>
+<meta property="og:description" content="學習如何使用opencv。Chapter 4 插入圖型及文字。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./Jul_25_ 2020.html"/>
 <meta property="og:type" content="article"/>
@@ -61,6 +68,13 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="cv2"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="article:tag" content="line"/>
+<meta property="article:tag" content="rectangle"/>
+<meta property="article:tag" content="circle"/>
+<meta property="article:tag" content="text"/>
+<meta property="article:tag" content="zero"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -80,7 +94,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./Jul_25_ 2020.html",
-  "description": "學opencv。CH4"
+  "description": "學習如何使用opencv。Chapter 4 插入圖型及文字。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -221,9 +235,60 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>學opencv。CH4
+                <p>學習如何使用opencv。Chapter 4 插入圖型及文字。
 </p>
+<h2>Chapter 4 插入圖型及文字</h2>
+<p><a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html">np.zeros</a> :</p>
+<p>產生一個用零填滿的矩陣。我們用來產生一個黑色的畫布(圖片)，之後會在上面插入圖型及文字。</p>
+<ul>
+<li>
+<p><a href="https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga7078a9fae8c7e7d13d24dac2520ae4a2">line</a> : 指定兩點畫一直線。</p>
+</li>
+<li>
+<p><a href="https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga07d2f74cadcf8e305e810ce8eed13bc9">rectangle</a> : 指定兩點畫出一矩形框。</p>
+</li>
+<li>
+<p><a href="https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670">circle</a> : 指定圓心位置，再給定半徑大小。</p>
+</li>
+<li>
+<p><a href="https://docs.opencv.org/3.4/d6/d6e/group__imgproc__draw.html#ga5126f47f883d730f633d74f07456c576">putText</a> : 輸入要顯示的文字，指定文字的基準位置(左下角)的座標。</p>
+</li>
+</ul>
 <pre class="brush: jscript">
+import cv2
+import numpy as np
+
+img = np.zeros((512,512,3),np.uint8) #zero: black . (weith,height,channel)
+
+#------Part 1--area
+
+print(img)
+#img[:] = 255,0,0 #a blue square full the black square
+
+img[0:100,200:300] = 255,0,0 #blue square[y1:y2,x1:x2] = B,G,R
+
+#------Part 2--line
+
+#cv2.line(img,(10,10),(300,400),(0,0,255),2) #draw a line : (image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
+
+cv2.line(img,(0,0),(img.shape[1],img.shape[0]),(0,255,0),3)
+
+#------Part 3--rectangle
+
+cv2.rectangle(img,(5,5),(150,240),(180,60,255),2) #a rectangle box:(image,start_point(x0,y0),end_point(x1,y1),color(B,G,R),thickness,line_type)
+cv2.rectangle(img,(125,125),(250,460),(255,60,180),cv2.FILLED) #a rectangle shape
+
+#------Part4--circle
+
+cv2.circle(img,(256,256),100,(60,180,255),2) #draw a circle: (image,center_point(x,y),radius,color(B,G,R),thickness,line_type)
+
+#------Part5--text
+
+cv2.putText(img,"Opencv",(200,256),cv2.FONT_ITALIC ,1,(180,180,180),2) #show text: (image,"text",org,font_type ,font_scale,color(B,G,R),thickness,line_type) org:Bottom-left corner of the text
+
+cv2.imshow("Image",img)
+
+cv2.waitKey(0)
 </pre>
             </section>
 
@@ -241,6 +306,8 @@ init_mathjax();
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/cv2.html">cv2</a><a href="./tag/numpy.html">numpy</a><a href="./tag/line.html">line</a><a href="./tag/rectangle.html">rectangle</a><a href="./tag/circle.html">circle</a><a href="./tag/text.html">text</a><a href="./tag/zero.html">zero</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -253,14 +320,14 @@ init_mathjax();
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
                                 <h2 class="post-nav-title">Jul 26, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">CH5。摸索 VScode 設定。</p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 5 透視轉換。摸索 VScode 設定。</p>
                         </section>
                     </a>
                     <a class="post-nav-prev" href="./Jul_24_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
                                 <h2 class="post-nav-title">Jul 24, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 3</p>
+                            <p class="post-nav-excerpt">學習如何使用opencv。Chapter 3 影像切割及調整尺寸。</p>
                         </section>
                     </a>
                     <div class="clear"></div>
