@@ -57,6 +57,7 @@
 </v>
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20200329213145.1"><vh>2020</vh>
+<v t="leo.20200805114906.1"><vh>Jul</vh>
 <v t="leo.20200329213145.5"><vh>@clean Jul_01_2020.md</vh></v>
 <v t="leo.20200703121642.1"><vh>@clean Jul_02_2020.md</vh></v>
 <v t="leo.20200705054727.1"><vh>@clean Jul_03_2020.md</vh></v>
@@ -152,11 +153,20 @@
 <v t="leo.20200731075534.2"><vh>9163369466257328113</vh></v>
 </v>
 </v>
+<v t="leo.20200805035149.1"><vh>Aug</vh>
+<v t="leo.20200805111923.1"><vh>@clean Aug_01_2020.md</vh></v>
+<v t="leo.20200805112114.1"><vh>@clean Aug_02_2020.md</vh></v>
+<v t="leo.20200805112117.1"><vh>@clean Aug_03_2020.md</vh></v>
+<v t="leo.20200805112206.1"><vh>@clean Aug_04_2020.md</vh></v>
+<v t="leo.20200805035600.1"><vh>@clean Aug_05_2020.md</vh></v>
+</v>
+</v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
 </v>
 <v t="yen.20170108171930.1"><vh>@button https server</vh></v>
 <v t="yen.20170108171939.1"><vh>@button ipv6 https server</vh></v>
+<v t="leo.20200805052219.1"><vh>insert_command_line_note</vh></v>
 </vnodes>
 <tnodes>
 <t tx="leo.20170709015940.1"></t>
@@ -691,7 +701,6 @@ Author: 40723150
 5. 推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：
-
 
 
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
@@ -1692,7 +1701,7 @@ sudo /etc/init.d/nginx restart
 /usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 &lt;/pre&gt;
 
-此時可以測試是否順利連上 [http://[2001:288:6004:17:2:cad:0:3150]:80](http://[2001:288:6004:17:2:cad:0:3150]:80)和 [http://[2001:288:6004:17:2:cad:0:3150]:9443](https://[2001:288:6004:17:2:cad:0:3150]:9443)，若沒問題再設定防火牆。
+此時可以測試是否順利連上 [http://[2001:288:6004:17:2:cad:0:3150]:80](http://[2001:288:6004:17:2:cad:0:3150]:80)和 [https://[2001:288:6004:17:2:cad:0:3150]:9443](https://[2001:288:6004:17:2:cad:0:3150]:9443)，若沒問題再設定防火牆。
 
 ## 防火牆設定 （ufw）
 
@@ -2238,6 +2247,305 @@ Author: 40723150
 @others
 </t>
 <t tx="leo.20200731075534.2"></t>
+<t tx="leo.20200805035149.1"></t>
+<t tx="leo.20200805035600.1">@language md
+---
+Title: Aug 05, 2020 日誌
+Date: Aug 05, 2020
+Category: 日誌
+Tags: 
+Slug: Aug_05_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20200805052219.1">&lt;pre class="brush: jscript"&gt;
+
+&lt;/pre&gt;
+</t>
+<t tx="leo.20200805111923.1">@language md
+---
+Title: Aug 01, 2020 日誌
+Date: Aug 01, 2020
+Category: 日誌
+Tags: 
+Slug: Aug_01_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20200805112114.1">@language md
+---
+Title: Aug 02, 2020 日誌
+Date: Aug 02, 2020
+Category: 日誌
+Tags: 
+Slug: Aug_02_ 2020
+Author: 40723150
+---
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20200805112117.1">@language md
+---
+Title: Aug 03, 2020 日誌
+Date: Aug 03, 2020
+Category: 日誌
+Tags: cad4,server,port,git,proxy
+Slug: Aug_03_ 2020
+Author: 40723150
+---
+設定 cad4 server。設定 nginx uWSGI cmsimde ufw。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+## 導入所需模組
+
+由於pip、uwsgi 和 python plugin 已經安裝了，所以就不裝了。
+
+安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)
+
+&lt;pre class="brush: jscript"&gt;
+sudo pip3 install flask flask_cors bs4 lxml
+&lt;/pre&gt;
+
+---
+
+## 建立 key and crt
+
+練習時建立自己認證的 key 和 crt 。如果實際要架設 server 就需要第三方任成的 key。 key 和 crt 放在 /home/s40723150 目錄下
+
+&lt;pre class="brush: jscript"&gt;
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
+---
+
+## 設定 nginx
+
+### 導入 CMSIMDE 模組
+
+設定 proxy 
+&lt;pre class="brush: jscript"&gt;
+git config --global http.proxy http://[2001:288:6004:17::69]:3128
+&lt;/pre&gt;
+
+新建 cad4_site 目錄存放 cmsimde 的檔案
+
+&lt;pre class="brush: jscript"&gt;
+mkdir cad4_site
+cd cad4_site
+git clone https://github.com/mdecourse/cmsimde.git
+&lt;/pre&gt;
+
+將 up_dir 目錄下的資料複製一份到 cad4_site目錄，為了讓之後啟動網站時讀取資料的配置。
+
+&lt;pre class="brush: jscript"&gt;
+cp -r /home/s40723150/cad4_site/cmsimde/up_dir/* /home/s40723150/cad4_site
+&lt;/pre&gt;
+
+設定 nginx
+將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx
+sudo vi nginx.conf
+&lt;/pre&gt;
+nginx.conf (line: 62) 內容：
+&lt;pre class="brush: jscript"&gt;
+include /etc/nginx/sites-available/*
+&lt;/pre&gt;
+
+修改 sites-available 裡的設定，將 root 的讀取目錄換到 /home/s40723150/cad4_site 。
+
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx/sites-available
+sudo vi default
+&lt;/pre&gt;
+
+sites-available/default 內容：
+
+&lt;pre class="brush: jscript"&gt;
+#root /var/www/html
+root /home/s40723150/cad4_site;
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+### 導入動態網站
+
+&lt;pre class="brush: jscript"&gt;
+sudo vi /etc/nginx/sites-available/default
+&lt;/pre&gt;
+
+加入 port 9443 的設定，設定內如下：
+
+&lt;pre class="brush: jscript"&gt;
+server {
+
+listen 9443 ssl;
+listen [::]:9443 ssl;
+
+# 指定 static 所在位置
+location /static {
+alias /home/s40723150/cad4_site/cmsimde/static/;
+}
+
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
+
+ssl_certificate /home/s40723150/localhost.crt;
+ssl_certificate_key /home/s40723150/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
+}
+&lt;/pre&gt;
+
+在 port 80 後面插入一段 port 88 的設定。
+
+加設 port 88 (sites-available/default)：
+
+&lt;pre class="brush: jscript"&gt;
+server {
+    listen 80 default server;
+    listen [::]:80 default_server;
+
+    listen 88 default_server;
+    listen [::]:88 Idefault_server;
+&lt;/pre&gt;
+
+在 nginx (9443) 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。
+
+因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。
+
+### 開啟 uwsgi 功能
+
+
+cd /home/s40723150/cad4_site
+sudo vi init.py
+確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動
+
+&lt;pre class="brush: jscript"&gt;
+uwsgi = True
+設定 uwsgi.ini
+&lt;/pre&gt;
+
+在 /home/s40723150 新建 uwsgi_ini 目錄，專門存放 uwsgi 的設定。
+
+&lt;pre class="brush: jscript"&gt;
+mkdir uwsgi_ini
+sudo vi uwsgi.ini
+&lt;/pre&gt;
+
+uwsgi.ini 的設定內容如下：
+
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = s40723150
+gid = s40723150
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/s40723150/cad4_site/cmsimde
+wsgi-file = /home/s40723150/cad4_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+重啟 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+重新啟動 Nginx 並利用 uwsgi 指令測試 手動啟動 uwsgi 主機的指令︰
+
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/s40723150/uwsgi_ini
+&lt;/pre&gt;
+
+此時可以測試是否順利連上[http://[2001:288:6004:17:2020:cad:0:4]:80](http://[2001:288:6004:17:2020:cad:0:4]:80)、 [http://[2001:288:6004:17:2020:cad:0:4]:88](http://[2001:288:6004:17:2020:cad:0:4]:88) 和 [https://[2001:288:6004:17:2020:cad:0:4]:9443](https://[2001:288:6004:17:2020:cad:0:4]:9443)。
+
+port 80 和 88 可以連上，port 9443 在啟動後有些問題就先跳過，先設定防火牆。
+
+### 防火牆設定 (ufw)
+
+以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。
+
+&lt;pre class="brush: jscript"&gt;
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+ufw deny 9443
+ufw enable
+&lt;/pre&gt;
+
+ exit 退出 root 模式：
+
+@others
+</t>
+<t tx="leo.20200805112206.1">@language md
+---
+Title: Aug 04, 2020 日誌
+Date: Aug 04, 2020
+Category: 日誌
+Tags: cad4,server,uWSGI
+Slug: Aug_04_ 2020
+Author: 40723150
+---
+設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+## 修復啟動 uWSGI問題
+
+由於在啟動時出現以下問題：
+
+&lt;pre class="brush: jscript"&gt;
+probably another instance of uWSGI is running on the same address (:8080).
+&lt;/pre&gt;
+
+背景有正在執行的 uWSGI 正在使用相同的 port 8080，所以需要先停止執行背景執行的 uWSGI ，再重啟。
+
+先檢查正在執行的 uWSGI 的 pid 代碼，再用 kill 去停止執行
+
+列出所有正在執行的程式，查看 uWSGI 的 pid 代碼：
+
+&lt;pre class="brush: jscript"&gt;
+ps -A
+&lt;/pre&gt;
+
+找到相對應的 pid ，用 kill 停止執行
+
+&lt;pre class="brush: jscript"&gt;
+sudo kill pid的號碼
+&lt;/pre&gt;
+
+@others</t>
+<t tx="leo.20200805114906.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
