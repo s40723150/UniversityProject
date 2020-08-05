@@ -1,5 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-07-30T00:00:00+08:00</updated><entry><title>Jul 30, 2020 日誌</title><link href=".%5CJul_30_%202020.html" rel="alternate"></link><published>2020-07-30T00:00:00+08:00</published><updated>2020-07-30T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-30:.\Jul_30_ 2020.html</id><summary type="html">&lt;p&gt;搭車回家，休息一天。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-08-05T00:00:00+08:00</updated><entry><title>Aug 05, 2020 日誌</title><link href=".%5CAug_05_%202020.html" rel="alternate"></link><published>2020-08-05T00:00:00+08:00</published><updated>2020-08-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-05:.\Aug_05_ 2020.html</id><summary type="html">&lt;p&gt;初步認識及安裝 PyTorch 和 CUDA。
+</summary><content type="html">&lt;p&gt;初步認識及安裝 PyTorch 和 CUDA。
+&lt;/p&gt;
+&lt;p&gt;CUDA：利用 GPU 來提升運算效能&lt;/p&gt;
+&lt;p&gt;PyTorch：開源的 Python 機器學習庫，有類似 Numpy 的張量計算，可用 GPU 加速；自動微分系統的神經網絡&lt;/p&gt;
+&lt;p&gt;安裝 CUDA 10.2 &lt;a href="https://developer.nvidia.com/cuda-10.2-download-archive"&gt;下載&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pytorch.org/get-started/locally/"&gt;PyTorch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;到 PyTorch 網站選擇符合的系統配置，網頁會顯示安裝指令，再到電腦上執行安裝指令、安裝。&lt;/p&gt;
+&lt;p&gt;預計 Aug,06 要先去了解一下如何用 let's encrypt 取得認證數位簽章&lt;/p&gt;</content><category term="日誌"></category><category term="CUAD"></category><category term="PyTorch"></category></entry><entry><title>Aug 04, 2020 日誌</title><link href=".%5CAug_04_%202020.html" rel="alternate"></link><published>2020-08-04T00:00:00+08:00</published><updated>2020-08-04T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-04:.\Aug_04_ 2020.html</id><summary type="html">&lt;p&gt;設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
+</summary><content type="html">&lt;p&gt;設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
+&lt;/p&gt;
+&lt;h2&gt;修復啟動 uWSGI問題&lt;/h2&gt;
+&lt;p&gt;由於在啟動時出現以下問題：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+probably another instance of uWSGI is running on the same address (:8080).
+&lt;/pre&gt;
+
+&lt;p&gt;背景有正在執行的 uWSGI 正在使用相同的 port 8080，所以需要先停止執行背景執行的 uWSGI ，再重啟。&lt;/p&gt;
+&lt;p&gt;先檢查正在執行的 uWSGI 的 pid 代碼，再用 kill 去停止執行&lt;/p&gt;
+&lt;p&gt;列出所有正在執行的程式，查看 uWSGI 的 pid 代碼：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+ps -A
+&lt;/pre&gt;
+
+&lt;p&gt;找到相對應的 pid ，用 kill 停止執行&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo kill pid的號碼
+&lt;/pre&gt;
+
+&lt;p&gt;重啟 uWSGI&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/s40723150/uwsgi_ini
+&lt;/pre&gt;
+
+&lt;p&gt;之後再測試是否可以連上&lt;a href="https://[2001:288:6004:17:2020:cad:0:4]:9443"&gt;https://[2001:288:6004:17:2020:cad:0:4]:9443&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;設定 uwsgi service&lt;/h3&gt;
+&lt;p&gt;以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+
+&lt;p&gt;接著將 cmsimde 服務設為隨系統開機啟動&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+
+&lt;p&gt;由於是用 putty 遠端控制，所以就先不重新啟動主機。&lt;/p&gt;</content><category term="日誌"></category><category term="cad4"></category><category term="server"></category><category term="uWSGI"></category></entry><entry><title>Aug 03, 2020 日誌</title><link href=".%5CAug_03_%202020.html" rel="alternate"></link><published>2020-08-03T00:00:00+08:00</published><updated>2020-08-03T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-03:.\Aug_03_ 2020.html</id><summary type="html">&lt;p&gt;設定 cad4 server。設定 nginx uWSGI cmsimde ufw。
+</summary><content type="html">&lt;p&gt;設定 cad4 server。設定 nginx uWSGI cmsimde ufw。
+&lt;/p&gt;
+&lt;h2&gt;導入所需模組&lt;/h2&gt;
+&lt;p&gt;由於pip、uwsgi 和 python plugin 已經安裝了，所以就不裝了。&lt;/p&gt;
+&lt;p&gt;安裝 cmsimde 所需要的模組(flask、flask_cors、bs4、lxml)&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo pip3 install flask flask_cors bs4 lxml
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;建立 key and crt&lt;/h2&gt;
+&lt;p&gt;練習時建立自己認證的 key 和 crt 。如果實際要架設 server 就需要第三方任成的 key。 key 和 crt 放在 /home/s40723150 目錄下&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+&lt;/pre&gt;
+
+&lt;hr&gt;
+&lt;h2&gt;設定 nginx&lt;/h2&gt;
+&lt;h3&gt;導入 CMSIMDE 模組&lt;/h3&gt;
+&lt;p&gt;設定 proxy 
+&lt;pre class="brush: jscript"&gt;
+git config --global http.proxy http://[2001:288:6004:17::69]:3128
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;新建 cad4_site 目錄存放 cmsimde 的檔案&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+mkdir cad4_site
+cd cad4_site
+git clone https://github.com/mdecourse/cmsimde.git
+&lt;/pre&gt;
+
+&lt;p&gt;將 up_dir 目錄下的資料複製一份到 cad4_site目錄，為了讓之後啟動網站時讀取資料的配置。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cp -r /home/s40723150/cad4_site/cmsimde/up_dir/* /home/s40723150/cad4_site
+&lt;/pre&gt;
+
+&lt;p&gt;設定 nginx
+將 /etc/nginx/nginx.conf 裡面的讀取目錄 sites-enabled 替換成 sites-available (第62行)。* 則是讀取到 default ，因為 sites-available 目錄下只有 default 這個檔案。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx
+sudo vi nginx.conf
+&lt;/pre&gt;
+
+&lt;p&gt;nginx.conf (line: 62) 內容：
+&lt;pre class="brush: jscript"&gt;
+include /etc/nginx/sites-available/*
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;修改 sites-available 裡的設定，將 root 的讀取目錄換到 /home/s40723150/cad4_site 。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+cd /etc/nginx/sites-available
+sudo vi default
+&lt;/pre&gt;
+
+&lt;p&gt;sites-available/default 內容：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+#root /var/www/html
+root /home/s40723150/cad4_site;
+&lt;/pre&gt;
+
+&lt;p&gt;重啟 nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+&lt;h3&gt;導入動態網站&lt;/h3&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo vi /etc/nginx/sites-available/default
+&lt;/pre&gt;
+
+&lt;p&gt;加入 port 9443 的設定，設定內如下：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+server {
+
+listen 9443 ssl;
+listen [::]:9443 ssl;
+
+# 指定 static 所在位置
+location /static {
+alias /home/s40723150/cad4_site/cmsimde/static/;
+}
+
+location / {
+# 導入 uwsgi_params 設定參數
+include uwsgi_params;
+# 根目錄設為近端的 8080 port 
+uwsgi_pass  127.0.0.1:8080;
+}
+
+ssl_certificate /home/s40723150/localhost.crt;
+ssl_certificate_key /home/s40723150/localhost.key;
+#ssl_certificate /etc/letsencrypt/live/test.kmol.info/fullchain.pem;
+#ssl_certificate_key /etc/letsencrypt/live/test.kmol.info/privkey.pem;
+ssl_session_timeout 5m;
+ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+ssl_prefer_server_ciphers on;
+try_files $uri $uri/ =404;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;在 port 80 後面插入一段 port 88 的設定。&lt;/p&gt;
+&lt;p&gt;加設 port 88 (sites-available/default)：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+server {
+    listen 80 default server;
+    listen [::]:80 default_server;
+
+    listen 88 default_server;
+    listen [::]:88 Idefault_server;
+&lt;/pre&gt;
+
+&lt;p&gt;在 nginx (9443) 設定中， 導入 uwsgi_params，其網頁根目錄的資料可以由 uwsgi 網站程式提供。&lt;/p&gt;
+&lt;p&gt;因為 uwsgi 無 SSL 設置， 因此當內部動態網站以 localhost:8080 將資料送交 Nginx (9443) 之後，可以由 Nginx 提供聯外的 SSL 服務。&lt;/p&gt;
+&lt;h3&gt;開啟 uwsgi 功能&lt;/h3&gt;
+&lt;p&gt;cd /home/s40723150/cad4_site
+sudo vi init.py
+確認 CMSiMDE 中 init.py 設定 uwsgi = True, 表示動態網站系統要以 uwsgi 模式啟動&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+uwsgi = True
+設定 uwsgi.ini
+&lt;/pre&gt;
+
+&lt;p&gt;在 /home/s40723150 新建 uwsgi_ini 目錄，專門存放 uwsgi 的設定。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+mkdir uwsgi_ini
+sudo vi uwsgi.ini
+&lt;/pre&gt;
+
+&lt;p&gt;uwsgi.ini 的設定內容如下：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+[uwsgi]
+socket = :8080
+uid = s40723150
+gid = s40723150
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+process = 4
+threads = 2
+chdir = /home/s40723150/cad4_site/cmsimde
+wsgi-file = /home/s40723150/cad4_site/cmsimde/wsgi.py
+&lt;/pre&gt;
+
+&lt;p&gt;重啟 nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+&lt;p&gt;重新啟動 Nginx 並利用 uwsgi 指令測試 手動啟動 uwsgi 主機的指令︰&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/s40723150/uwsgi_ini
+&lt;/pre&gt;
+
+&lt;p&gt;此時可以測試是否順利連上&lt;a href="http://[2001:288:6004:17:2020:cad:0:4]:80"&gt;http://[2001:288:6004:17:2020:cad:0:4]:80&lt;/a&gt;、 &lt;a href="http://[2001:288:6004:17:2020:cad:0:4]:88"&gt;http://[2001:288:6004:17:2020:cad:0:4]:88&lt;/a&gt; 和 &lt;a href="https://[2001:288:6004:17:2020:cad:0:4]:9443"&gt;https://[2001:288:6004:17:2020:cad:0:4]:9443&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;port 80 和 88 可以連上，port 9443 在啟動後有些問題就先跳過，先設定防火牆。&lt;/p&gt;
+&lt;h3&gt;防火牆設定 (ufw)&lt;/h3&gt;
+&lt;p&gt;以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo -s
+ufw status
+ufw allow from 2001:288:6004:17::/32 to any port 22
+ufw deny 22
+ufw allow from 2001:288:6004:17::/32 to any port 80
+ufw deny 80
+ufw allow from 2001:288:6004:17::/32 to any port 9443
+ufw deny 9443
+ufw enable
+&lt;/pre&gt;
+
+&lt;p&gt;exit 退出 root 模式：&lt;/p&gt;</content><category term="日誌"></category><category term="cad4"></category><category term="server"></category><category term="port"></category><category term="git"></category><category term="proxy"></category></entry><entry><title>Aug 02, 2020 日誌</title><link href=".%5CAug_02_%202020.html" rel="alternate"></link><published>2020-08-02T00:00:00+08:00</published><updated>2020-08-02T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-02:.\Aug_02_ 2020.html</id><summary type="html">&lt;p&gt;學習如何使用opencv。Chapter 8 線條及圖案偵測
+</summary><content type="html">&lt;p&gt;學習如何使用opencv。Chapter 8 線條及圖案偵測
+&lt;/p&gt;
+&lt;h2&gt;Chapter 8 Contour/Shape Detection&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/trunk/d6/d6e/group__imgproc__draw.html#ga746c0625f1781f1ffc9056259103edbc"&gt;drawContours&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Draws contours outlines or filled contours.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c"&gt;arcLength&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Calculates a contour perimeter or a curve length.The function computes a curve length or a closed contour perimeter.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga0012a5fdaea70b8a9970165d98722b4c"&gt;approxPolyDP&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Approximates a polygonal curve(s) with the specified precision.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga17ed9f5d79ae97bd4c7cf18403e1689a"&gt;findcontours&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71"&gt;RETR_EXTERNAL&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+python
+import cv2
+import numpy as np
+
+def stackImages(scale, imgArray):
+    rows = len(imgArray)
+    cols = len(imgArray[0])
+    rowsAvailable = isinstance(imgArray[0], list)
+    width = imgArray[0][0].shape[1]
+    height = imgArray[0][0].shape[0]
+    if rowsAvailable:
+        for x in range(0, rows):
+            for y in range(0, cols):
+                if imgArray[x][y].shape[:2] == imgArray[0][0].shape[:2]:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                else:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),
+                                                None, scale, scale)
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank] * rows
+        hor_con = [imageBlank] * rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+        ver = np.vstack(hor)
+    else:
+        for x in range(0, rows):
+            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            else:
+                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None, scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor = np.hstack(imgArray)
+        ver = hor
+    return ver
+
+def getContours(img):
+    contours, hierarchy = cv2.find(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        print(area)
+                if area &gt; 500:
+            cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)
+            peri = cv2.arcLength(cnt, True)
+            # print(peri)
+            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+            print(len(approx))
+            objCor = len(approx)
+            x, y, w, h = cv2.boundingRect(approx)
+
+            if objCor == 3:
+                objectType = "Tri"
+            elif objCor == 4:
+                aspRatio = w / float(h)
+                if aspRatio &gt; 0.98 and aspRatio &lt; 1.03:
+                    objectType = "Square"
+                else:
+                    objectType = "Rectangle"
+            elif objCor &gt; 4:
+                objectType = "Circles"
+            else:
+                objectType = "None"
+
+            cv2.rectangle(imgContour, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.putText(imgContour, objectType,
+                        (x + (w // 2) - 10, y + (h // 2) - 10), cv2.FONT_HERSHEY_COMPLEX, 0.7,
+                        (0, 0, 0), 2)
+
+path = 'shapes.png'
+img = cv2.imread(path)
+imgContour = img.copy()
+
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)
+imgCanny = cv2.Canny(imgBlur,50,50)
+getContours(imgCanny)
+imgBlank = np.zeros_like(img)
+imgStack = stackImages(0.6,([img,imgGray,imgBlur],
+                            [imgCanny,imgContour,imgBlank]))
+
+# cv2.imshow("Original", img)
+# cv2.imshow("Gray", imgGray)
+# cv2.imshow("Blur", imgBlur)
+cv2.imshow("Stack", imgStack)
+
+cv2.waitKey(0)
+&lt;/pre&gt;</content><category term="日誌"></category><category term="cv2"></category><category term="numpy"></category><category term="contours"></category></entry><entry><title>Aug 01, 2020 日誌</title><link href=".%5CAug_01_%202020.html" rel="alternate"></link><published>2020-08-01T00:00:00+08:00</published><updated>2020-08-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-01:.\Aug_01_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 30, 2020 日誌</title><link href=".%5CJul_30_%202020.html" rel="alternate"></link><published>2020-07-30T00:00:00+08:00</published><updated>2020-07-30T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-30:.\Jul_30_ 2020.html</id><summary type="html">&lt;p&gt;搭車回家，休息一天。
 </summary><content type="html">&lt;p&gt;搭車回家，休息一天。
 &lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 29, 2020 日誌</title><link href=".%5CJul_29_%202020.html" rel="alternate"></link><published>2020-07-29T00:00:00+08:00</published><updated>2020-07-29T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-29:.\Jul_29_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,23~25 的 blog.
 </summary><content type="html">&lt;p&gt;整理 Jul,23~25 的 blog.
@@ -347,11 +672,11 @@ cv2.imshow("Canny Image",imgCanny)
 cv2.imshow("Dilate Image",imgDialation)
 cv2.imshow("Eroded Image",imgEroded)
 cv2.waitKey(0)
-&lt;/pre&gt;</content><category term="日誌"></category><category term="opencv"></category><category term="numpy"></category><category term="cvtcolor"></category><category term="gaussianblur"></category><category term="canny"></category><category term="dilate"></category><category term="erode"></category><category term="blur"></category></entry><entry><title>Jul 22, 2020 日誌</title><link href=".%5CJul_22_%202020.html" rel="alternate"></link><published>2020-07-22T00:00:00+08:00</published><updated>2020-07-22T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-22:.\Jul_22_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 21, 2020 日誌</title><link href=".%5CJul_21_%202020.html" rel="alternate"></link><published>2020-07-21T00:00:00+08:00</published><updated>2020-07-21T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-21:.\Jul_21_ 2020.html</id><summary type="html">&lt;h1&gt;練習建立 Ubuntu 20.04 server&lt;/h1&gt;
-</summary><content type="html">&lt;h1&gt;練習建立 Ubuntu 20.04 server&lt;/h1&gt;
+&lt;/pre&gt;</content><category term="日誌"></category><category term="opencv"></category><category term="numpy"></category><category term="cvtcolor"></category><category term="gaussianblur"></category><category term="canny"></category><category term="dilate"></category><category term="erode"></category><category term="blur"></category></entry><entry><title>Jul 22, 2020 日誌</title><link href=".%5CJul_22_%202020.html" rel="alternate"></link><published>2020-07-22T00:00:00+08:00</published><updated>2020-07-22T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-22:.\Jul_22_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 21, 2020 日誌</title><link href=".%5CJul_21_%202020.html" rel="alternate"></link><published>2020-07-21T00:00:00+08:00</published><updated>2020-07-21T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-21:.\Jul_21_ 2020.html</id><summary type="html">&lt;h2&gt;練習建立 Ubuntu 20.04 server  (較完整)&lt;/h2&gt;
+</summary><content type="html">&lt;h2&gt;練習建立 Ubuntu 20.04 server  (較完整)&lt;/h2&gt;
 
 
-&lt;h2&gt;查詢 IP 位址（已安裝 net-tools）&lt;/h2&gt;
+&lt;h3&gt;查詢 IP 位址（已安裝 net-tools）&lt;/h3&gt;
 &lt;pre class="brush: jscript"&gt;
 ifconfig 
 &lt;/pre&gt;
@@ -388,7 +713,7 @@ network:
 sudo netplan apply
 &lt;/pre&gt;
 
-&lt;h3&gt;proxy 設定（only IPv6） :&lt;/h3&gt;
+&lt;h3&gt;proxy 設定（only IPv6） : &amp;lt;---此步驟可以略過 (Aug,06,2020 更)&lt;/h3&gt;
 &lt;p&gt;在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機（porxy）。&lt;/p&gt;
 &lt;p&gt;到 /etc/apt/apt.conf.d 目錄下修改 proxy 設定。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;
@@ -569,7 +894,7 @@ sudo /etc/init.d/nginx restart
 /usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
 &lt;/pre&gt;
 
-&lt;p&gt;此時可以測試是否順利連上 &lt;a href="http://[2001:288:6004:17:2:cad:0:3150]:80"&gt;http://[2001:288:6004:17:2:cad:0:3150]:80&lt;/a&gt;和 &lt;a href="https://[2001:288:6004:17:2:cad:0:3150]:9443"&gt;http://[2001:288:6004:17:2:cad:0:3150]:9443&lt;/a&gt;，若沒問題再設定防火牆。&lt;/p&gt;
+&lt;p&gt;此時可以測試是否順利連上 &lt;a href="http://[2001:288:6004:17:2:cad:0:3150]:80"&gt;http://[2001:288:6004:17:2:cad:0:3150]:80&lt;/a&gt;和 &lt;a href="https://[2001:288:6004:17:2:cad:0:3150]:9443"&gt;https://[2001:288:6004:17:2:cad:0:3150]:9443&lt;/a&gt;，若沒問題再設定防火牆。&lt;/p&gt;
 &lt;h2&gt;防火牆設定 （ufw）&lt;/h2&gt;
 &lt;p&gt;以 root 身分進行 ufw 設定，將22 80 9443 一起設定。設定完後可以使用 ufw status 查看防火牆設定。&lt;/p&gt;
 &lt;pre class="brush: jscript"&gt;

@@ -1438,10 +1438,10 @@ Tags: module,server,netplan,nginx,uwsgi,key,crt,pip,mv,IPv6,開機啟動
 Slug: Jul_21_ 2020
 Author: 40723150
 ---
-# 練習建立 Ubuntu 20.04 server
+## 練習建立 Ubuntu 20.04 server (較完整)
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
-##查詢 IP 位址（已安裝 net-tools）
+### 查詢 IP 位址（已安裝 net-tools）
 
 &lt;pre class="brush: jscript"&gt;
 ifconfig 
@@ -1484,7 +1484,7 @@ network:
 sudo netplan apply
 &lt;/pre&gt;
 
-### proxy 設定（only IPv6） :
+### proxy 設定（only IPv6） : &lt;---此步驟可以略過 (Aug,06,2020 更)
 
 在純 IPv6 環境下無法 clone github 倉儲，所以需要設定代理主機（porxy）。
 
@@ -1494,6 +1494,8 @@ sudo netplan apply
 cd /etc/apt/apt.conf.d
 sudo vi proxy.conf
 &lt;/pre&gt;
+
+
 
 proxy 設定檔內容（proxy.conf）：
 
@@ -1767,7 +1769,8 @@ sudo systemctl start cmsimde
 &lt;pre class="brush: jscript"&gt;
 sudo systemctl stop cmsimde
 &lt;/pre&gt;
-@others</t>
+@others
+</t>
 <t tx="leo.20200721054130.2"></t>
 <t tx="leo.20200721071915.1"></t>
 <t tx="leo.20200721133025.1"></t>
@@ -2253,13 +2256,24 @@ Author: 40723150
 Title: Aug 05, 2020 日誌
 Date: Aug 05, 2020
 Category: 日誌
-Tags: 
+Tags: CUAD,PyTorch
 Slug: Aug_05_ 2020
 Author: 40723150
 ---
-
+初步認識及安裝 PyTorch 和 CUDA。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
+CUDA：利用 GPU 來提升運算效能
+
+PyTorch：開源的 Python 機器學習庫，有類似 Numpy 的張量計算，可用 GPU 加速；自動微分系統的神經網絡
+
+安裝 CUDA 10.2 [下載](https://developer.nvidia.com/cuda-10.2-download-archive)
+
+[PyTorch](https://pytorch.org/get-started/locally/)
+
+到 PyTorch 網站選擇符合的系統配置，網頁會顯示安裝指令，再到電腦上執行安裝指令、安裝。
+
+預計 Aug,06 要先去了解一下如何用 let's encrypt 取得認證數位簽章
 @others
 </t>
 <t tx="leo.20200805052219.1">&lt;pre class="brush: jscript"&gt;
@@ -2285,12 +2299,119 @@ Author: 40723150
 Title: Aug 02, 2020 日誌
 Date: Aug 02, 2020
 Category: 日誌
-Tags: 
+Tags: cv2,numpy,contours
 Slug: Aug_02_ 2020
 Author: 40723150
 ---
-
+學習如何使用opencv。Chapter 8 線條及圖案偵測
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+
+## Chapter 8 Contour/Shape Detection
+
+[drawContours](https://docs.opencv.org/trunk/d6/d6e/group__imgproc__draw.html#ga746c0625f1781f1ffc9056259103edbc)
+
+Draws contours outlines or filled contours.
+
+[arcLength](https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c)
+
+Calculates a contour perimeter or a curve length.The function computes a curve length or a closed contour perimeter.
+
+[approxPolyDP](https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga0012a5fdaea70b8a9970165d98722b4c)
+
+Approximates a polygonal curve(s) with the specified precision.
+
+[findcontours](https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga17ed9f5d79ae97bd4c7cf18403e1689a)
+
+[RETR_EXTERNAL](https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71)
+
+&lt;pre class="brush: jscript"&gt;
+python
+import cv2
+import numpy as np
+
+def stackImages(scale, imgArray):
+    rows = len(imgArray)
+    cols = len(imgArray[0])
+    rowsAvailable = isinstance(imgArray[0], list)
+    width = imgArray[0][0].shape[1]
+    height = imgArray[0][0].shape[0]
+    if rowsAvailable:
+        for x in range(0, rows):
+            for y in range(0, cols):
+                if imgArray[x][y].shape[:2] == imgArray[0][0].shape[:2]:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
+                else:
+                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),
+                                                None, scale, scale)
+                if len(imgArray[x][y].shape) == 2: imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
+        imageBlank = np.zeros((height, width, 3), np.uint8)
+        hor = [imageBlank] * rows
+        hor_con = [imageBlank] * rows
+        for x in range(0, rows):
+            hor[x] = np.hstack(imgArray[x])
+        ver = np.vstack(hor)
+    else:
+        for x in range(0, rows):
+            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
+                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
+            else:
+                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None, scale, scale)
+            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
+        hor = np.hstack(imgArray)
+        ver = hor
+    return ver
+
+def getContours(img):
+    contours, hierarchy = cv2.find(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        print(area)
+                if area &gt; 500:
+            cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)
+            peri = cv2.arcLength(cnt, True)
+            # print(peri)
+            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+            print(len(approx))
+            objCor = len(approx)
+            x, y, w, h = cv2.boundingRect(approx)
+
+            if objCor == 3:
+                objectType = "Tri"
+            elif objCor == 4:
+                aspRatio = w / float(h)
+                if aspRatio &gt; 0.98 and aspRatio &lt; 1.03:
+                    objectType = "Square"
+                else:
+                    objectType = "Rectangle"
+            elif objCor &gt; 4:
+                objectType = "Circles"
+            else:
+                objectType = "None"
+
+            cv2.rectangle(imgContour, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.putText(imgContour, objectType,
+                        (x + (w // 2) - 10, y + (h // 2) - 10), cv2.FONT_HERSHEY_COMPLEX, 0.7,
+                        (0, 0, 0), 2)
+
+path = 'shapes.png'
+img = cv2.imread(path)
+imgContour = img.copy()
+
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)
+imgCanny = cv2.Canny(imgBlur,50,50)
+getContours(imgCanny)
+imgBlank = np.zeros_like(img)
+imgStack = stackImages(0.6,([img,imgGray,imgBlur],
+                            [imgCanny,imgContour,imgBlank]))
+
+# cv2.imshow("Original", img)
+# cv2.imshow("Gray", imgGray)
+# cv2.imshow("Blur", imgBlur)
+cv2.imshow("Stack", imgStack)
+
+cv2.waitKey(0)
+&lt;/pre&gt;
 
 @others
 </t>
@@ -2517,7 +2638,7 @@ Tags: cad4,server,uWSGI
 Slug: Aug_04_ 2020
 Author: 40723150
 ---
-設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
+設定 cad4 server。修復啟動 uWSGI 問題，並設定 cmsimde 隨開機啟動。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 ## 修復啟動 uWSGI問題
@@ -2544,6 +2665,40 @@ ps -A
 sudo kill pid的號碼
 &lt;/pre&gt;
 
+重啟 uWSGI
+
+&lt;pre class="brush: jscript"&gt;
+/usr/bin/uwsgi --emperor /home/s40723150/uwsgi_ini
+&lt;/pre&gt;
+
+之後再測試是否可以連上[https://[2001:288:6004:17:2020:cad:0:4]:9443](https://[2001:288:6004:17:2020:cad:0:4]:9443)
+
+### 設定 uwsgi service
+
+以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下：
+
+&lt;pre class="brush: jscript"&gt;
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+&lt;/pre&gt;
+
+接著將 cmsimde 服務設為隨系統開機啟動
+
+&lt;pre class="brush: jscript"&gt;
+sudo systemctl enable cmsimde
+&lt;/pre&gt;
+
+由於是用 putty 遠端控制，所以就先不重新啟動主機。
 @others</t>
 <t tx="leo.20200805114906.1"></t>
 <t tx="yen.20170108171605.1"></t>

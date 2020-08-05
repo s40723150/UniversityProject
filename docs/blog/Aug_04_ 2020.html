@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Jul 30, 2020 日誌</title>
+  <title>Aug 04, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,27 +40,33 @@
   <![endif]-->
 
 
-    <link href="./Jul_30_ 2020.html" rel="canonical" />
+    <link href="./Aug_04_ 2020.html" rel="canonical" />
 
-        <meta name="description" content="搭車回家，休息一天。">
+        <meta name="description" content="設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。">
 
         <meta name="author" content="40723150">
 
+        <meta name="tags" content="cad4">
+        <meta name="tags" content="server">
+        <meta name="tags" content="uWSGI">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Jul 30, 2020 日誌"/>
-<meta property="og:description" content="搭車回家，休息一天。"/>
+<meta property="og:title" content="Aug 04, 2020 日誌"/>
+<meta property="og:description" content="設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Jul_30_ 2020.html"/>
+<meta property="og:url" content="./Aug_04_ 2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-07-30 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-08-04 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="cad4"/>
+<meta property="article:tag" content="server"/>
+<meta property="article:tag" content="uWSGI"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -69,9 +75,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Jul 30, 2020 日誌",
-  "headline": "Jul 30, 2020 日誌",
-  "datePublished": "2020-07-30 00:00:00+08:00",
+  "name": "Aug 04, 2020 日誌",
+  "headline": "Aug 04, 2020 日誌",
+  "datePublished": "2020-08-04 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -79,8 +85,8 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Jul_30_ 2020.html",
-  "description": "搭車回家，休息一天。"
+  "url": "./Aug_04_ 2020.html",
+  "description": "設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -195,11 +201,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Jul 30, 2020 日誌</h1>
+        <h1 class="post-title">Aug 04, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週四 30 七月 2020">週四 30 七月 2020</time>
+            | <time datetime="週二 04 八月 2020">週二 04 八月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -221,24 +227,73 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>搭車回家，休息一天。
+                <p>設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
 </p>
+<h2>修復啟動 uWSGI問題</h2>
+<p>由於在啟動時出現以下問題：</p>
+<pre class="brush: jscript">
+probably another instance of uWSGI is running on the same address (:8080).
+</pre>
+
+<p>背景有正在執行的 uWSGI 正在使用相同的 port 8080，所以需要先停止執行背景執行的 uWSGI ，再重啟。</p>
+<p>先檢查正在執行的 uWSGI 的 pid 代碼，再用 kill 去停止執行</p>
+<p>列出所有正在執行的程式，查看 uWSGI 的 pid 代碼：</p>
+<pre class="brush: jscript">
+ps -A
+</pre>
+
+<p>找到相對應的 pid ，用 kill 停止執行</p>
+<pre class="brush: jscript">
+sudo kill pid的號碼
+</pre>
+
+<p>重啟 uWSGI</p>
+<pre class="brush: jscript">
+/usr/bin/uwsgi --emperor /home/s40723150/uwsgi_ini
+</pre>
+
+<p>之後再測試是否可以連上<a href="https://[2001:288:6004:17:2020:cad:0:4]:9443">https://[2001:288:6004:17:2020:cad:0:4]:9443</a></p>
+<h3>設定 uwsgi service</h3>
+<p>以管理者身分在 /etc/systemd/system 目錄中建立 cmsimde.service 檔案, 內容如下：</p>
+<pre class="brush: jscript">
+[Unit]
+Description=uWSGI to serve CMSiMDE 
+After=network.target
+
+[Service]
+User=kmol2020
+Group=kmol2020
+WorkingDirectory=/home/kmol2020/uwsgi_ini
+ExecStart=/usr/bin/uwsgi --emperor /home/kmol2020/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+
+<p>接著將 cmsimde 服務設為隨系統開機啟動</p>
+<pre class="brush: jscript">
+sudo systemctl enable cmsimde
+</pre>
+
+<p>由於是用 putty 遠端控制，所以就先不重新啟動主機。</p>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Jul 30, 2020 日誌&amp;url=./Jul_30_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Aug 04, 2020 日誌&amp;url=./Aug_04_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Jul_30_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Aug_04_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Jul_30_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Aug_04_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
+                <aside class="post-tags">
+<a href="./tag/cad4.html">cad4</a><a href="./tag/server.html">server</a><a href="./tag/uwsgi.html">uWSGI</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -247,18 +302,18 @@ init_mathjax();
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Aug_01_ 2020.html">
+                    <a class="post-nav-next" href="./Aug_05_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Aug 01, 2020 日誌</h2>
-                            <p class="post-nav-excerpt"></p>
+                                <h2 class="post-nav-title">Aug 05, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">初步認識及安裝 PyTorch 和 CUDA。</p>
                         </section>
                     </a>
-                    <a class="post-nav-prev" href="./Jul_29_ 2020.html">
+                    <a class="post-nav-prev" href="./Aug_03_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Jul 29, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">整理 Jul,23~25 的 blog.</p>
+                                <h2 class="post-nav-title">Aug 03, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">設定 cad4 server。設定 nginx uWSGI cmsimde ufw。</p>
                         </section>
                     </a>
                     <div class="clear"></div>
