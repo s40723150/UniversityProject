@@ -90,7 +90,7 @@ def checkLogin():
     site_title, saved_password = parse_config()
     hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
     if hashed_password == saved_password:
-        session['admin'] = 1
+        session['40723150'] = 1
         return redirect('/edit_page')
     return redirect('/')
 

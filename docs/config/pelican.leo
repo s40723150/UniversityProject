@@ -154,11 +154,34 @@
 </v>
 </v>
 <v t="leo.20200805035149.1"><vh>Aug</vh>
-<v t="leo.20200805111923.1"><vh>@clean Aug_01_2020.md</vh></v>
-<v t="leo.20200805112114.1"><vh>@clean Aug_02_2020.md</vh></v>
-<v t="leo.20200805112117.1"><vh>@clean Aug_03_2020.md</vh></v>
-<v t="leo.20200805112206.1"><vh>@clean Aug_04_2020.md</vh></v>
-<v t="leo.20200805035600.1"><vh>@clean Aug_05_2020.md</vh></v>
+<v t="leo.20200805111923.1"><vh>@clean Aug_01_2020.md</vh>
+<v t="leo.20200805145030.1"><vh>9163369466257328113</vh>
+<v t="leo.20200805144943.1"><vh>6321159424945969905</vh></v>
+</v>
+</v>
+<v t="leo.20200805112114.1"><vh>@clean Aug_02_2020.md</vh>
+<v t="leo.20200805145043.1"><vh>9163369466257328113</vh>
+<v t="leo.20200805144950.1"><vh>6229595618131645880</vh></v>
+</v>
+</v>
+<v t="leo.20200805112117.1"><vh>@clean Aug_03_2020.md</vh>
+<v t="leo.20200805145059.1"><vh>9163369466257328113</vh>
+<v t="leo.20200805144956.1"><vh>5319428972550580732</vh></v>
+</v>
+</v>
+<v t="leo.20200805112206.1"><vh>@clean Aug_04_2020.md</vh>
+<v t="leo.20200805145115.1"><vh>9163369466257328113</vh>
+<v t="leo.20200805145001.1"><vh>1911394034085333683</vh></v>
+</v>
+</v>
+<v t="leo.20200805035600.1"><vh>@clean Aug_05_2020.md</vh>
+<v t="leo.20200805145126.1"><vh>9163369466257328113</vh>
+<v t="leo.20200805145006.1"><vh>7862858146667416920</vh></v>
+</v>
+</v>
+<v t="leo.20200817135345.1"><vh>@clean Aug_13_2020.md</vh>
+<v t="leo.20200817135345.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -437,7 +460,7 @@ try:
     #blog_id = blogs["items"][0]["id"]
     #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    blog_id = "9163369466257328113"#UniversityProject 日誌
+    #blog_id = "9163369466257328113"#UniversityProject 日誌
     # 設法取得原 post 的 id
     postid_outline = p.getLastChild()
     # 直接從標題取得 post 的 id 號碼
@@ -701,6 +724,7 @@ Author: 40723150
 5. 推邊：
 讓皮革邊緣不會呈現直角，之後磨邊後會比較好摸。
 6.磨邊：
+
 
 
 將邊緣磨光滑，讓皮的纖維不會跑出來影響觸感。
@@ -1438,7 +1462,7 @@ Tags: module,server,netplan,nginx,uwsgi,key,crt,pip,mv,IPv6,開機啟動
 Slug: Jul_21_ 2020
 Author: 40723150
 ---
-## 練習建立 Ubuntu 20.04 server (較完整)
+## 練習建立 Ubuntu 20.04 server  (較完整)
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 ### 查詢 IP 位址（已安裝 net-tools）
@@ -2638,7 +2662,7 @@ Tags: cad4,server,uWSGI
 Slug: Aug_04_ 2020
 Author: 40723150
 ---
-設定 cad4 server。修復啟動 uWSGI 問題，並設定 cmsimde 隨開機啟動。
+設定 cad4 server。修復啟動 uWSGI問題，並設定 cmsimde 隨開機啟動。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 ## 修復啟動 uWSGI問題
@@ -2699,8 +2723,71 @@ sudo systemctl enable cmsimde
 &lt;/pre&gt;
 
 由於是用 putty 遠端控制，所以就先不重新啟動主機。
-@others</t>
+@others
+</t>
 <t tx="leo.20200805114906.1"></t>
+<t tx="leo.20200805144943.1"></t>
+<t tx="leo.20200805144950.1"></t>
+<t tx="leo.20200805144956.1"></t>
+<t tx="leo.20200805145001.1"></t>
+<t tx="leo.20200805145006.1"></t>
+<t tx="leo.20200805145030.1"></t>
+<t tx="leo.20200805145043.1"></t>
+<t tx="leo.20200805145059.1"></t>
+<t tx="leo.20200805145115.1"></t>
+<t tx="leo.20200805145126.1"></t>
+<t tx="leo.20200817135345.1">@language md
+---
+Title: Aug 13, 2020 日誌
+Date: Aug 13, 2020
+Category: 日誌
+Tags: CUAD,PyTorch
+Slug: Aug_13_ 2020
+Author: 40723150
+---
+let's encrypt 數位認證簽章
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+更新並安裝 pre-requisite software
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+&lt;/pre&gt;
+
+安裝 certbot
+
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get install certbot python3-certbot-nginx
+&lt;/pre&gt;
+
+手動編輯 nginx
+
+&lt;pre class="brush: jscript"&gt;
+sudo certbot certonly --nginx
+&lt;/pre&gt;
+
+
+&lt;pre class="brush: jscript"&gt;
+#ssl_certificate /home/kmol2020/localhost.crt;
+#ssl_certificate_key /home/kmol2020/localhost.key;
+ssl_certificate /etc/letsencrypt/live/cad4.kmol.info/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/cad4.kmol.info/privkey.pem;
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+測試是否可以成功開啟
+
+[https://cad4.kmol.info:9443](https://cad4.kmol.info:9443/)
+[http://cad4.kmol.info:88](http://cad4.kmol.info:88/)
+@others
+</t>
+<t tx="leo.20200817135345.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
