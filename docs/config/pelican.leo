@@ -50,6 +50,10 @@
 </v>
 </v>
 </v>
+<v t="leo.20200817082926.1"><vh>@path tools</vh>
+<v t="leo.20200817163511.1"><vh>@auto blogger_json_to_pickle.py</vh></v>
+<v t="leo.20200817163511.2"><vh>@auto gmail_json_to_pickle.py</vh></v>
+</v>
 <v t="yen.20170108171733.71"><vh>@path markdown</vh>
 <v t="yen.20170108171733.81"><vh>@path pages</vh>
 <v t="yen.20170108171733.82"><vh>@edit pages_1.md</vh></v>
@@ -180,7 +184,12 @@
 </v>
 </v>
 <v t="leo.20200817135345.1"><vh>@clean Aug_13_2020.md</vh>
-<v t="leo.20200817135345.2"><vh>9163369466257328113</vh></v>
+<v t="leo.20200817135345.2"><vh>9163369466257328113</vh>
+<v t="leo.20200817160915.1"><vh>5335483528152564772</vh></v>
+</v>
+<v t="leo.20200831072657.1"><vh>7949497010793271992</vh>
+<v t="leo.20200831152632.1"><vh>3710803721157204730</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -189,7 +198,7 @@
 </v>
 <v t="yen.20170108171930.1"><vh>@button https server</vh></v>
 <v t="yen.20170108171939.1"><vh>@button ipv6 https server</vh></v>
-<v t="leo.20200805052219.1"><vh>insert_command_line_note</vh></v>
+<v t="leo.20200817082837.1"><vh>insert_command_line_note</vh></v>
 </vnodes>
 <tnodes>
 <t tx="leo.20170709015940.1"></t>
@@ -365,7 +374,7 @@ try:
     #blog_id = blogs["items"][0]["id"]
     #blog_id = "7949497010793271992"#機械設計與精密機械網誌
     #blog_id = "2624930897896625808"#2019 網際內容管理 40723150
-    blog_id = "9163369466257328113"#UniversityProject 日誌
+    #blog_id = "9163369466257328113"#UniversityProject 日誌
     #for blog in blogs['items']:
         #print(blog['name'], blog['url'])
     posts = service.posts()
@@ -2300,10 +2309,6 @@ PyTorch：開源的 Python 機器學習庫，有類似 Numpy 的張量計算，�
 預計 Aug,06 要先去了解一下如何用 let's encrypt 取得認證數位簽章
 @others
 </t>
-<t tx="leo.20200805052219.1">&lt;pre class="brush: jscript"&gt;
-
-&lt;/pre&gt;
-</t>
 <t tx="leo.20200805111923.1">@language md
 ---
 Title: Aug 01, 2020 日誌
@@ -2736,6 +2741,11 @@ sudo systemctl enable cmsimde
 <t tx="leo.20200805145059.1"></t>
 <t tx="leo.20200805145115.1"></t>
 <t tx="leo.20200805145126.1"></t>
+<t tx="leo.20200817082837.1">&lt;pre class="brush: jscript"&gt;
+
+&lt;/pre&gt;
+</t>
+<t tx="leo.20200817082926.1"></t>
 <t tx="leo.20200817135345.1">@language md
 ---
 Title: Aug 13, 2020 日誌
@@ -2788,6 +2798,9 @@ sudo /etc/init.d/nginx restart
 @others
 </t>
 <t tx="leo.20200817135345.2"></t>
+<t tx="leo.20200817160915.1"></t>
+<t tx="leo.20200831072657.1"></t>
+<t tx="leo.20200831152632.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
