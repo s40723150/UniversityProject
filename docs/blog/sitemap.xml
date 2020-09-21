@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./</loc>
-<lastmod>2020-08-05T22:45:21-00:00</lastmod>
+<lastmod>2020-09-21T10:41:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./archives.html</loc>
-<lastmod>2020-08-05T22:45:21-00:00</lastmod>
+<lastmod>2020-09-21T10:41:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tags.html</loc>
-<lastmod>2020-08-05T22:45:21-00:00</lastmod>
+<lastmod>2020-09-21T10:41:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./categories.html</loc>
-<lastmod>2020-08-05T22:45:21-00:00</lastmod>
+<lastmod>2020-09-21T10:41:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -34,6 +34,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>./pages/about/</loc>
 <lastmod>2020-07-03T12:21:36+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./Sep_20_2020.html</loc>
+<lastmod>2020-09-20T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./Sep_16_2020.html</loc>
+<lastmod>2020-09-16T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./Aug_13_ 2020.html</loc>
+<lastmod>2020-08-13T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -62,13 +83,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>./Aug_02_ 2020.html</loc>
 <lastmod>2020-08-02T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>./Aug_01_ 2020.html</loc>
-<lastmod>2020-08-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -292,21 +306,49 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./category/ri-zhi.html</loc>
-<lastmod>2020-08-05T00:00:00+08:06</lastmod>
+<lastmod>2020-09-20T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./tag/gmail.html</loc>
+<lastmod>2020-09-20T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./tag/api.html</loc>
+<lastmod>2020-09-20T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./tag/google.html</loc>
+<lastmod>2020-09-16T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./tag/drive.html</loc>
+<lastmod>2020-09-16T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tag/cuad.html</loc>
-<lastmod>2020-08-05T00:00:00+08:06</lastmod>
+<lastmod>2020-08-13T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tag/pytorch.html</loc>
-<lastmod>2020-08-05T00:00:00+08:06</lastmod>
+<lastmod>2020-08-13T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -732,13 +774,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>./tag/api.html</loc>
-<lastmod>2020-07-03T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>./tag/json.html</loc>
 <lastmod>2020-07-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -768,7 +803,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./author/40723150.html</loc>
-<lastmod>2020-08-05T00:00:00+08:06</lastmod>
+<lastmod>2020-09-20T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

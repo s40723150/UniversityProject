@@ -53,6 +53,7 @@
 <v t="leo.20200817082926.1"><vh>@path tools</vh>
 <v t="leo.20200817163511.1"><vh>@auto blogger_json_to_pickle.py</vh></v>
 <v t="leo.20200817163511.2"><vh>@auto gmail_json_to_pickle.py</vh></v>
+<v t="leo.20200920224217.1"><vh>@auto drive_json_to_pickle.py</vh></v>
 </v>
 <v t="yen.20170108171733.71"><vh>@path markdown</vh>
 <v t="yen.20170108171733.81"><vh>@path pages</vh>
@@ -158,11 +159,6 @@
 </v>
 </v>
 <v t="leo.20200805035149.1"><vh>Aug</vh>
-<v t="leo.20200805111923.1"><vh>@clean Aug_01_2020.md</vh>
-<v t="leo.20200805145030.1"><vh>9163369466257328113</vh>
-<v t="leo.20200805144943.1"><vh>6321159424945969905</vh></v>
-</v>
-</v>
 <v t="leo.20200805112114.1"><vh>@clean Aug_02_2020.md</vh>
 <v t="leo.20200805145043.1"><vh>9163369466257328113</vh>
 <v t="leo.20200805144950.1"><vh>6229595618131645880</vh></v>
@@ -191,6 +187,10 @@
 <v t="leo.20200831152632.1"><vh>3710803721157204730</vh></v>
 </v>
 </v>
+</v>
+<v t="leo.20200920215854.1"><vh>Sep</vh>
+<v t="leo.20200920215953.1"><vh>@clean Sep_16_2020.md</vh></v>
+<v t="leo.20200920220125.1"><vh>@clean Sep_20_2020.md</vh></v>
 </v>
 </v>
 </v>
@@ -2309,20 +2309,6 @@ PyTorch：開源的 Python 機器學習庫，有類似 Numpy 的張量計算，�
 預計 Aug,06 要先去了解一下如何用 let's encrypt 取得認證數位簽章
 @others
 </t>
-<t tx="leo.20200805111923.1">@language md
----
-Title: Aug 01, 2020 日誌
-Date: Aug 01, 2020
-Category: 日誌
-Tags: 
-Slug: Aug_01_ 2020
-Author: 40723150
----
-
-&lt;!-- PELICAN_END_SUMMARY --&gt;
-
-@others
-</t>
 <t tx="leo.20200805112114.1">@language md
 ---
 Title: Aug 02, 2020 日誌
@@ -2731,12 +2717,10 @@ sudo systemctl enable cmsimde
 @others
 </t>
 <t tx="leo.20200805114906.1"></t>
-<t tx="leo.20200805144943.1"></t>
 <t tx="leo.20200805144950.1"></t>
 <t tx="leo.20200805144956.1"></t>
 <t tx="leo.20200805145001.1"></t>
 <t tx="leo.20200805145006.1"></t>
-<t tx="leo.20200805145030.1"></t>
 <t tx="leo.20200805145043.1"></t>
 <t tx="leo.20200805145059.1"></t>
 <t tx="leo.20200805145115.1"></t>
@@ -2801,6 +2785,246 @@ sudo /etc/init.d/nginx restart
 <t tx="leo.20200817160915.1"></t>
 <t tx="leo.20200831072657.1"></t>
 <t tx="leo.20200831152632.1"></t>
+<t tx="leo.20200920215854.1"></t>
+<t tx="leo.20200920215953.1">@language md
+---
+Title: Sep16, 2020 日誌
+Date: Sep 16, 2020
+Category: 日誌
+Tags: Google,Drive,Gmail,API
+Slug: Sep_16_2020
+Author: 40723150
+---
+學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+在我們開始用 Gmail 和 Google Drive 的 API 前到 [console.develolpers](https://console.developers.google.com/)
+在側邊面板的資料庫 (Library) 加入 Gmail API 和 Google Drive API，
+設定 OAuth 同意畫面 ( OAuth constent screen )並在憑證頁面(Credetials)新增一個 OAuth 2 的用戶端憑證
+ (OAuth 2 Client ID)，類型為電腦應用程式(Desktop app)，完成建立後，下載 json 檔 (之後認證會需要用到)
+
+## Gmail API
+
+translate json to pickle
+
+&lt;pre class="brush: jscript"&gt;
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
+
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/gmail.send' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../cilent_gm_blogger.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_gmail.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('gmail', 'v1', credentials=creds)
+print(service)
+&lt;/pre&gt;
+
+send mail
+
+&lt;pre class="brush: jscript"&gt;
+from email.mime.text import MIMEText
+from base64 import urlsafe_b64encode
+from httplib2 import Http
+from googleapiclient.discovery import build
+import pickle
+ 
+SENDER = "sender@email"
+RECIPIENT = "recipient@gm.nfu.edu.tw"
+SUBJECT = "gmail api 寄信測試"
+CONTENT = ''' 這是文章內容, http://the.web.site'''
+ 
+creds = None
+with open('./../client_gmail.pickle', 'rb') as token:
+    creds = pickle.load(token)
+service = build('gmail', 'v1', credentials=creds)
+ 
+# https://developers.google.com/gmail/api/guides/sending
+def create_message(sender, to, subject, message_text):
+  """Create a message for an email.
+ 
+  Args:
+    sender: Email address of the sender.
+    to: Email address of the receiver.
+    subject: The subject of the email message.
+    message_text: The text of the email message.
+ 
+  Returns:
+    An object containing a base64url encoded email object.
+  """
+  message = MIMEText(message_text)
+  message['to'] = to
+  message['from'] = sender
+  message['subject'] = subject
+  encoded_message = urlsafe_b64encode(message.as_bytes())
+  return {'raw': encoded_message.decode()}
+ 
+ 
+# https://developers.google.com/gmail/api/guides/sending
+def send_message(service, user_id, message):
+  """Send an email message.
+ 
+  Args:
+    service: Authorized Gmail API service instance.
+    user_id: User's email address. The special value "me"
+    can be used to indicate the authenticated user.
+    message: Message to be sent.
+ 
+  Returns:
+    Sent Message.
+  """
+  try:
+    message = (service.users().messages().send(userId=user_id, body=message)
+               .execute())
+    print('Message Id: %s' % message['id'])
+    return message
+  #except errors.HttpError, error:
+  except:
+    print('An error occurred: %s' % error)
+ 
+ 
+raw_msg = create_message(SENDER, RECIPIENT, SUBJECT, CONTENT)
+send_message(service, "me", raw_msg)
+&lt;/pre&gt;
+
+## Google Drive API
+
+translate json to pickle：轉換憑證格式
+
+&lt;pre class="brush: jscript"&gt;
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
+
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/drive' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../client_id.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_id_drive.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('drive', 'v3', credentials=creds)
+print(service)
+&lt;/pre&gt;
+
+quickstart：測試憑證的檔案是否正常
+
+&lt;pre class="brush: jscript"&gt;
+#web url : https://developers.google.com/drive/api/v3/quickstart/python
+from __future__ import print_function
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+
+def main():
+    """Shows basic usage of the Drive v3 API.
+    Prints the names and ids of the first 10 files the user has access to.
+    """
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    service = build('drive', 'v3', credentials=creds)
+
+    # Call the Drive v3 API
+    results = service.files().list(
+        pageSize=10, fields="nextPageToken, files(id, name)").execute()
+    items = results.get('files', [])
+
+    if not items:
+        print('No files found.')
+    else:
+        print('Files:')
+        for item in items:
+            print(u'{0} ({1})'.format(item['name'], item['id']))
+
+if __name__ == '__main__':
+    main()
+&lt;/pre&gt;
+
+upload fileg：上傳檔案
+
+&lt;pre class="brush: jscript"&gt;
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+gauth = GoogleAuth()
+gauth.LoadClientConfigFile("client_secret.json")
+#gauth.LocalWebserverAuth() # client_secrets.json need to be in the same directory as the script
+drive = GoogleDrive(gauth)
+
+'''
+# View all folders and file in your Google Drive
+fileList = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+for file in fileList:
+  print('Title: %s, ID: %s' % (file['title'], file['id']))
+  # Get the folder ID that you want
+  # 檔案會上傳到根目錄下的 uploaded  目錄中
+  if(file['title'] == "uploaded"):
+      fileID = file['id']
+'''
+# GDrive 上 uploaded 目錄的 fileID
+with open("./../uploaded_id.txt", 'r') as content_file:
+    fileID = content_file.read()
+
+#uploaded_id.txt content is your target folder ID
+#fileID = "your_folder_file_ID"
+
+fileName = "cat.jpg"
+filePath = "./"
+file1 = drive.CreateFile({"mimeType": "image/jpeg", "parents": [{"kind": "drive#fileLink", "id": fileID}], "title":  fileName})
+file1.SetContentFile(filePath + fileName)
+file1.Upload() # Upload the file.
+#print('Created file %s with mimeType %s' % (file1['title'], file1['mimeType']))   
+print("upload fileID:" + str(file1['id']))
+file2 = drive.CreateFile({'id': file1['id']})
+file2.GetContentFile('./test/downloaded_cat.jpg') # Download file as 'downloaded_cat.jpg under directory test'.
+&lt;/pre&gt;
+@others
+</t>
+<t tx="leo.20200920220125.1">@language md
+---
+Title: Sep 20, 2020 日誌
+Date: Sep 20, 2020
+Category: 日誌
+Tags: blogger, highlight, javascrip
+Slug: Sep_20_2020
+Author: 40723150
+---
+在 blogger 加入程式碼顯示區塊。
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+@others</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

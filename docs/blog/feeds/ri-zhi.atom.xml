@@ -1,5 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-08-05T00:00:00+08:00</updated><entry><title>Aug 05, 2020 日誌</title><link href=".%5CAug_05_%202020.html" rel="alternate"></link><published>2020-08-05T00:00:00+08:00</published><updated>2020-08-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-05:.\Aug_05_ 2020.html</id><summary type="html">&lt;p&gt;初步認識及安裝 PyTorch 和 CUDA。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject - 日誌</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/ri-zhi.atom.xml" rel="self"></link><id>./</id><updated>2020-09-20T00:00:00+08:00</updated><entry><title>Sep 20, 2020 日誌</title><link href=".%5CSep_20_2020.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-20:.\Sep_20_2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="gmail"></category><category term="API"></category></entry><entry><title>Sep16, 2020 日誌</title><link href=".%5CSep_16_2020.html" rel="alternate"></link><published>2020-09-16T00:00:00+08:00</published><updated>2020-09-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-16:.\Sep_16_2020.html</id><summary type="html">&lt;p&gt;學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
+</summary><content type="html">&lt;p&gt;學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
+&lt;/p&gt;
+&lt;p&gt;在我們開始用 Gmail 和 Google Drive 的 API 前到 &lt;a href="https://console.developers.google.com/"&gt;console.develolpers&lt;/a&gt;
+在側邊面板的資料庫 (Library) 加入 Gmail API 和 Google Drive API，
+設定 OAuth 同意畫面 ( OAuth constent screen )並在憑證頁面(Credetials)新增一個 OAuth 2 的用戶端憑證
+ (OAuth 2 Client ID)，類型為電腦應用程式(Desktop app)，完成建立後，下載 json 檔 (之後認證會需要用到)&lt;/p&gt;
+&lt;h2&gt;Gmail API&lt;/h2&gt;
+&lt;p&gt;translate json to pickle&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
+
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/gmail.send' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../cilent_gm_blogger.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_gmail.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('gmail', 'v1', credentials=creds)
+print(service)
+&lt;/pre&gt;
+
+&lt;p&gt;send mail&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+from email.mime.text import MIMEText
+from base64 import urlsafe_b64encode
+from httplib2 import Http
+from googleapiclient.discovery import build
+import pickle
+
+SENDER = "sender@email"
+RECIPIENT = "recipient@gm.nfu.edu.tw"
+SUBJECT = "gmail api 寄信測試"
+CONTENT = ''' 這是文章內容, http://the.web.site'''
+
+creds = None
+with open('./../client_gmail.pickle', 'rb') as token:
+    creds = pickle.load(token)
+service = build('gmail', 'v1', credentials=creds)
+
+# https://developers.google.com/gmail/api/guides/sending
+def create_message(sender, to, subject, message_text):
+  """Create a message for an email.
+
+  Args:
+    sender: Email address of the sender.
+    to: Email address of the receiver.
+    subject: The subject of the email message.
+    message_text: The text of the email message.
+
+  Returns:
+    An object containing a base64url encoded email object.
+  """
+  message = MIMEText(message_text)
+  message['to'] = to
+  message['from'] = sender
+  message['subject'] = subject
+  encoded_message = urlsafe_b64encode(message.as_bytes())
+  return {'raw': encoded_message.decode()}
+
+
+# https://developers.google.com/gmail/api/guides/sending
+def send_message(service, user_id, message):
+  """Send an email message.
+
+  Args:
+    service: Authorized Gmail API service instance.
+    user_id: User's email address. The special value "me"
+    can be used to indicate the authenticated user.
+    message: Message to be sent.
+
+  Returns:
+    Sent Message.
+  """
+  try:
+    message = (service.users().messages().send(userId=user_id, body=message)
+               .execute())
+    print('Message Id: %s' % message['id'])
+    return message
+  #except errors.HttpError, error:
+  except:
+    print('An error occurred: %s' % error)
+
+
+raw_msg = create_message(SENDER, RECIPIENT, SUBJECT, CONTENT)
+send_message(service, "me", raw_msg)
+&lt;/pre&gt;
+
+&lt;h2&gt;Google Drive API&lt;/h2&gt;
+&lt;p&gt;translate json to pickle：轉換憑證格式&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
+
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/drive' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../client_id.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_id_drive.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('drive', 'v3', credentials=creds)
+print(service)
+&lt;/pre&gt;
+
+&lt;p&gt;quickstart：測試憑證的檔案是否正常&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+#web url : https://developers.google.com/drive/api/v3/quickstart/python
+from __future__ import print_function
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+
+def main():
+    """Shows basic usage of the Drive v3 API.
+    Prints the names and ids of the first 10 files the user has access to.
+    """
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    service = build('drive', 'v3', credentials=creds)
+
+    # Call the Drive v3 API
+    results = service.files().list(
+        pageSize=10, fields="nextPageToken, files(id, name)").execute()
+    items = results.get('files', [])
+
+    if not items:
+        print('No files found.')
+    else:
+        print('Files:')
+        for item in items:
+            print(u'{0} ({1})'.format(item['name'], item['id']))
+
+if __name__ == '__main__':
+    main()
+&lt;/pre&gt;
+
+&lt;p&gt;upload fileg：上傳檔案&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+
+gauth = GoogleAuth()
+gauth.LoadClientConfigFile("client_secret.json")
+#gauth.LocalWebserverAuth() # client_secrets.json need to be in the same directory as the script
+drive = GoogleDrive(gauth)
+
+'''
+# View all folders and file in your Google Drive
+fileList = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+for file in fileList:
+  print('Title: %s, ID: %s' % (file['title'], file['id']))
+  # Get the folder ID that you want
+  # 檔案會上傳到根目錄下的 uploaded  目錄中
+  if(file['title'] == "uploaded"):
+      fileID = file['id']
+'''
+# GDrive 上 uploaded 目錄的 fileID
+with open("./../uploaded_id.txt", 'r') as content_file:
+    fileID = content_file.read()
+
+#uploaded_id.txt content is your target folder ID
+#fileID = "your_folder_file_ID"
+
+fileName = "cat.jpg"
+filePath = "./"
+file1 = drive.CreateFile({"mimeType": "image/jpeg", "parents": [{"kind": "drive#fileLink", "id": fileID}], "title":  fileName})
+file1.SetContentFile(filePath + fileName)
+file1.Upload() # Upload the file.
+#print('Created file %s with mimeType %s' % (file1['title'], file1['mimeType']))   
+print("upload fileID:" + str(file1['id']))
+file2 = drive.CreateFile({'id': file1['id']})
+file2.GetContentFile('./test/downloaded_cat.jpg') # Download file as 'downloaded_cat.jpg under directory test'.
+&lt;/pre&gt;</content><category term="日誌"></category><category term="Google"></category><category term="Drive"></category><category term="Gmail"></category><category term="API"></category></entry><entry><title>Aug 13, 2020 日誌</title><link href=".%5CAug_13_%202020.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-13:.\Aug_13_ 2020.html</id><summary type="html">&lt;p&gt;let's encrypt 數位認證簽章
+</summary><content type="html">&lt;p&gt;let's encrypt 數位認證簽章
+&lt;/p&gt;
+&lt;p&gt;更新並安裝 pre-requisite software&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+&lt;/pre&gt;
+
+&lt;p&gt;安裝 certbot&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo apt-get install certbot python3-certbot-nginx
+&lt;/pre&gt;
+
+&lt;p&gt;手動編輯 nginx&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+sudo certbot certonly --nginx
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+#ssl_certificate /home/kmol2020/localhost.crt;
+#ssl_certificate_key /home/kmol2020/localhost.key;
+ssl_certificate /etc/letsencrypt/live/cad4.kmol.info/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/cad4.kmol.info/privkey.pem;
+&lt;/pre&gt;
+
+&lt;pre class="brush: jscript"&gt;
+sudo /etc/init.d/nginx restart
+&lt;/pre&gt;
+
+&lt;p&gt;測試是否可以成功開啟&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cad4.kmol.info:9443/"&gt;https://cad4.kmol.info:9443&lt;/a&gt;
+&lt;a href="http://cad4.kmol.info:88/"&gt;http://cad4.kmol.info:88&lt;/a&gt;&lt;/p&gt;</content><category term="日誌"></category><category term="CUAD"></category><category term="PyTorch"></category></entry><entry><title>Aug 05, 2020 日誌</title><link href=".%5CAug_05_%202020.html" rel="alternate"></link><published>2020-08-05T00:00:00+08:00</published><updated>2020-08-05T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-05:.\Aug_05_ 2020.html</id><summary type="html">&lt;p&gt;初步認識及安裝 PyTorch 和 CUDA。
 </summary><content type="html">&lt;p&gt;初步認識及安裝 PyTorch 和 CUDA。
 &lt;/p&gt;
 &lt;p&gt;CUDA：利用 GPU 來提升運算效能&lt;/p&gt;
@@ -324,7 +565,7 @@ imgStack = stackImages(0.6,([img,imgGray,imgBlur],
 cv2.imshow("Stack", imgStack)
 
 cv2.waitKey(0)
-&lt;/pre&gt;</content><category term="日誌"></category><category term="cv2"></category><category term="numpy"></category><category term="contours"></category></entry><entry><title>Aug 01, 2020 日誌</title><link href=".%5CAug_01_%202020.html" rel="alternate"></link><published>2020-08-01T00:00:00+08:00</published><updated>2020-08-01T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-08-01:.\Aug_01_ 2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category></entry><entry><title>Jul 30, 2020 日誌</title><link href=".%5CJul_30_%202020.html" rel="alternate"></link><published>2020-07-30T00:00:00+08:00</published><updated>2020-07-30T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-30:.\Jul_30_ 2020.html</id><summary type="html">&lt;p&gt;搭車回家，休息一天。
+&lt;/pre&gt;</content><category term="日誌"></category><category term="cv2"></category><category term="numpy"></category><category term="contours"></category></entry><entry><title>Jul 30, 2020 日誌</title><link href=".%5CJul_30_%202020.html" rel="alternate"></link><published>2020-07-30T00:00:00+08:00</published><updated>2020-07-30T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-30:.\Jul_30_ 2020.html</id><summary type="html">&lt;p&gt;搭車回家，休息一天。
 </summary><content type="html">&lt;p&gt;搭車回家，休息一天。
 &lt;/p&gt;</content><category term="日誌"></category></entry><entry><title>Jul 29, 2020 日誌</title><link href=".%5CJul_29_%202020.html" rel="alternate"></link><published>2020-07-29T00:00:00+08:00</published><updated>2020-07-29T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-07-29:.\Jul_29_ 2020.html</id><summary type="html">&lt;p&gt;整理 Jul,23~25 的 blog.
 </summary><content type="html">&lt;p&gt;整理 Jul,23~25 的 blog.

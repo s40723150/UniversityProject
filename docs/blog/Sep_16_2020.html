@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Aug 02, 2020 日誌</title>
+  <title>Sep16, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,33 +40,35 @@
   <![endif]-->
 
 
-    <link href="./Aug_02_ 2020.html" rel="canonical" />
+    <link href="./Sep_16_2020.html" rel="canonical" />
 
-        <meta name="description" content="學習如何使用opencv。Chapter 8 線條及圖案偵測">
+        <meta name="description" content="學會用 Gmail API 寄信，和上傳檔案到 Google Drive。">
 
         <meta name="author" content="40723150">
 
-        <meta name="tags" content="cv2">
-        <meta name="tags" content="numpy">
-        <meta name="tags" content="contours">
+        <meta name="tags" content="Google">
+        <meta name="tags" content="Drive">
+        <meta name="tags" content="Gmail">
+        <meta name="tags" content="API">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Aug 02, 2020 日誌"/>
-<meta property="og:description" content="學習如何使用opencv。Chapter 8 線條及圖案偵測"/>
+<meta property="og:title" content="Sep16, 2020 日誌"/>
+<meta property="og:description" content="學會用 Gmail API 寄信，和上傳檔案到 Google Drive。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Aug_02_ 2020.html"/>
+<meta property="og:url" content="./Sep_16_2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-08-02 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-09-16 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
-<meta property="article:tag" content="cv2"/>
-<meta property="article:tag" content="numpy"/>
-<meta property="article:tag" content="contours"/>
+<meta property="article:tag" content="Google"/>
+<meta property="article:tag" content="Drive"/>
+<meta property="article:tag" content="Gmail"/>
+<meta property="article:tag" content="API"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -75,9 +77,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Aug 02, 2020 日誌",
-  "headline": "Aug 02, 2020 日誌",
-  "datePublished": "2020-08-02 00:00:00+08:00",
+  "name": "Sep16, 2020 日誌",
+  "headline": "Sep16, 2020 日誌",
+  "datePublished": "2020-09-16 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -85,8 +87,8 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Aug_02_ 2020.html",
-  "description": "學習如何使用opencv。Chapter 8 線條及圖案偵測"
+  "url": "./Sep_16_2020.html",
+  "description": "學會用 Gmail API 寄信，和上傳檔案到 Google Drive。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -201,11 +203,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Aug 02, 2020 日誌</h1>
+        <h1 class="post-title">Sep16, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週日 02 八月 2020">週日 02 八月 2020</time>
+            | <time datetime="週三 16 九月 2020">週三 16 九月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -227,123 +229,231 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>學習如何使用opencv。Chapter 8 線條及圖案偵測
+                <p>學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
 </p>
-<h2>Chapter 8 Contour/Shape Detection</h2>
-<p><a href="https://docs.opencv.org/trunk/d6/d6e/group__imgproc__draw.html#ga746c0625f1781f1ffc9056259103edbc">drawContours</a></p>
-<p>Draws contours outlines or filled contours.</p>
-<p><a href="https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c">arcLength</a></p>
-<p>Calculates a contour perimeter or a curve length.The function computes a curve length or a closed contour perimeter.</p>
-<p><a href="https://docs.opencv.org/trunk/d3/dc0/group__imgproc__shape.html#ga0012a5fdaea70b8a9970165d98722b4c">approxPolyDP</a></p>
-<p>Approximates a polygonal curve(s) with the specified precision.</p>
-<p><a href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga17ed9f5d79ae97bd4c7cf18403e1689a">findcontours</a></p>
-<p><a href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71">RETR_EXTERNAL</a></p>
+<p>在我們開始用 Gmail 和 Google Drive 的 API 前到 <a href="https://console.developers.google.com/">console.develolpers</a>
+在側邊面板的資料庫 (Library) 加入 Gmail API 和 Google Drive API，
+設定 OAuth 同意畫面 ( OAuth constent screen )並在憑證頁面(Credetials)新增一個 OAuth 2 的用戶端憑證
+ (OAuth 2 Client ID)，類型為電腦應用程式(Desktop app)，完成建立後，下載 json 檔 (之後認證會需要用到)</p>
+<h2>Gmail API</h2>
+<p>translate json to pickle</p>
 <pre class="brush: jscript">
-python
-import cv2
-import numpy as np
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
 
-def stackImages(scale, imgArray):
-    rows = len(imgArray)
-    cols = len(imgArray[0])
-    rowsAvailable = isinstance(imgArray[0], list)
-    width = imgArray[0][0].shape[1]
-    height = imgArray[0][0].shape[0]
-    if rowsAvailable:
-        for x in range(0, rows):
-            for y in range(0, cols):
-                if imgArray[x][y].shape[:2] == imgArray[0][0].shape[:2]:
-                    imgArray[x][y] = cv2.resize(imgArray[x][y], (0, 0), None, scale, scale)
-                else:
-                    imgArray[x][y] = cv2.resize(imgArray[x][y], (imgArray[0][0].shape[1], imgArray[0][0].shape[0]),
-                                                None, scale, scale)
-                if len(imgArray[x][y].shape) == 2: imgArray[x][y] = cv2.cvtColor(imgArray[x][y], cv2.COLOR_GRAY2BGR)
-        imageBlank = np.zeros((height, width, 3), np.uint8)
-        hor = [imageBlank] * rows
-        hor_con = [imageBlank] * rows
-        for x in range(0, rows):
-            hor[x] = np.hstack(imgArray[x])
-        ver = np.vstack(hor)
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/gmail.send' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../cilent_gm_blogger.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_gmail.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('gmail', 'v1', credentials=creds)
+print(service)
+</pre>
+
+<p>send mail</p>
+<pre class="brush: jscript">
+from email.mime.text import MIMEText
+from base64 import urlsafe_b64encode
+from httplib2 import Http
+from googleapiclient.discovery import build
+import pickle
+
+SENDER = "sender@email"
+RECIPIENT = "recipient@gm.nfu.edu.tw"
+SUBJECT = "gmail api 寄信測試"
+CONTENT = ''' 這是文章內容, http://the.web.site'''
+
+creds = None
+with open('./../client_gmail.pickle', 'rb') as token:
+    creds = pickle.load(token)
+service = build('gmail', 'v1', credentials=creds)
+
+# https://developers.google.com/gmail/api/guides/sending
+def create_message(sender, to, subject, message_text):
+  """Create a message for an email.
+
+  Args:
+    sender: Email address of the sender.
+    to: Email address of the receiver.
+    subject: The subject of the email message.
+    message_text: The text of the email message.
+
+  Returns:
+    An object containing a base64url encoded email object.
+  """
+  message = MIMEText(message_text)
+  message['to'] = to
+  message['from'] = sender
+  message['subject'] = subject
+  encoded_message = urlsafe_b64encode(message.as_bytes())
+  return {'raw': encoded_message.decode()}
+
+
+# https://developers.google.com/gmail/api/guides/sending
+def send_message(service, user_id, message):
+  """Send an email message.
+
+  Args:
+    service: Authorized Gmail API service instance.
+    user_id: User's email address. The special value "me"
+    can be used to indicate the authenticated user.
+    message: Message to be sent.
+
+  Returns:
+    Sent Message.
+  """
+  try:
+    message = (service.users().messages().send(userId=user_id, body=message)
+               .execute())
+    print('Message Id: %s' % message['id'])
+    return message
+  #except errors.HttpError, error:
+  except:
+    print('An error occurred: %s' % error)
+
+
+raw_msg = create_message(SENDER, RECIPIENT, SUBJECT, CONTENT)
+send_message(service, "me", raw_msg)
+</pre>
+
+<h2>Google Drive API</h2>
+<p>translate json to pickle：轉換憑證格式</p>
+<pre class="brush: jscript">
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
+from httplib2 import Http
+from googleapiclient.discovery import build
+
+creds = None
+SCOPES = 'https://www.googleapis.com/auth/drive' # Allows sending only, not reading
+
+flow = InstalledAppFlow.from_client_secrets_file(
+    './../client_id.json', SCOPES)
+creds = flow.run_local_server(port=0)
+# Save the credentials for the naext run
+with open('./../client_id_drive.pickle', 'wb') as token:
+    pickle.dump(creds, token)
+
+service = build('drive', 'v3', credentials=creds)
+print(service)
+</pre>
+
+<p>quickstart：測試憑證的檔案是否正常</p>
+<pre class="brush: jscript">
+#web url : https://developers.google.com/drive/api/v3/quickstart/python
+from __future__ import print_function
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+
+def main():
+    """Shows basic usage of the Drive v3 API.
+    Prints the names and ids of the first 10 files the user has access to.
+    """
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+
+    service = build('drive', 'v3', credentials=creds)
+
+    # Call the Drive v3 API
+    results = service.files().list(
+        pageSize=10, fields="nextPageToken, files(id, name)").execute()
+    items = results.get('files', [])
+
+    if not items:
+        print('No files found.')
     else:
-        for x in range(0, rows):
-            if imgArray[x].shape[:2] == imgArray[0].shape[:2]:
-                imgArray[x] = cv2.resize(imgArray[x], (0, 0), None, scale, scale)
-            else:
-                imgArray[x] = cv2.resize(imgArray[x], (imgArray[0].shape[1], imgArray[0].shape[0]), None, scale, scale)
-            if len(imgArray[x].shape) == 2: imgArray[x] = cv2.cvtColor(imgArray[x], cv2.COLOR_GRAY2BGR)
-        hor = np.hstack(imgArray)
-        ver = hor
-    return ver
+        print('Files:')
+        for item in items:
+            print(u'{0} ({1})'.format(item['name'], item['id']))
 
-def getContours(img):
-    contours, hierarchy = cv2.find(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    for cnt in contours:
-        area = cv2.contourArea(cnt)
-        print(area)
-                if area > 500:
-            cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)
-            peri = cv2.arcLength(cnt, True)
-            # print(peri)
-            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
-            print(len(approx))
-            objCor = len(approx)
-            x, y, w, h = cv2.boundingRect(approx)
+if __name__ == '__main__':
+    main()
+</pre>
 
-            if objCor == 3:
-                objectType = "Tri"
-            elif objCor == 4:
-                aspRatio = w / float(h)
-                if aspRatio > 0.98 and aspRatio < 1.03:
-                    objectType = "Square"
-                else:
-                    objectType = "Rectangle"
-            elif objCor > 4:
-                objectType = "Circles"
-            else:
-                objectType = "None"
+<p>upload fileg：上傳檔案</p>
+<pre class="brush: jscript">
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
 
-            cv2.rectangle(imgContour, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            cv2.putText(imgContour, objectType,
-                        (x + (w // 2) - 10, y + (h // 2) - 10), cv2.FONT_HERSHEY_COMPLEX, 0.7,
-                        (0, 0, 0), 2)
+gauth = GoogleAuth()
+gauth.LoadClientConfigFile("client_secret.json")
+#gauth.LocalWebserverAuth() # client_secrets.json need to be in the same directory as the script
+drive = GoogleDrive(gauth)
 
-path = 'shapes.png'
-img = cv2.imread(path)
-imgContour = img.copy()
+'''
+# View all folders and file in your Google Drive
+fileList = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+for file in fileList:
+  print('Title: %s, ID: %s' % (file['title'], file['id']))
+  # Get the folder ID that you want
+  # 檔案會上傳到根目錄下的 uploaded  目錄中
+  if(file['title'] == "uploaded"):
+      fileID = file['id']
+'''
+# GDrive 上 uploaded 目錄的 fileID
+with open("./../uploaded_id.txt", 'r') as content_file:
+    fileID = content_file.read()
 
-imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)
-imgCanny = cv2.Canny(imgBlur,50,50)
-getContours(imgCanny)
-imgBlank = np.zeros_like(img)
-imgStack = stackImages(0.6,([img,imgGray,imgBlur],
-                            [imgCanny,imgContour,imgBlank]))
+#uploaded_id.txt content is your target folder ID
+#fileID = "your_folder_file_ID"
 
-# cv2.imshow("Original", img)
-# cv2.imshow("Gray", imgGray)
-# cv2.imshow("Blur", imgBlur)
-cv2.imshow("Stack", imgStack)
-
-cv2.waitKey(0)
+fileName = "cat.jpg"
+filePath = "./"
+file1 = drive.CreateFile({"mimeType": "image/jpeg", "parents": [{"kind": "drive#fileLink", "id": fileID}], "title":  fileName})
+file1.SetContentFile(filePath + fileName)
+file1.Upload() # Upload the file.
+#print('Created file %s with mimeType %s' % (file1['title'], file1['mimeType']))   
+print("upload fileID:" + str(file1['id']))
+file2 = drive.CreateFile({'id': file1['id']})
+file2.GetContentFile('./test/downloaded_cat.jpg') # Download file as 'downloaded_cat.jpg under directory test'.
 </pre>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Aug 02, 2020 日誌&amp;url=./Aug_02_ 2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Sep16, 2020 日誌&amp;url=./Sep_16_2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Aug_02_ 2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Sep_16_2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Aug_02_ 2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Sep_16_2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
                 <aside class="post-tags">
-<a href="./tag/cv2.html">cv2</a><a href="./tag/numpy.html">numpy</a><a href="./tag/contours.html">contours</a>                </aside>
+<a href="./tag/google.html">Google</a><a href="./tag/drive.html">Drive</a><a href="./tag/gmail.html">Gmail</a><a href="./tag/api.html">API</a>                </aside>
 
                 <div class="clear"></div>
 
@@ -352,18 +462,18 @@ cv2.waitKey(0)
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Aug_03_ 2020.html">
+                    <a class="post-nav-next" href="./Sep_20_2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Aug 03, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">設定 cad4 server。設定 nginx uWSGI cmsimde ufw。</p>
+                                <h2 class="post-nav-title">Sep 20, 2020 日誌</h2>
+                            <p class="post-nav-excerpt"></p>
                         </section>
                     </a>
-                    <a class="post-nav-prev" href="./Jul_30_ 2020.html">
+                    <a class="post-nav-prev" href="./Aug_13_ 2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Jul 30, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">搭車回家，休息一天。</p>
+                                <h2 class="post-nav-title">Aug 13, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">let's encrypt 數位認證簽章</p>
                         </section>
                     </a>
                     <div class="clear"></div>
