@@ -42,11 +42,13 @@
 
     <link href="./Sep_20_2020.html" rel="canonical" />
 
+        <meta name="description" content="在 blogger 加入程式碼顯示區塊。">
 
         <meta name="author" content="40723150">
 
-        <meta name="tags" content="gmail">
-        <meta name="tags" content="API">
+        <meta name="tags" content="blogger">
+        <meta name="tags" content="highlighter">
+        <meta name="tags" content="javascript">
 
 
 
@@ -54,7 +56,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
 <meta property="og:title" content="Sep 20, 2020 日誌"/>
-<meta property="og:description" content=""/>
+<meta property="og:description" content="在 blogger 加入程式碼顯示區塊。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="./Sep_20_2020.html"/>
 <meta property="og:type" content="article"/>
@@ -62,8 +64,9 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
-<meta property="article:tag" content="gmail"/>
-<meta property="article:tag" content="API"/>
+<meta property="article:tag" content="blogger"/>
+<meta property="article:tag" content="highlighter"/>
+<meta property="article:tag" content="javascript"/>
 <meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -83,7 +86,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./Sep_20_2020.html",
-  "description": ""
+  "description": "在 blogger 加入程式碼顯示區塊。"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -224,7 +227,33 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <!-- PELICAN_END_SUMMARY -->
+                <p>在 blogger 加入程式碼顯示區塊。
+</p>
+<p>在 Blogger 上，程式碼的顯示預設的樣式看起來和內文相近，而且當程式碼內容單行的內容太多的時候
+文字內容會遮到側邊版面的內容，所以就問老師要怎麼解決，老師提供一些資訊：要將 highliter javascipt 的標註碼，加到 template 中。</p>
+<p>在 blogger 的範本 (template) 編輯 html ，在 &lt;/head   &gt; 前插入 css 和 javascript 所讀取程式的位置，和顯示設定：</p>
+<pre class="brush: jscript">
+<link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shCore.css' rel='stylesheet' type='text/css'/>
+<link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shThemeDefault.css' rel='stylesheet' type='text/css'/>
+
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shCore.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJScript.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJava.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPython.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushSql.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushXml.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPhp.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCpp.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCss.js' type='text/javascript'/>
+<script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCSharp.js' type='text/javascript'/>
+<script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushBash.js' type='text/javascript'/>
+<script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushLua.js' type='text/javascript'/>
+
+<script language='javascript' type='text/javascript'>
+  SyntaxHighlighter.all()
+  SyntaxHighlighter.defaults[&#39;toolbar&#39;] = false;
+</script>
+</pre>
             </section>
 
             <section class="post-info">
@@ -242,7 +271,7 @@ init_mathjax();
                 </div>
 
                 <aside class="post-tags">
-<a href="./tag/gmail.html">gmail</a><a href="./tag/api.html">API</a>                </aside>
+<a href="./tag/blogger.html">blogger</a><a href="./tag/highlighter.html">highlighter</a><a href="./tag/javascript.html">javascript</a>                </aside>
 
                 <div class="clear"></div>
 

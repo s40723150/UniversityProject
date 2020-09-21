@@ -2727,8 +2727,7 @@ sudo systemctl enable cmsimde
 <t tx="leo.20200805145126.1"></t>
 <t tx="leo.20200817082837.1">&lt;pre class="brush: jscript"&gt;
 
-&lt;/pre&gt;
-</t>
+&lt;/pre&gt;</t>
 <t tx="leo.20200817082926.1"></t>
 <t tx="leo.20200817135345.1">@language md
 ---
@@ -3018,12 +3017,41 @@ file2.GetContentFile('./test/downloaded_cat.jpg') # Download file as 'downloaded
 Title: Sep 20, 2020 日誌
 Date: Sep 20, 2020
 Category: 日誌
-Tags: blogger, highlight, javascrip
+Tags: blogger, highlighter, javascript
 Slug: Sep_20_2020
 Author: 40723150
 ---
 在 blogger 加入程式碼顯示區塊。
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+
+在 Blogger 上，程式碼的顯示預設的樣式看起來和內文相近，而且當程式碼內容單行的內容太多的時候
+文字內容會遮到側邊版面的內容，所以就問老師要怎麼解決，老師提供一些資訊：要將 highliter javascipt 的標註碼，加到 template 中。
+
+在 blogger 的範本 (template) 編輯 html ，在	&amp;lt;/head	&amp;gt; 前插入 css 和 javascript 所讀取程式的位置，和顯示設定：
+
+&lt;pre class="brush: jscript"&gt;
+&lt;link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shCore.css' rel='stylesheet' type='text/css'/&gt;
+&lt;link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shThemeDefault.css' rel='stylesheet' type='text/css'/&gt;
+
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shCore.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJScript.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJava.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPython.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushSql.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushXml.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPhp.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCpp.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCss.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCSharp.js' type='text/javascript'/&gt;
+&lt;script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushBash.js' type='text/javascript'/&gt;
+&lt;script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushLua.js' type='text/javascript'/&gt;
+ 
+&lt;script language='javascript' type='text/javascript'&gt;
+  SyntaxHighlighter.all()
+  SyntaxHighlighter.defaults[&amp;#39;toolbar&amp;#39;] = false;
+&lt;/script&gt;
+&lt;/pre&gt;
+
 @others</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {

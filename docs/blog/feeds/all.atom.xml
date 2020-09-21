@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-09-20T00:00:00+08:00</updated><entry><title>Sep 20, 2020 日誌</title><link href=".%5CSep_20_2020.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-20:.\Sep_20_2020.html</id><summary type="html"></summary><content type="html">&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="日誌"></category><category term="gmail"></category><category term="API"></category></entry><entry><title>Sep16, 2020 日誌</title><link href=".%5CSep_16_2020.html" rel="alternate"></link><published>2020-09-16T00:00:00+08:00</published><updated>2020-09-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-16:.\Sep_16_2020.html</id><summary type="html">&lt;p&gt;學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-09-20T00:00:00+08:00</updated><entry><title>Sep 20, 2020 日誌</title><link href=".%5CSep_20_2020.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-20:.\Sep_20_2020.html</id><summary type="html">&lt;p&gt;在 blogger 加入程式碼顯示區塊。
+</summary><content type="html">&lt;p&gt;在 blogger 加入程式碼顯示區塊。
+&lt;/p&gt;
+&lt;p&gt;在 Blogger 上，程式碼的顯示預設的樣式看起來和內文相近，而且當程式碼內容單行的內容太多的時候
+文字內容會遮到側邊版面的內容，所以就問老師要怎麼解決，老師提供一些資訊：要將 highliter javascipt 的標註碼，加到 template 中。&lt;/p&gt;
+&lt;p&gt;在 blogger 的範本 (template) 編輯 html ，在 &amp;lt;/head   &amp;gt; 前插入 css 和 javascript 所讀取程式的位置，和顯示設定：&lt;/p&gt;
+&lt;pre class="brush: jscript"&gt;
+&lt;link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shCore.css' rel='stylesheet' type='text/css'/&gt;
+&lt;link href='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/css/shThemeDefault.css' rel='stylesheet' type='text/css'/&gt;
+
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shCore.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJScript.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushJava.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPython.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushSql.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushXml.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushPhp.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCpp.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCss.js' type='text/javascript'/&gt;
+&lt;script src='https://mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushCSharp.js' type='text/javascript'/&gt;
+&lt;script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushBash.js' type='text/javascript'/&gt;
+&lt;script src='//mdecourse.gitlab.io/labmdetw/cmsimde/static/syntaxhighlighter/shBrushLua.js' type='text/javascript'/&gt;
+
+&lt;script language='javascript' type='text/javascript'&gt;
+  SyntaxHighlighter.all()
+  SyntaxHighlighter.defaults[&amp;#39;toolbar&amp;#39;] = false;
+&lt;/script&gt;
+&lt;/pre&gt;</content><category term="日誌"></category><category term="blogger"></category><category term="highlighter"></category><category term="javascript"></category></entry><entry><title>Sep16, 2020 日誌</title><link href=".%5CSep_16_2020.html" rel="alternate"></link><published>2020-09-16T00:00:00+08:00</published><updated>2020-09-16T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-16:.\Sep_16_2020.html</id><summary type="html">&lt;p&gt;學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
 </summary><content type="html">&lt;p&gt;學會用 Gmail API 寄信，和上傳檔案到 Google Drive。
 &lt;/p&gt;
 &lt;p&gt;在我們開始用 Gmail 和 Google Drive 的 API 前到 &lt;a href="https://console.developers.google.com/"&gt;console.develolpers&lt;/a&gt;
