@@ -206,6 +206,13 @@
 </v>
 </v>
 </v>
+<v t="leo.20201012203927.1"><vh>Oct</vh>
+<v t="leo.20201012203932.1"><vh>@clean Oct_12_2020.md</vh>
+<v t="leo.20201013092240.1"><vh>9163369466257328113</vh>
+<v t="leo.20201013172125.1"><vh>5291558050875524475</vh></v>
+</v>
+</v>
+</v>
 </v>
 </v>
 <v t="yen.20170108171733.83"><vh>產生 .key 與 .crt 指令</vh></v>
@@ -3075,6 +3082,44 @@ Author: 40723150
 <t tx="leo.20200921132505.1"></t>
 <t tx="leo.20200921132513.1"></t>
 <t tx="leo.20200921211043.1"></t>
+<t tx="leo.20201012203927.1"></t>
+<t tx="leo.20201012203932.1">@language md
+---
+Title: Oct 12, 2020 日誌
+Date: Oct 12, 2020
+Category: 日誌
+Tags: neural, python, numpy
+Slug: Ocv_12_2020
+Author: 40723150
+---
+看 neural_network_in_python.pdf 
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+feed-forward：input data feeds in only one direction.
+
+backpropagation：performing a task using an iterative approach for trial and error.
+
+steepness：gradient.
+
+the choices of the weight and the biases determines the strength of prediction of the individual neurons.
+
+&gt; bias：shift the enitre curve to the right or left.
+
+&gt; weight：affect the steepness of the activation function curve.
+
+numpy array
+
+axis 0 : vertical axis.(column)
+
+axis 1：horizontal axis.(row)
+
+np.dot : 矩陣點積。
+
+np.amax：矩陣column(axis0)或row(axis1)的最大值。
+
+@others</t>
+<t tx="leo.20201013092240.1"></t>
+<t tx="leo.20201013172125.1"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

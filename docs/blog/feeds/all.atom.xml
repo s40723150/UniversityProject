@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-09-20T00:00:00+08:00</updated><entry><title>Sep 20, 2020 日誌</title><link href=".%5CSep_20_2020.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-20:.\Sep_20_2020.html</id><summary type="html">&lt;p&gt;在 blogger 加入程式碼顯示區塊。
+<feed xmlns="http://www.w3.org/2005/Atom"><title>UniversityProject</title><link href="./" rel="alternate"></link><link href=".%5Cfeeds/all.atom.xml" rel="self"></link><id>./</id><updated>2020-10-12T00:00:00+08:00</updated><entry><title>Oct 12, 2020 日誌</title><link href=".%5COcv_12_2020.html" rel="alternate"></link><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-10-12:.\Ocv_12_2020.html</id><summary type="html">&lt;p&gt;看 neural_network_in_python.pdf 
+</summary><content type="html">&lt;p&gt;看 neural_network_in_python.pdf 
+&lt;/p&gt;
+&lt;p&gt;feed-forward：input data feeds in only one direction.&lt;/p&gt;
+&lt;p&gt;backpropagation：performing a task using an iterative approach for trial and error.&lt;/p&gt;
+&lt;p&gt;steepness：gradient.&lt;/p&gt;
+&lt;p&gt;the choices of the weight and the biases determines the strength of prediction of the individual neurons.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bias：shift the enitre curve to the right or left.&lt;/p&gt;
+&lt;p&gt;weight：affect the steepness of the activation function curve.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;numpy array&lt;/p&gt;
+&lt;p&gt;axis 0 : vertical axis.(column)&lt;/p&gt;
+&lt;p&gt;axis 1：horizontal axis.(row)&lt;/p&gt;
+&lt;p&gt;np.dot : 矩陣點積。&lt;/p&gt;
+&lt;p&gt;np.amax：矩陣column(axis0)或row(axis1)的最大值。&lt;/p&gt;</content><category term="日誌"></category><category term="neural"></category><category term="python"></category><category term="numpy"></category></entry><entry><title>Sep 20, 2020 日誌</title><link href=".%5CSep_20_2020.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>40723150</name></author><id>tag:None,2020-09-20:.\Sep_20_2020.html</id><summary type="html">&lt;p&gt;在 blogger 加入程式碼顯示區塊。
 </summary><content type="html">&lt;p&gt;在 blogger 加入程式碼顯示區塊。
 &lt;/p&gt;
 &lt;p&gt;在 Blogger 上，程式碼的顯示預設的樣式看起來和內文相近，而且當程式碼內容單行的內容太多的時候

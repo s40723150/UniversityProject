@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>UniversityProject - Authors</title>
+  <title>Oct 12, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -18,6 +18,7 @@
 
   <!-- Feed -->
         <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="UniversityProject Full Atom Feed" />
+          <link href="./feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="UniversityProject Categories Atom Feed" />
 
   <link href="./theme/css/style.css" type="text/css" rel="stylesheet" />
 
@@ -39,27 +40,53 @@
   <![endif]-->
 
 
+    <link href="./Ocv_12_2020.html" rel="canonical" />
+
+        <meta name="description" content="看 neural_network_in_python.pdf">
+
+        <meta name="author" content="40723150">
+
+        <meta name="tags" content="neural">
+        <meta name="tags" content="python">
+        <meta name="tags" content="numpy">
+
+
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="UniversityProject"/>
-<meta property="og:description" content="View the blog."/>
+<meta property="og:title" content="Oct 12, 2020 日誌"/>
+<meta property="og:description" content="看 neural_network_in_python.pdf"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./"/>
-<meta property="og:image" content="./theme/images/home-bg.jpg">
+<meta property="og:url" content="./Ocv_12_2020.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-10-12 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/40723150.html">
+<meta property="article:section" content="日誌"/>
+<meta property="article:tag" content="neural"/>
+<meta property="article:tag" content="python"/>
+<meta property="article:tag" content="numpy"/>
+<meta property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
 
 <script type="application/ld+json">
 {
-  "@context" : "http://schema.org",
-  "@type" : "Website",
-  "name": " UniversityProject ",
-  "url" : "./",
-  "image": "./theme/images/home-bg.jpg",
-  "description": "View the blog."
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Oct 12, 2020 日誌",
+  "headline": "Oct 12, 2020 日誌",
+  "datePublished": "2020-10-12 00:00:00+08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "40723150",
+    "url": "./author/40723150.html"
+  },
+  "image": "./theme/images/post-bg.jpg",
+  "url": "./Ocv_12_2020.html",
+  "description": "看 neural_network_in_python.pdf"
 }
 </script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
@@ -157,19 +184,30 @@ init_mathjax();
     </ul>
   </div>
 </nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header id="blog-header" class="has-cover">
+    <header id="post-header" class="has-cover">
       <div class="inner">
         <nav id="navigation">
             <span id="home-button" class="nav-button">
-                <a class="home-button" href="./" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+                <a class="home-button" href="./index.html" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
             </span>
           <span id="menu-button" class="nav-button">
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Articles by </h1>
+        <h1 class="post-title">Oct 12, 2020 日誌</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="./author/40723150.html">40723150</a>
+            | <time datetime="週一 12 十月 2020">週一 12 十月 2020</time>
+        </span>
+        <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
       </div>
     </header>
@@ -183,15 +221,66 @@ init_mathjax();
     </form>
 </section>
 
-      <article class="post">
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
         <div class="inner">
-            <a href="./author/40723150.html" rel="bookmark">
-                <h2 class="post-title">
-                    40723150 (38)
-                </h2>
-            </a>
-        </div>
-      </article>
+            <section class="post-content">
+                <p>看 neural_network_in_python.pdf 
+</p>
+<p>feed-forward：input data feeds in only one direction.</p>
+<p>backpropagation：performing a task using an iterative approach for trial and error.</p>
+<p>steepness：gradient.</p>
+<p>the choices of the weight and the biases determines the strength of prediction of the individual neurons.</p>
+<blockquote>
+<p>bias：shift the enitre curve to the right or left.</p>
+<p>weight：affect the steepness of the activation function curve.</p>
+</blockquote>
+<p>numpy array</p>
+<p>axis 0 : vertical axis.(column)</p>
+<p>axis 1：horizontal axis.(row)</p>
+<p>np.dot : 矩陣點積。</p>
+<p>np.amax：矩陣column(axis0)或row(axis1)的最大值。</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Oct 12, 2020 日誌&amp;url=./Ocv_12_2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Ocv_12_2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Ocv_12_2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="./tag/neural.html">neural</a><a href="./tag/python.html">python</a><a href="./tag/numpy.html">numpy</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="./Sep_20_2020.html">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Sep 20, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">在 blogger 加入程式碼顯示區塊。</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
       <!-- TODO : Body class -->
     <div id="body-class" style="display: none;" class=""></div>
 
