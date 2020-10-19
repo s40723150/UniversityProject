@@ -212,6 +212,12 @@
 <v t="leo.20201013172125.1"><vh>5291558050875524475</vh></v>
 </v>
 </v>
+<v t="leo.20201013211857.1"><vh>@clean Oct_13_2020.md</vh>
+<v t="leo.20201013211857.2"><vh>9163369466257328113</vh></v>
+</v>
+<v t="leo.20201019203454.1"><vh>@clean Oct_19_2020.md</vh>
+<v t="leo.20201019203454.2"><vh>9163369466257328113</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -3088,7 +3094,7 @@ Author: 40723150
 Title: Oct 12, 2020 日誌
 Date: Oct 12, 2020
 Category: 日誌
-Tags: neural, python, numpy
+Tags: neural_network, python, numpy
 Slug: Ocv_12_2020
 Author: 40723150
 ---
@@ -3120,6 +3126,188 @@ np.amax：矩陣column(axis0)或row(axis1)的最大值。
 @others</t>
 <t tx="leo.20201013092240.1"></t>
 <t tx="leo.20201013172125.1"></t>
+<t tx="leo.20201013211857.1">@language md
+---
+Title: Oct 13, 2020 日誌
+Date: Oct 13, 2020
+Category: 日誌
+Tags: neural_network, python, numpy
+Slug: Ocv_13_2020
+Author: 40723150
+---
+看 neural_network_in_python.pdf
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+Practice neural network with python.
+
+2LayerNeuralNetwork.py
+
+&lt;pre class="brush: jscript"&gt;
+# 2 Layer Neural Network in NumPy
+import numpy as np
+# X = input of our 3 input XOR gate
+# set up the inputs of the neural network (right from the table)
+X = np.array(([0,0,0],[0,0,1],[0,1,0], [0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]), dtype=float)
+# y = our output of our neural network
+y = np.array(([1], [0], [0], [0], [0], [0], [0], [1]), dtype=float)
+# what value we want to predict
+xPredicted = np.array(([0,0,1]), dtype=float)
+X = X/np.amax(X, axis=0) # maximum of X input array
+# maximum of xPredicted (our input data for the prediction)
+xPredicted = xPredicted/np.amax(xPredicted, axis=0)
+# set up our Loss file for graphing
+lossFile = open("SumSquaredLossList.csv", "w")
+class Neural_Network (object):
+    def __init__(self):
+        #parameters
+        self.inputLayerSize = 3 # X1,X2,X3
+        self.outputLayerSize = 1 # Y1
+        self.hiddenLayerSize = 4 # Size of the hidden layer
+        # build weights of each layer
+        # set to random values
+        # look at the interconnection diagram to make sense of this
+        # 3x4 matrix for input to hidden
+        self.W1 = np.random.randn(self.inputLayerSize, self.hiddenLayerSize)
+        # 4x1 matrix for hidden layer to output
+        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)
+
+    def feedForward(self, X):
+        # dot product of X (input) and first set of 3x4 weights
+        self.z = np.dot(X, self.W1)
+        # the activationSigmoid activation function - neural magic
+        self.z2 = self.activationSigmoid(self.z)
+        # dot product of hidden layer (z2) and second set of 4x1 weights
+        self.z3 = np.dot(self.z2, self.W2)
+        # final activation function - more neural magic
+        o = self.activationSigmoid(self.z3)
+        return o
+
+    def backwardPropagate(self, X, y, o):
+        # backward propagate through the network
+        # calculate the error in output
+        self.o_error = y - o
+        # apply derivative of activationSigmoid to error
+        self.o_delta = self.o_error * self.activationSigmoidPrime(o)
+        # z2 error: how much our hidden layer weights contributed to output
+        # error
+        self.z2_error = self.o_delta.dot(self.W2.T)
+        # applying derivative of activationSigmoid to z2 error
+        self.z2_delta = self.z2_error * self.activationSigmoidPrime(self.z2)
+        # adjusting first set (inputLayer --&gt; hiddenLayer) weights
+        self.W1 += X.T.dot(self.z2_delta)
+        # adjusting second set (hiddenLayer --&gt; outputLayer) weights
+        self.W2 += self.z2.T.dot(self.o_delta)
+    def trainNetwork(self, X, y):
+        # feed forward the loop
+        o = self.feedForward(X)
+        # and then back propagate the values (feedback)
+        self.backwardPropagate(X, y, o)
+
+    def activationSigmoid(self, s):
+        # activation function
+        # simple activationSigmoid curve as in the book
+        return 1 / (1 + np.exp(-s))
+    def activationSigmoidPrime(self, s):
+        # First derivative of activationSigmoid
+        # calculus time!
+        return s * (1 - s)
+    def saveSumSquaredLossList(self,i,error):
+        lossFile.write(str(i)+","+str(error.tolist())+'\n')
+    def saveWeights(self):
+        # save this in order to reproduce our cool network
+        np.savetxt("weightsLayer1.txt", self.W1, fmt="%s")
+        np.savetxt("weightsLayer2.txt", self.W2, fmt="%s")
+    def predictOutput(self):
+        print ("Predicted XOR output data based on trained weights: ")
+        print ("Expected (X1-X3): \n" + str(xPredicted))
+        print ("Output (Y1): \n" + str(self.feedForward(xPredicted)))
+myNeuralNetwork = Neural_Network()
+trainingEpochs = 1000
+#trainingEpochs = 100000
+for i in range(trainingEpochs): # train myNeuralNetwork 1,000 times
+    print ("Epoch # " + str(i) + "\n")
+    print ("Network Input : \n" + str(X))
+    print ("Expected Output of XOR Gate Neural Network: \n" + str(y))
+    print ("Actual Output from XOR Gate Neural Network: \n" + str(myNeuralNetwork.feedForward(X)))
+    # mean sum squared loss
+    Loss = np.mean(np.square(y - myNeuralNetwork.feedForward(X)))
+    myNeuralNetwork.saveSumSquaredLossList(i,Loss)
+    print ("Sum Squared Loss: \n" + str(Loss))
+    print ("\n")
+    myNeuralNetwork.trainNetwork(X, y)
+myNeuralNetwork.saveWeights()
+myNeuralNetwork.predictOutput()
+&lt;/pre&gt;
+
+@others
+</t>
+<t tx="leo.20201013211857.2"></t>
+<t tx="leo.20201019203454.1">@language md
+---
+Title: Oct 19, 2020 日誌
+Date: Oct 19, 2020
+Category: 日誌
+Tags: neural_network, python, numpy
+Slug: Ocv_19_2020
+Author: 40723150
+---
+看 neural_network_in_python.pdf
+
+安裝 NVIDIA CUDA 10.1 和 cudnn 7.6.5
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+Download NVIDIA CUDA 10.1
+
+https://developer.nvidia.com/cuda-10.1-download-archive-base
+
+Download cudnn 7.6.5
+
+https://developer.nvidia.com/rdp/cudnn-archive
+
+Put the cudnn 7.6.5 in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1
+
+Run the tensorflow module.
+
+TensorFlowKeras
+
+&lt;pre class="brush: jscript"&gt;
+import tensorflow as tf
+from tensorflow.keras import layers
+from tensorflow.keras.layers import Activation, Dense
+import numpy as np
+# X = input of our 3 input XOR gate
+# set up the inputs of the neural network (right from the table)
+X = np.array(([0,0,0],[0,0,1],[0,1,0],
+ [0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]), dtype=float)
+# y = our output of our neural network
+y = np.array(([1], [0], [0], [0], [0],
+ [0], [0], [1]), dtype=float)
+model = tf.keras.Sequential()
+model.add(Dense(4, input_dim=3, activation='relu',
+ use_bias=True))
+#model.add(Dense(4, activation='relu', use_bias=True))
+model.add(Dense(1, activation='sigmoid', use_bias=True))
+model.compile(loss='mean_squared_error',
+ optimizer='adam',
+ metrics=['binary_accuracy'])
+print (model.get_weights())
+history = model.fit(X, y, epochs=2000,
+ validation_data = (X, y))
+model.summary()
+# printing out to file
+loss_history = history.history["loss"]
+numpy_loss_history = np.array(loss_history)
+np.savetxt("loss_history.txt", numpy_loss_history,
+ delimiter="\n")
+binary_accuracy_history = history.history["binary_accuracy"]
+numpy_binary_accuracy = np.array(binary_accuracy_history)
+np.savetxt("binary_accuracy.txt", numpy_binary_accuracy, delimiter="\n")
+print(np.mean(history.history["binary_accuracy"]))
+result = model.predict(X ).round()
+print (result)
+&lt;/pre&gt;
+
+@others
+</t>
+<t tx="leo.20201019203454.2"></t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/

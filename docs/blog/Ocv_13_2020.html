@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Oct 12, 2020 日誌</title>
+  <title>Oct 13, 2020 日誌</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -40,7 +40,7 @@
   <![endif]-->
 
 
-    <link href="./Ocv_12_2020.html" rel="canonical" />
+    <link href="./Ocv_13_2020.html" rel="canonical" />
 
         <meta name="description" content="看 neural_network_in_python.pdf">
 
@@ -55,12 +55,12 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="UniversityProject"/>
-<meta property="og:title" content="Oct 12, 2020 日誌"/>
+<meta property="og:title" content="Oct 13, 2020 日誌"/>
 <meta property="og:description" content="看 neural_network_in_python.pdf"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="./Ocv_12_2020.html"/>
+<meta property="og:url" content="./Ocv_13_2020.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-10-12 00:00:00+08:00"/>
+<meta property="article:published_time" content="2020-10-13 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="./author/40723150.html">
 <meta property="article:section" content="日誌"/>
@@ -75,9 +75,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Oct 12, 2020 日誌",
-  "headline": "Oct 12, 2020 日誌",
-  "datePublished": "2020-10-12 00:00:00+08:00",
+  "name": "Oct 13, 2020 日誌",
+  "headline": "Oct 13, 2020 日誌",
+  "datePublished": "2020-10-13 00:00:00+08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -85,7 +85,7 @@
     "url": "./author/40723150.html"
   },
   "image": "./theme/images/post-bg.jpg",
-  "url": "./Ocv_12_2020.html",
+  "url": "./Ocv_13_2020.html",
   "description": "看 neural_network_in_python.pdf"
 }
 </script>
@@ -201,11 +201,11 @@ init_mathjax();
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Oct 12, 2020 日誌</h1>
+        <h1 class="post-title">Oct 13, 2020 日誌</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/40723150.html">40723150</a>
-            | <time datetime="週一 12 十月 2020">週一 12 十月 2020</time>
+            | <time datetime="週二 13 十月 2020">週二 13 十月 2020</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('./theme/images/post-bg.jpg')">
@@ -227,32 +227,117 @@ init_mathjax();
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>看 neural_network_in_python.pdf 
-</p>
-<p>feed-forward：input data feeds in only one direction.</p>
-<p>backpropagation：performing a task using an iterative approach for trial and error.</p>
-<p>steepness：gradient.</p>
-<p>the choices of the weight and the biases determines the strength of prediction of the individual neurons.</p>
-<blockquote>
-<p>bias：shift the enitre curve to the right or left.</p>
-<p>weight：affect the steepness of the activation function curve.</p>
-</blockquote>
-<p>numpy array</p>
-<p>axis 0 : vertical axis.(column)</p>
-<p>axis 1：horizontal axis.(row)</p>
-<p>np.dot : 矩陣點積。</p>
-<p>np.amax：矩陣column(axis0)或row(axis1)的最大值。</p>
+                <p>看 neural_network_in_python.pdf
+
+Practice neural network with python.</p>
+<p>2LayerNeuralNetwork.py</p>
+<pre class="brush: jscript">
+# 2 Layer Neural Network in NumPy
+import numpy as np
+# X = input of our 3 input XOR gate
+# set up the inputs of the neural network (right from the table)
+X = np.array(([0,0,0],[0,0,1],[0,1,0], [0,1,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1]), dtype=float)
+# y = our output of our neural network
+y = np.array(([1], [0], [0], [0], [0], [0], [0], [1]), dtype=float)
+# what value we want to predict
+xPredicted = np.array(([0,0,1]), dtype=float)
+X = X/np.amax(X, axis=0) # maximum of X input array
+# maximum of xPredicted (our input data for the prediction)
+xPredicted = xPredicted/np.amax(xPredicted, axis=0)
+# set up our Loss file for graphing
+lossFile = open("SumSquaredLossList.csv", "w")
+class Neural_Network (object):
+    def __init__(self):
+        #parameters
+        self.inputLayerSize = 3 # X1,X2,X3
+        self.outputLayerSize = 1 # Y1
+        self.hiddenLayerSize = 4 # Size of the hidden layer
+        # build weights of each layer
+        # set to random values
+        # look at the interconnection diagram to make sense of this
+        # 3x4 matrix for input to hidden
+        self.W1 = np.random.randn(self.inputLayerSize, self.hiddenLayerSize)
+        # 4x1 matrix for hidden layer to output
+        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)
+
+    def feedForward(self, X):
+        # dot product of X (input) and first set of 3x4 weights
+        self.z = np.dot(X, self.W1)
+        # the activationSigmoid activation function - neural magic
+        self.z2 = self.activationSigmoid(self.z)
+        # dot product of hidden layer (z2) and second set of 4x1 weights
+        self.z3 = np.dot(self.z2, self.W2)
+        # final activation function - more neural magic
+        o = self.activationSigmoid(self.z3)
+        return o
+
+    def backwardPropagate(self, X, y, o):
+        # backward propagate through the network
+        # calculate the error in output
+        self.o_error = y - o
+        # apply derivative of activationSigmoid to error
+        self.o_delta = self.o_error * self.activationSigmoidPrime(o)
+        # z2 error: how much our hidden layer weights contributed to output
+        # error
+        self.z2_error = self.o_delta.dot(self.W2.T)
+        # applying derivative of activationSigmoid to z2 error
+        self.z2_delta = self.z2_error * self.activationSigmoidPrime(self.z2)
+        # adjusting first set (inputLayer --> hiddenLayer) weights
+        self.W1 += X.T.dot(self.z2_delta)
+        # adjusting second set (hiddenLayer --> outputLayer) weights
+        self.W2 += self.z2.T.dot(self.o_delta)
+    def trainNetwork(self, X, y):
+        # feed forward the loop
+        o = self.feedForward(X)
+        # and then back propagate the values (feedback)
+        self.backwardPropagate(X, y, o)
+
+    def activationSigmoid(self, s):
+        # activation function
+        # simple activationSigmoid curve as in the book
+        return 1 / (1 + np.exp(-s))
+    def activationSigmoidPrime(self, s):
+        # First derivative of activationSigmoid
+        # calculus time!
+        return s * (1 - s)
+    def saveSumSquaredLossList(self,i,error):
+        lossFile.write(str(i)+","+str(error.tolist())+'\n')
+    def saveWeights(self):
+        # save this in order to reproduce our cool network
+        np.savetxt("weightsLayer1.txt", self.W1, fmt="%s")
+        np.savetxt("weightsLayer2.txt", self.W2, fmt="%s")
+    def predictOutput(self):
+        print ("Predicted XOR output data based on trained weights: ")
+        print ("Expected (X1-X3): \n" + str(xPredicted))
+        print ("Output (Y1): \n" + str(self.feedForward(xPredicted)))
+myNeuralNetwork = Neural_Network()
+trainingEpochs = 1000
+#trainingEpochs = 100000
+for i in range(trainingEpochs): # train myNeuralNetwork 1,000 times
+    print ("Epoch # " + str(i) + "\n")
+    print ("Network Input : \n" + str(X))
+    print ("Expected Output of XOR Gate Neural Network: \n" + str(y))
+    print ("Actual Output from XOR Gate Neural Network: \n" + str(myNeuralNetwork.feedForward(X)))
+    # mean sum squared loss
+    Loss = np.mean(np.square(y - myNeuralNetwork.feedForward(X)))
+    myNeuralNetwork.saveSumSquaredLossList(i,Loss)
+    print ("Sum Squared Loss: \n" + str(Loss))
+    print ("\n")
+    myNeuralNetwork.trainNetwork(X, y)
+myNeuralNetwork.saveWeights()
+myNeuralNetwork.predictOutput()
+</pre>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Oct 12, 2020 日誌&amp;url=./Ocv_12_2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=Oct 13, 2020 日誌&amp;url=./Ocv_13_2020.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Ocv_12_2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=./Ocv_13_2020.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=./Ocv_12_2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=./Ocv_13_2020.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
@@ -268,18 +353,18 @@ init_mathjax();
 
 
                 <aside class="post-nav">
-                    <a class="post-nav-next" href="./Ocv_13_2020.html">
+                    <a class="post-nav-next" href="./Ocv_19_2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Oct 13, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">看 neural_network_in_python.pdf</p>
+                                <h2 class="post-nav-title">Oct 19, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">看 neural_network_in_python.pdf 安裝 NVIDIA CUDA 10.1 和 cudnn 7.6.5</p>
                         </section>
                     </a>
-                    <a class="post-nav-prev" href="./Sep_20_2020.html">
+                    <a class="post-nav-prev" href="./Ocv_12_2020.html">
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Sep 20, 2020 日誌</h2>
-                            <p class="post-nav-excerpt">在 blogger 加入程式碼顯示區塊。</p>
+                                <h2 class="post-nav-title">Oct 12, 2020 日誌</h2>
+                            <p class="post-nav-excerpt">看 neural_network_in_python.pdf</p>
                         </section>
                     </a>
                     <div class="clear"></div>
